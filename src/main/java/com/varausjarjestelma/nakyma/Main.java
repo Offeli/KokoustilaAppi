@@ -6,6 +6,7 @@ import com.varausjarjestelma.malli.TilaDAO;
 public class Main {
 
 	public static void main(String[] args) {
+		System.out.println("terve");
 		Kontrolleri kontrolleri = new Kontrolleri();
 		
 		Tekstikäyttöliittymä käyttöliittymä = new Tekstikäyttöliittymä(kontrolleri);
