@@ -30,7 +30,7 @@ public class TestConnection {
 		
 		try {
 			Statement stmt = db.createStatement();
-			String query = "SELECT * FROM tila";
+			String query = "SELECT * FROM Tila";
 			ResultSet rs = stmt.executeQuery(query);
 			return rs;
 			
