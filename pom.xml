@@ -2,7 +2,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
+	
 	<groupId>varausjarjestelma</groupId>
 	<artifactId>varausjarjestelma</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -10,10 +10,24 @@
 
 	<name>varausjarjestelma</name>
 	<url>http://maven.apache.org</url>
-
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.5</maven.compiler.source>
+		<maven.compiler.target>1.5</maven.compiler.target>
 	</properties>
+	
+	<build>
+		<plugins>
+		<plugin>
+		    <groupId>org.jacoco</groupId>
+		    <artifactId>jacoco-maven-plugin</artifactId>
+		    <version>0.8.7.202009180141</version>
+		</plugin>
+		</plugins>
+	</build>
+
+	<!-- 0.8.7.202009180141 -->
 
 	<dependencies>
 		<dependency>
@@ -47,5 +61,6 @@
     <artifactId>mysql-connector-java</artifactId>
     <version>5.1.46</version>
 </dependency>
-	</dependencies>
+</dependencies>
+
 </project>
