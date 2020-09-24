@@ -33,7 +33,7 @@ public class TilaDAO {
 		return istuntotehdas;
 	}
 
-	public static Tila[] haeKaikkiTilat() {
+	public Tila[] haeKaikkiTilat() {
 		Session istunto = null;
 		Transaction transaktio = null;
 
@@ -88,12 +88,34 @@ public class TilaDAO {
 	}
 	
 	public static Tila haeTila(String nimi) {
-		 Tila[] tilat = haeKaikkiTilat();
 		 Tila result = null;
-		 
-		 for(Tila t : tilat) {
-			 if(t.getNimi().equals(nimi)) result = t;
-		 }
+		 Session istunto = null;
+		 Transaction transaktio = null;
+
+			// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
+			try {
+				istunto = istuntotehdas.openSession();
+				transaktio = istunto.beginTransaction();
+
+				@SuppressWarnings("unchecked")
+				List<Tila> tilat = istunto.createQuery("from Tila").getResultList();
+
+				istunto.getTransaction().commit();
+				
+				for(Tila t : tilat) {
+					 if(t.getNimi().equals(nimi)) result = t;
+				 }
+
+			} catch (Exception e) {
+				if (transaktio != null)
+					transaktio.rollback();
+				System.err.println(e.getMessage());
+				System.exit(-1);
+
+			} finally {
+				if (istunto != null)
+					istunto.close();
+			}
 		 
 		 return result;
 	}
@@ -115,21 +137,43 @@ public class TilaDAO {
 	}
 	
 	public static void poistaTila(String nimi, String osoite) {
-		 Tila[] tilat = haeKaikkiTilat();
 		 int result = 0;
+		 Session istunto = null;
+		Transaction transaktio = null;
+
+			// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
+			try {
+				istunto = istuntotehdas.openSession();
+				transaktio = istunto.beginTransaction();
+
+				@SuppressWarnings("unchecked")
+				List<Tila> tilat = istunto.createQuery("from Tila").getResultList();
+
+				istunto.getTransaction().commit();
+				
+				for(Tila t : tilat) {
+					 if(t.getNimi().equals(nimi) && t.getOsoite().equals(osoite)) result = t.getID();
+				 }
+
+			} catch (Exception e) {
+				if (transaktio != null)
+					transaktio.rollback();
+				System.err.println(e.getMessage());
+				System.exit(-1);
+
+			} finally {
+				if (istunto != null)
+					istunto.close();
+			}
 		 
-		 for(Tila t : tilat) {
-			 if(t.getNimi().equals(nimi) && t.getOsoite().equals(osoite)) result = t.getID();
-		 }
+		 Session istuntoTwo = istuntotehdas.openSession();
+		 istuntoTwo.beginTransaction();
 		 
-		 Session istunto = istuntotehdas.openSession();
-		 istunto.beginTransaction();
+		 Tila tila = istuntoTwo.get(Tila.class, result);
+		 istuntoTwo.delete(tila);
 		 
-		 Tila tila = istunto.get(Tila.class, result);
-		 istunto.delete(tila);
-		 
-		 istunto.getTransaction().commit();
-		 istunto.close();
+		 istuntoTwo.getTransaction().commit();
+		 istuntoTwo.close();
 	}
 
 }
