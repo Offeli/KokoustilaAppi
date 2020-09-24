@@ -17,11 +17,11 @@ public class Main {
 			e.printStackTrace();
 		}
 	
-	//	Tekstikäyttöliittymä käyttöliittymä = new Tekstikäyttöliittymä(kontrolleri);
+		Tekstikäyttöliittymä käyttöliittymä = new Tekstikäyttöliittymä(kontrolleri);
 		
-	//	kontrolleri.setKäyttöliittymä(käyttöliittymä);
+		kontrolleri.setKäyttöliittymä(käyttöliittymä);
 		
-	//	käyttöliittymä.käynnistä();
+		käyttöliittymä.käynnistä();
 	}
 
 }
