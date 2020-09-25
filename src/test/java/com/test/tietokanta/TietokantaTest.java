@@ -7,10 +7,10 @@ import com.varausjarjestelma.malli.TilaDAO;
 
 public class TietokantaTest {
 
-	private TilaDAO tilaDAO;
+	private static TilaDAO tilaDAO;
 
 	@BeforeAll
-	void setup() {
+	static void setup() {
 		tilaDAO = new TilaDAO();
 	}
 
