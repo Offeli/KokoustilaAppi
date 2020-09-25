@@ -1,5 +1,7 @@
 package com.test.tietokanta;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.*;
 
 import com.varausjarjestelma.malli.Tila;
@@ -26,25 +28,29 @@ public class TietokantaTest {
 	@DisplayName("Test lisaaTila()")
 	@Test
 	void testLisaa() {
-		boolean onnistui = tilaDAO.lisaaTila(testiTila);
+		boolean result = tilaDAO.lisaaTila(testiTila);
+		assertTrue(result, "Lisäys ei onnistunut.");
 	}
 
-	@DisplayName("Test haeTila()")
+	@DisplayName("Test etsiTila()")
 	@Test
-	void testHae() {
-		Tila tila = tilaDAO.haeTila(testiTila.getID());
+	void testEtsi() {
+		Tila tila = tilaDAO.etsiTila(testiTila.getID());
+		assertEquals(testiTila.getID(), tila.getID(), "ID ei täsmännyt.");
 	}
 
 	@DisplayName("Test muokkaaTila()")
 	@Test
 	void testMuokkaa() {
-		boolean onnistui = tilaDAO.muokkaaTilaa(1, testiTila);
+		boolean result = tilaDAO.muokkaaTilaa(1, testiTila);
+		assertTrue(result, "Muokkaus ei onnistunut.");
 	}
 
 	@DisplayName("Test poistaTila()")
 	@Test
 	void testPoista() {
-		boolean onnistui = tilaDAO.poistaTila(testiTila);
+		boolean result = tilaDAO.poistaTila(testiTila);
+		assertTrue(result, "Poistaminen ei onnistunut.");
 	}
 
 }

@@ -87,7 +87,7 @@ public class TilaDAO {
 		return palautus;
 	}
 
-	public Tila haeTila(int id) {
+	public Tila etsiTila(int id) {
 		Tila palautus = null;
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -123,7 +123,7 @@ public class TilaDAO {
 		try {
 			istunto = istuntotehdas.openSession();
 			transaktio = istunto.beginTransaction();
-			Tila muokattava = haeTila(id);
+			Tila muokattava = etsiTila(id);
 
 			muokattava.setHlomaara(tila.getHlomaara());
 			muokattava.setKaupunki(tila.getKaupunki());
