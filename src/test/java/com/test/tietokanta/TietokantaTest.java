@@ -8,34 +8,43 @@ import com.varausjarjestelma.malli.TilaDAO;
 public class TietokantaTest {
 
 	private static TilaDAO tilaDAO;
+	private static Tila testiTila;
 
 	@BeforeAll
 	static void setup() {
 		tilaDAO = new TilaDAO();
+		testiTila = new Tila();
+
+		testiTila.setNimi("Aurora");
+		testiTila.setKuvaus("Helsingin yliopiston aula");
+		testiTila.setKaupunki("Helsinki");
+		testiTila.setOsoite("Siltavuorenpenger 10");
+		testiTila.setHlomaara(15);
+		testiTila.setNakyvyys(true);
 	}
 
 	@DisplayName("Test lisaaTila()")
 	@Test
-	void testLisaa() throws Exception {
-		tilaDAO.lisaaTila("Aurora", "Helsingin yliopiston aula", "Helsinki", "Siltavuorenpenger 10", 15, true);
+	void testLisaa() {
+		boolean onnistui = tilaDAO.lisaaTila(testiTila);
 	}
 
 	@DisplayName("Test haeTila()")
 	@Test
 	void testHae() {
-		Tila result = tilaDAO.haeTila("Aurora");
+		Tila tila = tilaDAO.haeTila(testiTila.getID());
 	}
 
 	@DisplayName("Test muokkaaTila()")
 	@Test
 	void testMuokkaa() {
-		tilaDAO.muokkaaTila(1, "Auroora");
+		boolean onnistui = tilaDAO.muokkaaTilaa(1, testiTila);
 	}
 
 	@DisplayName("Test poistaTila()")
 	@Test
 	void testPoista() {
-		tilaDAO.poistaTila("Aurora", "Siltavuorenpenger 10");
+		boolean onnistui = tilaDAO.poistaTila(testiTila);
 	}
 
 }

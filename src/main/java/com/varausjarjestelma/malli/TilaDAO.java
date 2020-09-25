@@ -15,11 +15,15 @@ public class TilaDAO {
 	private StandardServiceRegistry rekisteri;
 
 	public TilaDAO() {
+		istuntotehdas = null;
+		rekisteri = null;
+		
 		try {
 			istuntotehdas = new Configuration().configure().buildSessionFactory();
 			rekisteri = new StandardServiceRegistryBuilder().configure().build();
 		} catch (Exception e) {
 			System.out.println("TilaDAO - istuntotehtaan luonti epäonnistui");
+			istuntotehdas.close();
 			StandardServiceRegistryBuilder.destroy(rekisteri);
 			e.printStackTrace();
 			System.exit(0);
@@ -56,25 +60,20 @@ public class TilaDAO {
 		return palautus;
 	}
 
-	public boolean lisaaTila(String nimi, String kuvaus, String kaupunki, String osoite, int hlomaara, boolean nakyvyys) {
+	public boolean lisaaTila(Tila tila) {
 		Transaction transaktio = null;
 		Session istunto = null;
 		boolean palautus = false;
 
+		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
 		try {
 			istunto = istuntotehdas.openSession();
 			transaktio = istunto.beginTransaction();
 
-			Tila tila = new Tila();
-			tila.setNimi(nimi);
-			tila.setKuvaus(kuvaus);
-			tila.setKaupunki(kaupunki);
-			tila.setOsoite(osoite);
-			tila.setHlomaara(hlomaara);
-			tila.setNakyvyys(nakyvyys);
-
-			palautus = (Boolean) istunto.save(tila);
-			istunto.getTransaction().commit();
+			istunto.save(tila);
+			transaktio.commit();
+			
+			palautus = true;
 
 		} catch (Exception e) {
 			if (transaktio != null)
@@ -84,12 +83,12 @@ public class TilaDAO {
 			if (istunto != null)
 				istunto.close();
 		}
-		
+
 		return palautus;
 	}
 
-	public Tila haeTila(String nimi) {
-		Tila result = null;
+	public Tila haeTila(int id) {
+		Tila palautus = null;
 		Session istunto = null;
 		Transaction transaktio = null;
 
@@ -98,76 +97,98 @@ public class TilaDAO {
 			istunto = istuntotehdas.openSession();
 			transaktio = istunto.beginTransaction();
 
-			@SuppressWarnings("unchecked")
-			List<Tila> tilat = istunto.createQuery("from Tila").getResultList();
+			palautus = (Tila) istunto.createQuery("from Tila where id = " + id).getSingleResult();
 
 			istunto.getTransaction().commit();
-
-			for (Tila t : tilat) {
-				if (t.getNimi().equals(nimi))
-					result = t;
-			}
 
 		} catch (Exception e) {
 			if (transaktio != null)
 				transaktio.rollback();
 			System.err.println(e.getMessage());
-			System.exit(-1);
 
 		} finally {
 			if (istunto != null)
 				istunto.close();
 		}
 
-		return result;
+		return palautus;
 	}
 
-	public void muokkaaTila(int id, String uusiNimi) {
-		Session istunto = istuntotehdas.openSession();
-		istunto.beginTransaction();
-
-		Tila t = istunto.get(Tila.class, id);
-		if (t != null) {
-			System.out.println(t.getNimi() + " päivitetään " + uusiNimi);
-			t.setNimi(uusiNimi);
-			System.out.println("Nimi päivitetty.");
-		} else {
-			System.out.println("Ei löytynyt päivitettävää.");
-		}
-		istunto.getTransaction().commit();
-		istunto.close();
-	}
-
-	public void poistaTila(String nimi, String osoite) {
-		int result = 0;
+	public boolean muokkaaTilaa(int id, Tila tila) {
 		Session istunto = null;
 		Transaction transaktio = null;
+		boolean palautus = false;
+
+		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
+		try {
+			istunto = istuntotehdas.openSession();
+			transaktio = istunto.beginTransaction();
+			Tila muokattava = haeTila(id);
+
+			muokattava.setHlomaara(tila.getHlomaara());
+			muokattava.setKaupunki(tila.getKaupunki());
+			muokattava.setKuvaus(tila.getKuvaus());
+			muokattava.setNakyvyys(tila.getNakyvyys());
+			muokattava.setNimi(tila.getNimi());
+			muokattava.setOsoite(tila.getOsoite());
+
+			istunto.update(muokattava);
+			transaktio.commit();
+			
+			palautus = true;
+
+		} catch (Exception e) {
+			if (transaktio != null)
+				transaktio.rollback();
+			System.out.println("Tilan muokkaus epäonnistui");
+			e.printStackTrace();
+
+		} finally {
+			if (istunto != null)
+				istunto.close();
+		}
+
+		return palautus;
+	}
+
+	// TODO
+	public boolean poistaTila(Tila tila) {
+		Session istunto = null;
+		Transaction transaktio = null;
+		boolean palautus = false;
 
 		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
 		try {
 			istunto = istuntotehdas.openSession();
 			transaktio = istunto.beginTransaction();
 
-			@SuppressWarnings("unchecked")
-			List<Tila> tilat = istunto.createQuery("from Tila").getResultList();
-
-			istunto.getTransaction().commit();
-
-			for (Tila t : tilat) {
-				if (t.getNimi().equals(nimi) && t.getOsoite().equals(osoite))
-					result = t.getID();
-			}
+			istunto.delete(tila);
+			transaktio.commit();
+			
+			palautus = true;
 
 		} catch (Exception e) {
 			if (transaktio != null)
 				transaktio.rollback();
 			System.err.println(e.getMessage());
-			System.exit(-1);
 
 		} finally {
 			if (istunto != null)
 				istunto.close();
 		}
+
+		return palautus;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		
+		if (istuntotehdas != null)
+			istuntotehdas.close();
+		
+		if (rekisteri != null)
+			StandardServiceRegistryBuilder.destroy(rekisteri);
 	}
 
 }
