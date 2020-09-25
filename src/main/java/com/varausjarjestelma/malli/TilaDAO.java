@@ -29,6 +29,7 @@ public class TilaDAO {
 	public Tila[] haeKaikkiTilat() {
 		Session istunto = null;
 		Transaction transaktio = null;
+		Tila[] palautus = null;
 
 		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
 		try {
@@ -37,10 +38,10 @@ public class TilaDAO {
 
 			@SuppressWarnings("unchecked")
 			List<Tila> tilat = istunto.createQuery("from Tila").getResultList();
+			palautus = new Tila[tilat.size()];
 
 			istunto.getTransaction().commit();
-
-			return tilat.toArray(new Tila[tilat.size()]);
+			tilat.toArray(palautus);
 
 		} catch (Exception e) {
 			if (transaktio != null)
@@ -52,12 +53,13 @@ public class TilaDAO {
 				istunto.close();
 		}
 
-		return null;
+		return palautus;
 	}
 
-	public void lisaaTila(String nimi, String kuvaus, String kaupunki, String osoite, int hlomaara, boolean nakyvyys) {
+	public boolean lisaaTila(String nimi, String kuvaus, String kaupunki, String osoite, int hlomaara, boolean nakyvyys) {
 		Transaction transaktio = null;
 		Session istunto = null;
+		boolean palautus = false;
 
 		try {
 			istunto = istuntotehdas.openSession();
@@ -71,7 +73,7 @@ public class TilaDAO {
 			tila.setHlomaara(hlomaara);
 			tila.setNakyvyys(nakyvyys);
 
-			istunto.save(tila);
+			palautus = (Boolean) istunto.save(tila);
 			istunto.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -82,6 +84,8 @@ public class TilaDAO {
 			if (istunto != null)
 				istunto.close();
 		}
+		
+		return palautus;
 	}
 
 	public Tila haeTila(String nimi) {
@@ -164,15 +168,6 @@ public class TilaDAO {
 			if (istunto != null)
 				istunto.close();
 		}
-
-		Session istuntoTwo = istuntotehdas.openSession();
-		istuntoTwo.beginTransaction();
-
-		Tila tila = istuntoTwo.get(Tila.class, result);
-		istuntoTwo.delete(tila);
-
-		istuntoTwo.getTransaction().commit();
-		istuntoTwo.close();
 	}
 
 }
