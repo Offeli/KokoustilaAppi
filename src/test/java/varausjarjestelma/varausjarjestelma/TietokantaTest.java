@@ -1,4 +1,4 @@
-package com.test.tietokanta;
+package varausjarjestelma.varausjarjestelma;
 
 import static org.junit.jupiter.api.Assertions.*;
 
