@@ -35,6 +35,13 @@ public class Kontrolleri {
 		 return tilaDAO.haeKaikkiTilat();
 	}
 	
+	public Tila tuoTila(int i) {
+		int id = i;
+		return tilaDAO.etsiTila(id);
+	}
+	
+	
+	
 	public Object[] tilojenTiedotTaulukkona() throws SQLException {
 		
 		ResultSet rs =  tc.haeEsimerkkiData();
