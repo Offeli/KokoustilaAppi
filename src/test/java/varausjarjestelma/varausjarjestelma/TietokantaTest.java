@@ -25,28 +25,24 @@ public class TietokantaTest {
 		testiTila.setNakyvyys(true);
 	}
 
-	@DisplayName("Test lisaaTila()")
 	@Test
 	void testLisaa() {
 		boolean result = tilaDAO.lisaaTila(testiTila);
 		assertTrue(result, "Lisäys ei onnistunut.");
 	}
 
-	@DisplayName("Test etsiTila()")
 	@Test
 	void testEtsi() {
 		Tila tila = tilaDAO.etsiTila(testiTila.getID());
 		assertEquals(testiTila.getID(), tila.getID(), "ID ei täsmännyt.");
 	}
 
-	@DisplayName("Test muokkaaTila()")
 	@Test
 	void testMuokkaa() {
 		boolean result = tilaDAO.muokkaaTilaa(1, testiTila);
 		assertTrue(result, "Muokkaus ei onnistunut.");
 	}
 
-	@DisplayName("Test poistaTila()")
 	@Test
 	void testPoista() {
 		boolean result = tilaDAO.poistaTila(testiTila);
