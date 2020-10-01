@@ -1,11 +1,12 @@
 package com.varausjarjestelma.nakyma;
 
-import java.sql.SQLException;
-
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
-import com.varausjarjestelma.malli.TilaDAO;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
 
 	public static void main(String[] args)  {
 		System.out.println("terve");
@@ -24,6 +25,18 @@ public class Main {
 		
 		käyttöliittymä.käynnistä();
 		käyttöliittymä.tilaEsiin();
+		
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("App käynnistyi!");
+		BorderPane ikkuna = new BorderPane();
+		Scene scene = new Scene(ikkuna, 600, 400);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 }
