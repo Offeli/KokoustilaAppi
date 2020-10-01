@@ -33,6 +33,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("App käynnistyi!");
+		
+		
 		BorderPane ikkuna = new BorderPane();
 		Scene scene = new Scene(ikkuna, 600, 400);
 		primaryStage.setScene(scene);

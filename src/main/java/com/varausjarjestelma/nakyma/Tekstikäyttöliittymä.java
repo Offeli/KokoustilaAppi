@@ -25,7 +25,7 @@ public class Tekstikäyttöliittymä implements Käyttöliittymä {
 	}
 	
 	public void tilaEsiin() {
-		Tila tila = kontrolleri.tuoTila(2);
+		Tila tila = kontrolleri.tuoTila(3);
 		System.out.println("Haetun tilan tiedot: ");
 		System.out.println( tila.getID()+ ", " + tila.getNimi() + ", " + tila.getKuvaus() + ", " + tila.getKaupunki() );
 	}
