@@ -9,12 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 	
 	 private Stage primaryStage;
-	 private Pane rootLayout;
+	 private VBox rootLayout;
 
 	public static void main(String[] args)  {
 		System.out.println("terve");
@@ -34,8 +35,8 @@ public class Main extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("tilojenselaus.fxml"));
-            rootLayout = (Pane) loader.load();
+            loader.setLocation(Main.class.getResource("templateTilojenselaus.fxml"));
+            rootLayout = (VBox) loader.load();
             
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
