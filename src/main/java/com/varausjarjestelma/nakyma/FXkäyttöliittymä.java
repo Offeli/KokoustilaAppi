@@ -1,8 +1,14 @@
 package com.varausjarjestelma.nakyma;
 
+import java.awt.event.ActionListener;
+
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class FXkäyttöliittymä implements Käyttöliittymä {
@@ -24,6 +30,15 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		@FXML private Text kokoustila3hlömäärä;
 		@FXML private Text kokoustila4hlömäärä;
 		
+		@FXML private Text tilannimiDETAILS;
+		@FXML private Text hlömääräDETAILS;
+		@FXML private Text tilankuvausDETAILS;
+		@FXML private Text tilanosoiteDETAILS;
+		@FXML private Text tilankaupunkiDETAILS;
+		
+		
+		@FXML private Button tilantarkasteluButton1;
+		
 
 		public FXkäyttöliittymä(Kontrolleri kontrolleri) {
 			this.kontrolleri = kontrolleri;
@@ -37,10 +52,39 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 			System.out.println(merkkijono);
 		}
 		
+		
 		@FXML
 		public void annaTilalleNimi() {
 			
 		}
+		
+		@FXML
+		public void näytäTilanLisätiedot() {
+		
+			int id = 1;
+			kontrolleri = new Kontrolleri();
+			
+			tilannimiDETAILS.setText(kontrolleri.tuoTila(id).getNimi());
+		    hlömääräDETAILS.setText(String.valueOf(kontrolleri.tuoTila(id).getHlomaara()));
+		    tilankuvausDETAILS.setText(kontrolleri.tuoTila(id).getKuvaus());
+		    tilanosoiteDETAILS.setText(kontrolleri.tuoTila(id).getOsoite());
+		    tilankaupunkiDETAILS.setText(kontrolleri.tuoTila(id).getKaupunki());
+			
+		}
+		
+		EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() 
+		{
+		    public void handle( final MouseEvent ME ) 
+		    {
+		        
+		            System.out.println( "moi" );
+		        
+		    }
+		};
+
+		
+		
+		
 		
 		@FXML
 	    public void initialize() {
