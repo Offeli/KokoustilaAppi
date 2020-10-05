@@ -60,6 +60,8 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 		@FXML
 		public void näytäTilanLisätiedot() {
+			
+			// hakee kannasta tilaiideellä 1 lisätiedot 
 		
 			int id = 1;
 			kontrolleri = new Kontrolleri();
@@ -71,18 +73,6 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		    tilankaupunkiDETAILS.setText(kontrolleri.tuoTila(id).getKaupunki());
 			
 		}
-		
-		EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() 
-		{
-		    public void handle( final MouseEvent ME ) 
-		    {
-		        
-		            System.out.println( "moi" );
-		        
-		    }
-		};
-
-		
 		
 		
 		
