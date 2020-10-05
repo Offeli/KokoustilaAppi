@@ -40,6 +40,12 @@ public class Kontrolleri {
 		return tilaDAO.etsiTila(id);
 	}
 	
+	public int haeTilatMaara() {
+		Tila[] tilat = tilaDAO.haeKaikkiTilat();
+		
+		return tilat.length;
+	}
+	
 	
 	
 	public Object[] tilojenTiedotTaulukkona() throws SQLException {
