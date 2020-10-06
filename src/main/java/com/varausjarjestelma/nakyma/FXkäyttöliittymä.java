@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
@@ -31,11 +32,11 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		@FXML private Text kokoustila3hlömäärä;
 		@FXML private Text kokoustila4hlömäärä;
 		
-		@FXML private Text tilannimiDETAILS;
-		@FXML private Text hlömääräDETAILS;
-		@FXML private Text tilankuvausDETAILS;
-		@FXML private Text tilanosoiteDETAILS;
-		@FXML private Text tilankaupunkiDETAILS;
+		@FXML private Label tilannimiDETAILS;
+		@FXML private Label hlömääräDETAILS;
+		@FXML private Label tilankuvausDETAILS;
+		@FXML private Label tilanosoiteDETAILS;
+		@FXML private Label tilankaupunkiDETAILS;
 		
 		@FXML private Button tilantarkasteluButton1;
 		@FXML private Button tilantarkasteluButton2;
