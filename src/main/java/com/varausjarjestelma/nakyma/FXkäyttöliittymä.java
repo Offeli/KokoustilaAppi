@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,8 +37,10 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		@FXML private Text tilanosoiteDETAILS;
 		@FXML private Text tilankaupunkiDETAILS;
 		
-		
 		@FXML private Button tilantarkasteluButton1;
+		@FXML private Button tilantarkasteluButton2;
+		@FXML private Button tilantarkasteluButton3;
+		@FXML private Button tilantarkasteluButton4;
 		
 
 		public FXkäyttöliittymä(Kontrolleri kontrolleri) {
@@ -59,11 +62,20 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		}
 		
 		@FXML
-		public void näytäTilanLisätiedot() {
+		public void näytäTilanLisätiedot(ActionEvent e) {
 			
-			// hakee kannasta tilaiideellä 1 lisätiedot 
-		
-			int id = 1;
+			int id = 0;
+			// hakee kannasta tilaiideellä lisätiedot 
+			if (e.getSource() == tilantarkasteluButton1) {
+				id = 1;
+			} else if (e.getSource() == tilantarkasteluButton2) {
+				id = 2;
+			} else if (e.getSource() == tilantarkasteluButton3) {
+				id = 3;
+			} else if (e.getSource() == tilantarkasteluButton4) {
+				id = 4;
+			}
+			
 			kontrolleri = new Kontrolleri();
 			
 			tilannimiDETAILS.setText(kontrolleri.tuoTila(id).getNimi());

@@ -102,7 +102,7 @@
                               <Text fx:id="kokoustila1hlömäärä" strokeType="OUTSIDE" strokeWidth="0.0" text="esim. &quot;100&quot;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Text fx:id="kokoustila1kaupunki" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;tähän kuvaus&quot;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Varaa" GridPane.rowIndex="3" />
-                              <Button fx:id="kokoustila1tarkasteluButton" mnemonicParsing="false" onAction="#näytäTilanLisätiedot" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="tilantarkasteluButton1" mnemonicParsing="false" onAction="#näytäTilanLisätiedot" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <GridPane layoutX="233.0" layoutY="51.0">
@@ -127,7 +127,7 @@
                               <Text fx:id="kokoustila2hlömäärä" strokeType="OUTSIDE" strokeWidth="0.0" text="esim. &quot;100&quot;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Text fx:id="kokoustila2kaupunki" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;tähän kuvaus&quot;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Varaa" GridPane.rowIndex="3" />
-                              <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="tilantarkasteluButton2" mnemonicParsing="false" onAction="#näytäTilanLisätiedot" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <GridPane layoutX="17.0" layoutY="183.0">
@@ -152,7 +152,7 @@
                               <Text fx:id="kokoustila3hlömäärä" strokeType="OUTSIDE" strokeWidth="0.0" text="esim. &quot;100&quot;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Text fx:id="kokoustila3kaupunki" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;tähän kuvaus&quot;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Varaa" GridPane.rowIndex="3" />
-                              <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="tilantarkasteluButton3" mnemonicParsing="false" onAction="#näytäTilanLisätiedot" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <GridPane layoutX="233.0" layoutY="183.0">
@@ -177,7 +177,7 @@
                               <Text fx:id="kokoustila4hlömäärä" strokeType="OUTSIDE" strokeWidth="0.0" text="esim. &quot;100&quot;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Text fx:id="kokoustila4kaupunki" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;tähän kuvaus&quot;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Varaa" GridPane.rowIndex="3" />
-                              <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="tilantarkasteluButton4" mnemonicParsing="false" onAction="#näytäTilanLisätiedot" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
               </children>
@@ -186,7 +186,7 @@
         </ScrollPane>
         <AnchorPane>
           <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="true" />
                   <GridPane layoutX="14.0" layoutY="71.0" prefHeight="170.0" prefWidth="182.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -212,7 +212,6 @@
                         <Text fx:id="tilankaupunkiDETAILS" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
-                  <Text fx:id="tilannimiDETAILS1" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" />
           </children>
         </AnchorPane>
       </items>
