@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -66,7 +67,7 @@
     </MenuBar>
       <TabPane VBox.vgrow="ALWAYS">
          <tabs>
-            <Tab text="Selaa tiloja">
+            <Tab closable="false" text="Selaa tiloja">
                <content>
                 <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: aliceblue;">
                   <items>
@@ -214,10 +215,32 @@
                 </SplitPane>
                </content>
             </Tab>
-            <Tab text="Omat varaukset">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
+            <Tab closable="false" text="Omat varaukset">
+               <content>
+                  <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0">
+                     <items>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ListView layoutX="1.0" layoutY="1.0" prefHeight="526.0" prefWidth="649.0" />
+                              <Label layoutX="219.0" layoutY="187.0" prefHeight="153.0" prefWidth="213.0" text="Varaukset">
+                                 <font>
+                                    <Font size="41.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                           <content>
+                              <Label prefHeight="168.0" prefWidth="242.0" text="Varauksen lisätiedot" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font size="39.0" />
+                                 </font>
+                              </Label>
+                           </content>
+                        </ScrollPane>
+                     </items>
+                  </SplitPane>
+               </content>
             </Tab>
          </tabs>
       </TabPane>
