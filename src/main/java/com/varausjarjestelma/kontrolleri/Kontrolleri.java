@@ -26,10 +26,7 @@ public class Kontrolleri {
 		this.käyttöliittymä = käyttöliittymä;
 	}
 	
-//	public Kontrolleri(Käyttöliittymä käyttöliittymä) {
-//		this.käyttöliittymä = käyttöliittymä;
-//		tc = new TestConnection();
-//	}
+
 
 	public Tila[] haeEsimerkki() {
 		 return tilaDAO.haeKaikkiTilat();

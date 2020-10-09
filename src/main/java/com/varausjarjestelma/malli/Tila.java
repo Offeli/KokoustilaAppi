@@ -22,7 +22,7 @@ public class Tila {
 	@Column(name = "hlomaara", nullable = false)
 	private int hlomaara;
 
-//	@Column(name = "nakyvyys", nullable = false, columnDefinition = "tinyint(1) default 1")
+
 	@Column(name = "nakyvyys", nullable = false)
 	private boolean nakyvyys;
 

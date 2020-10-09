@@ -33,12 +33,11 @@ public class Main extends Application {
 	
 	public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
+            
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("templateTilojenselaus.fxml"));
             rootLayout = (VBox) loader.load();
             
-            // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -59,13 +58,7 @@ public class Main extends Application {
 
 		 initRootLayout();
 		 
-		/*
-		BorderPane ikkuna = new BorderPane();
-		Scene scene = new Scene(ikkuna, 600, 400);
-		primaryStage.setScene(scene);
-		primaryStage.show();
 		
-		*/
 	}
 
 }

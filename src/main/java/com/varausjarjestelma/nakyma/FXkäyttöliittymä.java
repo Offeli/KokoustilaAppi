@@ -94,7 +94,6 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 			
 			kontrolleri = new Kontrolleri();
 			
-			// haetaan tilojen 1,2 ja 3 nimet, kuvaukset ja kapasiteetit kannasta käyttöliittymään
 			String tn1 = kontrolleri.tuoTila(1).getNimi();
 			String tn2 = kontrolleri.tuoTila(2).getNimi();
 			String tn3 = kontrolleri.tuoTila(3).getNimi();
