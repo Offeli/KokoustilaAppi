@@ -37,6 +37,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		@FXML private Label tilankuvausDETAILS;
 		@FXML private Label tilanosoiteDETAILS;
 		@FXML private Label tilankaupunkiDETAILS;
+		@FXML private Label tilanominaisuusDETAILS;
 		
 		@FXML private Button tilantarkasteluButton1;
 		@FXML private Button tilantarkasteluButton2;

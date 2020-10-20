@@ -199,14 +199,16 @@
                                  <children>
                                     <Label prefHeight="38.0" prefWidth="272.0" text="NIMI" />
                                     <Label fx:id="tilannimiDETAILS" prefHeight="25.0" prefWidth="269.0" textOverrun="CLIP" />
-                                    <Label prefHeight="24.0" prefWidth="269.0" text="HLÖMÄÄRÄ" />
+                                    <Label prefHeight="38.0" prefWidth="272.0" text="HLÖMÄÄRÄ" />
                                     <Label fx:id="hlömääräDETAILS" prefHeight="41.0" prefWidth="269.0" />
                                     <Label text="KUVAUS" />
                                     <Label fx:id="tilankuvausDETAILS" prefHeight="70.0" prefWidth="269.0" textOverrun="CLIP" wrapText="true" />
-                                    <Label prefHeight="13.0" prefWidth="269.0" text="OSOITE" />
+                                    <Label prefHeight="38.0" prefWidth="272.0" text="OSOITE" />
                                     <Label fx:id="tilanosoiteDETAILS" prefHeight="38.0" prefWidth="269.0" textOverrun="CLIP" />
-                                    <Label prefHeight="21.0" prefWidth="271.0" text="KAUPUNKI" />
+                                    <Label prefHeight="38.0" prefWidth="272.0" text="KAUPUNKI" />
                                     <Label fx:id="tilankaupunkiDETAILS" prefHeight="35.0" prefWidth="270.0" textOverrun="CLIP" />
+                                    <Label prefHeight="21.0" prefWidth="271.0" text="OMINAISUUDET" />
+                                    <Label fx:id="tilanominaisuusDETAILS" />
                                  </children>
                               </TextFlow>
                       </children>
