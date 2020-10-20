@@ -1,6 +1,5 @@
 package com.varausjarjestelma.malli;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -26,15 +25,9 @@ public class Varaukset {
 	@ManyToOne
 	@JoinColumn(name="tila", nullable=false)
 	private Tila tila;
-
-	@Column(name = "alkupaiva", nullable = false)
-	private java.sql.Date alkupaiva;
 	
 	@Column(name = "alkuaika", nullable = false)
 	private java.sql.Timestamp alkuaika;
-	
-	@Column(name = "loppupaiva", nullable = false)
-	private java.sql.Date loppupaiva;
 
 	@Column(name = "loppuaika", nullable = false)
 	private java.sql.Timestamp loppuaika;
@@ -72,28 +65,12 @@ public class Varaukset {
 		this.tila = tila;
 	}
 
-	public Date getAlkuPaiva() {
-		return alkupaiva;
-	}
-
-	public void setAlkuPaiva(Date alku) {
-		this.alkupaiva = alku;
-	}
-
 	public Timestamp getAlkuAika() {
 		return alkuaika;
 	}
 
 	public void setAlkuAika(Timestamp alku) {
 		this.alkuaika = alku;
-	}
-	
-	public Date getLoppuPaiva() {
-		return loppupaiva;
-	}
-
-	public void setLoppuPaiva(Date loppu) {
-		this.loppupaiva = loppu;
 	}
 	
 	public Timestamp getLoppuAika() {
