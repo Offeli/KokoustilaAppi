@@ -1,5 +1,7 @@
 package com.varausjarjestelma.malli;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,12 +24,14 @@ public class Tila {
 	@Column(name = "hlomaara", nullable = false)
 	private int hlomaara;
 
-
 	@Column(name = "nakyvyys", nullable = false)
 	private boolean nakyvyys;
 
 	@Column(name = "kaupunki", nullable = false)
 	private String kaupunki;
+	
+	@OneToMany(mappedBy = "TilanOminaisuus")
+	private List<TilanOminaisuus> tilanOminaisuudet;
 
 	public Tila() {
 	}
@@ -91,6 +95,10 @@ public class Tila {
 
 	public void setNakyvyys(boolean nakyvyys) {
 		this.nakyvyys = nakyvyys;
+	}
+	
+	public List<TilanOminaisuus> getTilanOminaisuudet() {
+		return tilanOminaisuudet;
 	}
 
 }
