@@ -19,8 +19,11 @@ public class Käyttäjä {
 	@Column(name = "sahkoposti", nullable = false)
 	private String sposti;
 
-	@Column(name = "nakyvyys", nullable = false)
-	private boolean nakyvyys;
+	@Column(name = "hallinnoija", nullable = false)
+	private boolean hallinnoija;
+	
+	@Column(name = "kieli", nullable = false)
+	private String kieli;
 
 	public Käyttäjä() {
 	}
@@ -63,12 +66,20 @@ public class Käyttäjä {
 		this.sposti = sposti;
 	}
 
-	public boolean getNakyvyys() {
-		return nakyvyys;
+	public boolean getOikeudet() {
+		return hallinnoija;
 	}
 
-	public void setNakyvyys(boolean nakyvyys) {
-		this.nakyvyys = nakyvyys;
+	public void setOikeudet(boolean hallinnoija) {
+		this.hallinnoija = hallinnoija;
+	}
+	
+	public String getKieli() {
+		return kieli;
+	}
+
+	public void setKieli(String kieli) {
+		this.kieli = kieli;
 	}
 
 }

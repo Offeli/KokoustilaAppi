@@ -32,12 +32,6 @@ public class Varaukset {
 	@Column(name = "loppuaika", nullable = false)
 	private java.sql.Timestamp loppuaika;
 
-	@Column(name = "nakyvyys", nullable = false)
-	private boolean nakyvyys;
-
-	@Column(name = "kaupunki", nullable = false)
-	private String kaupunki;
-
 	public Varaukset() {
 	}
 
