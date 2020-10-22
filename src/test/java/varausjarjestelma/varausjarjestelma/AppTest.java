@@ -3,17 +3,15 @@ package varausjarjestelma.varausjarjestelma;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.Alphanumeric;
 import org.junit.jupiter.api.Test;
 
-import com.varausjarjestelma.malli.Ominaisuus;
-import com.varausjarjestelma.malli.OminaisuusDAO;
-import com.varausjarjestelma.malli.Tila;
-import com.varausjarjestelma.malli.TilaDAO;
-import com.varausjarjestelma.malli.TilanOminaisuus;
-import com.varausjarjestelma.malli.TilanOminaisuusDAO;
+import com.varausjarjestelma.malli.*;
 
 /**
  * Unit test for simple App.
@@ -28,6 +26,10 @@ public class AppTest
 	private static Ominaisuus testiOminaisuus;
 	private static TilanOminaisuusDAO tilanOminaisuusDAO;
 	private static TilanOminaisuus testiTilanOminaisuus;
+	private static VarauksetDAO varauksetDAO;
+	private static Varaukset testiVaraukset;
+	private static KäyttäjäDAO käyttäjäDAO;
+	private static Käyttäjä testiKäyttäjä;
 
 	@BeforeAll
 	static void setup() {
@@ -53,6 +55,29 @@ public class AppTest
 		testiTilanOminaisuus.setOminaisuus(testiOminaisuus);
 		testiTilanOminaisuus.setTila(testiTila);
 		testiTilanOminaisuus.setLisatiedot("Löytyy kaapistosta työpöydän oikealta puolelta.");
+		
+		käyttäjäDAO = new KäyttäjäDAO();
+		testiKäyttäjä = new Käyttäjä();
+		
+		testiKäyttäjä.setEtunimi("Matti");
+		testiKäyttäjä.setSukunimi("Meikäläinen");
+		testiKäyttäjä.setSposti("matti.meikalainen@gmail.com");
+		testiKäyttäjä.setOikeudet(false);
+		testiKäyttäjä.setKieli("FIN");
+		
+		varauksetDAO = new VarauksetDAO();
+		testiVaraukset = new Varaukset();
+		
+		Date date = new Date();
+		Timestamp alku = new Timestamp(date.getTime());
+		Timestamp loppu = new Timestamp(date.getTime() + 2);
+		
+		System.out.println("Alku: " + alku + "\nLoppu: " + loppu);
+		
+		testiVaraukset.setKayttaja(testiKäyttäjä);
+		testiVaraukset.setTila(testiTila);
+		testiVaraukset.setAlkuAika(alku);
+		testiVaraukset.setLoppuAika(loppu);
 	}
 
 	@Test
@@ -71,6 +96,12 @@ public class AppTest
 	void testALisaaTilanOminaisuus() {
 		boolean result = tilanOminaisuusDAO.lisaaTilanOminaisuus(testiTilanOminaisuus);
 		assertTrue(result, "Lisäys ei onnistunut.");
+	}
+	
+	@Test
+	void testALuoKäyttäjä() {
+		boolean result = käyttäjäDAO.lisaaKayttaja(testiKäyttäjä);
+		assertTrue(result, "Käyttäjän lisääminen ei onnistunut.");
 	}
 
 	@Test
@@ -111,21 +142,51 @@ public class AppTest
 		boolean result = tilanOminaisuusDAO.muokkaaTilanOminaisuutta(testiTilanOminaisuus.getID(), testiTilanOminaisuus);
 		assertTrue(result, "Muokkaus ei onnistunut.");
 	}
+	
+	@Test
+	void testCMuokkaaKäyttäjää() {
+		testiKäyttäjä.setEtunimi("Marko");
+		boolean result = käyttäjäDAO.muokkaaKayttaja(testiKäyttäjä.getID(), testiKäyttäjä);
+	}
+	
+	@Test
+	void testDLisääVaraus() {
+		boolean result = varauksetDAO.lisaaVaraus(testiVaraukset);
+		assertTrue(result, "Varauksen lisäys ei onnistunut.");
+	}
+	
+	@Test
+	void testEMuokkaaVarausta() {
+		Date date = new Date();
+		Timestamp uusiAlku = new Timestamp(date.getTime() + 1);
+		Timestamp uusiLoppu = new Timestamp(date.getTime() + 3);
+		testiVaraukset.setAlkuAika(uusiAlku);
+		testiVaraukset.setLoppuAika(uusiLoppu);
+		
+		boolean result = varauksetDAO.muokkaaVarausta(testiVaraukset.getID(), testiVaraukset);
+		assertTrue(result, "Varauksen muokkaaminen ei onnistunut.");
+	}
+	
+	@Test
+	void testFPoistaVaraus() {
+		boolean result = varauksetDAO.poistaVaraus(testiVaraukset);
+		assertTrue(result, "Varauksen poistaminen ei onnistunut.");
+	}
 
 	@Test
-	void testDPoistaTila() {
+	void testGPoistaTila() {
 		boolean result = tilaDAO.poistaTila(testiTila);
 		assertTrue(result, "Poistaminen ei onnistunut.");
 	}
 	
 	@Test
-	void testDPoistaOminaisuus() {
+	void testGPoistaOminaisuus() {
 		boolean result = ominaisuusDAO.poistaOminaisuus(testiOminaisuus);
 		assertTrue(result, "Poistaminen ei onnistunut.");
 	}
 	
 	@Test
-	void testDPoistaTilanOminaisuus() {
+	void testGPoistaTilanOminaisuus() {
 		boolean result = tilanOminaisuusDAO.poistaTilanOminaisuus(testiTilanOminaisuus);
 		assertTrue(result, "Poistaminen ei onnistunut.");
 	}

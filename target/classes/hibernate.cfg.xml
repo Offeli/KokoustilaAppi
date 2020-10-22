@@ -14,12 +14,14 @@
 		<property name="hibernate.connection.password">team7</property>
 
 		<!-- create , create-drop, update tai validate -->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">validate</property>
 
 		<property name="show_sql">true</property>
 
 		<mapping class="com.varausjarjestelma.malli.Tila" />
 		<mapping class="com.varausjarjestelma.malli.Ominaisuus" />
 		<mapping class="com.varausjarjestelma.malli.TilanOminaisuus" />
+		<mapping class="com.varausjarjestelma.malli.Varaukset" />
+		<mapping class="com.varausjarjestelma.malli.Käyttäjä" />
 	</session-factory>
 </hibernate-configuration>

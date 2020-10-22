@@ -42,7 +42,7 @@ public class KäyttäjäDAO {
 			transaktio = istunto.beginTransaction();
 
 			@SuppressWarnings("unchecked")
-			List<Käyttäjä> käyttäjät = istunto.createQuery("from Varaukset").getResultList();
+			List<Käyttäjä> käyttäjät = istunto.createQuery("from Kayttaja").getResultList();
 			palautus = new Käyttäjä[käyttäjät.size()];
 
 			istunto.getTransaction().commit();
