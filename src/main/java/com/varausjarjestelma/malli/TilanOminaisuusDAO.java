@@ -17,7 +17,7 @@ public class TilanOminaisuusDAO {
 	public TilanOminaisuusDAO() {
 		istuntotehdas = null;
 		rekisteri = null;
-		
+
 		try {
 			istuntotehdas = new Configuration().configure().buildSessionFactory();
 			rekisteri = new StandardServiceRegistryBuilder().configure().build();
@@ -72,7 +72,7 @@ public class TilanOminaisuusDAO {
 
 			istunto.save(tilanOminaisuus);
 			transaktio.commit();
-			
+
 			palautus = true;
 
 		} catch (Exception e) {
@@ -131,7 +131,7 @@ public class TilanOminaisuusDAO {
 
 			istunto.update(muokattava);
 			transaktio.commit();
-			
+
 			palautus = true;
 
 		} catch (Exception e) {
@@ -161,8 +161,71 @@ public class TilanOminaisuusDAO {
 
 			istunto.delete(tilanOminaisuus);
 			transaktio.commit();
-			
+
 			palautus = true;
+
+		} catch (Exception e) {
+			if (transaktio != null)
+				transaktio.rollback();
+			System.err.println(e.getMessage());
+
+		} finally {
+			if (istunto != null)
+				istunto.close();
+		}
+
+		return palautus;
+	}
+
+	public TilanOminaisuus[] etsiTilaanLiittyvätTilanOminaisuudet(Tila tila) {
+		Session istunto = null;
+		Transaction transaktio = null;
+		TilanOminaisuus[] palautus = null;
+
+		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
+		try {
+			istunto = istuntotehdas.openSession();
+			transaktio = istunto.beginTransaction();
+
+			@SuppressWarnings("unchecked")
+			List<TilanOminaisuus> tilanOminaisuudet = istunto.createQuery("from TilanOminaisuus where tila = :tila")
+					.setParameter("tila", tila).getResultList();
+			palautus = new TilanOminaisuus[tilanOminaisuudet.size()];
+
+			istunto.getTransaction().commit();
+			tilanOminaisuudet.toArray(palautus);
+
+		} catch (Exception e) {
+			if (transaktio != null)
+				transaktio.rollback();
+			System.err.println(e.getMessage());
+
+		} finally {
+			if (istunto != null)
+				istunto.close();
+		}
+
+		return palautus;
+	}
+
+	public TilanOminaisuus[] etsiOminaisuuteenLiittyvätTilanOminaisuudet(Ominaisuus ominaisuus) {
+		Session istunto = null;
+		Transaction transaktio = null;
+		TilanOminaisuus[] palautus = null;
+
+		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
+		try {
+			istunto = istuntotehdas.openSession();
+			transaktio = istunto.beginTransaction();
+
+			@SuppressWarnings("unchecked")
+			List<TilanOminaisuus> tilanOminaisuudet = istunto
+					.createQuery("from TilanOminaisuus where ominaisuus = :ominaisuus")
+					.setParameter("ominaisuus", ominaisuus).getResultList();
+			palautus = new TilanOminaisuus[tilanOminaisuudet.size()];
+
+			istunto.getTransaction().commit();
+			tilanOminaisuudet.toArray(palautus);
 
 		} catch (Exception e) {
 			if (transaktio != null)
@@ -180,14 +243,12 @@ public class TilanOminaisuusDAO {
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();
-		
+
 		if (istuntotehdas != null)
 			istuntotehdas.close();
-		
+
 		if (rekisteri != null)
 			StandardServiceRegistryBuilder.destroy(rekisteri);
 	}
 
 }
-
-

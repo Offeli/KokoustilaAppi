@@ -1,5 +1,4 @@
 package com.varausjarjestelma.malli;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -16,9 +15,6 @@ public class Ominaisuus {
 	
 	@Column(name="kuvaus", length=500)
 	private String kuvaus;
-	
-	@OneToMany(mappedBy="TilanOminaisuus")
-	List<TilanOminaisuus> tilanOminaisuudet;
 	
 	public int getID() {
 		return id;
@@ -42,10 +38,6 @@ public class Ominaisuus {
 
 	public void setKuvaus(String kuvaus) {
 		this.kuvaus = kuvaus;
-	}
-	
-	public List<TilanOminaisuus> getTilanOminaisuudet() {
-		return tilanOminaisuudet;
 	}
 
 }

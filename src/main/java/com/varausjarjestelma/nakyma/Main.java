@@ -7,8 +7,6 @@ import com.varausjarjestelma.kontrolleri.Kontrolleri;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -22,8 +20,6 @@ public class Main extends Application {
 		Kontrolleri kontrolleri = new Kontrolleri();
 		
 		Tekstikäyttöliittymä käyttöliittymä = new Tekstikäyttöliittymä(kontrolleri);
-		
-		kontrolleri.setKäyttöliittymä(käyttöliittymä);
 		
 		käyttöliittymä.käynnistä();
 		käyttöliittymä.tilaEsiin();
