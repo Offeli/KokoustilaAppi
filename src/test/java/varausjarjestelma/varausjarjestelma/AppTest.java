@@ -147,6 +147,7 @@ public class AppTest
 	void testCMuokkaaKäyttäjää() {
 		testiKäyttäjä.setEtunimi("Marko");
 		boolean result = käyttäjäDAO.muokkaaKayttaja(testiKäyttäjä.getID(), testiKäyttäjä);
+		assertTrue(result, "Käyttäjän muokkaus ei onnistunut.");
 	}
 	
 	@Test
