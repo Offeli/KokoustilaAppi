@@ -176,6 +176,37 @@ public class VarauksetDAO {
 
 		return palautus;
 	}
+	
+	public Varaukset[] haeVaraukset(Tila tila) {
+		Session istunto = null;
+		Transaction transaktio = null;
+		Varaukset[] palautus = null;
+
+		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
+		try {
+			istunto = istuntotehdas.openSession();
+			transaktio = istunto.beginTransaction();
+			
+			@SuppressWarnings("unchecked")
+			List<Varaukset> varaukset = istunto.createQuery("from Varaukset where tila = :tila").setParameter("tila", tila).getResultList();
+			palautus = new Varaukset[varaukset.size()];
+			
+			transaktio.commit();
+			
+			varaukset.toArray(palautus);
+
+		} catch (Exception e) {
+			if (transaktio != null)
+				transaktio.rollback();
+			System.err.println(e.getMessage());
+
+		} finally {
+			if (istunto != null)
+				istunto.close();
+		}
+		
+		return palautus;
+	}
 
 	@Override
 	protected void finalize() throws Throwable {

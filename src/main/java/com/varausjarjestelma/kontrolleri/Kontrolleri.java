@@ -120,5 +120,9 @@ public class Kontrolleri {
 	public TilanOminaisuus[] etsiTilanOminaisuudet(Ominaisuus ominaisuus) {
 		return toDAO.etsiOminaisuuteenLiittyvätTilanOminaisuudet(ominaisuus);
 	}
+	
+	public Varaukset[] haeVaraukset(Tila tila) {
+		return varauksetDAO.haeVaraukset(tila);
+	}
 
 }
