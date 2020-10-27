@@ -8,6 +8,8 @@ import com.varausjarjestelma.malli.*;
 
 public class Kontrolleri {
 
+	private static Kontrolleri instanssi = null;
+	
 	private TestConnection tc;
 	private TilaDAO tilaDAO;
 	private TilanOminaisuusDAO toDAO;
@@ -22,6 +24,13 @@ public class Kontrolleri {
 		varauksetDAO = new VarauksetDAO();
 		toDAO = new TilanOminaisuusDAO();
 		ominaisuusDAO = new OminaisuusDAO();
+	}
+
+	public static Kontrolleri haeInstanssi() {
+		if (instanssi == null)
+			instanssi = new Kontrolleri();
+
+		return instanssi;
 	}
 
 	public Tila[] haeEsimerkki() {

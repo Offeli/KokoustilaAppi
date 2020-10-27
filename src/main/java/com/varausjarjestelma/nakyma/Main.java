@@ -2,8 +2,6 @@ package com.varausjarjestelma.nakyma;
 
 import java.io.IOException;
 
-import com.varausjarjestelma.kontrolleri.Kontrolleri;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,9 +17,7 @@ public class Main extends Application {
 		System.out.println("terve");
 		launch(args);
 		
-		Kontrolleri kontrolleri = new Kontrolleri();
-		
-		Tekstikäyttöliittymä käyttöliittymä = new Tekstikäyttöliittymä(kontrolleri);
+		Tekstikäyttöliittymä käyttöliittymä = new Tekstikäyttöliittymä();
 		
 		käyttöliittymä.käynnistä();
 		käyttöliittymä.tilaEsiin();

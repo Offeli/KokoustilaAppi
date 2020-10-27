@@ -9,8 +9,8 @@ public class Tekstikäyttöliittymä implements Käyttöliittymä {
 
 	private Kontrolleri kontrolleri;
 
-	public Tekstikäyttöliittymä(Kontrolleri kontrolleri) {
-		this.kontrolleri = kontrolleri;
+	public Tekstikäyttöliittymä() {
+		kontrolleri = Kontrolleri.haeInstanssi();
 	}
 
 	public void tulosta(String merkkijono) {

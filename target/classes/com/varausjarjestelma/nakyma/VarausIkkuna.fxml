@@ -5,12 +5,11 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root prefHeight="386.0" prefWidth="398.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<fx:root prefHeight="386.0" prefWidth="398.0" type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
    <children>
       <Pane layoutY="-3.0" prefHeight="392.0" prefWidth="398.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
          <children>
@@ -23,13 +22,6 @@
             <Separator layoutX="178.0" layoutY="2.0" orientation="VERTICAL" prefHeight="386.0" prefWidth="46.0" />
             <ChoiceBox layoutX="18.0" layoutY="140.0" prefWidth="150.0" />
             <ChoiceBox layoutX="215.0" layoutY="140.0" prefWidth="150.0" />
-            <TableView id="calendar" layoutX="2.0" layoutY="178.0" prefHeight="200.0" prefWidth="200.0">
-              <columns>
-                <TableColumn id="EkaColumn" prefWidth="75.0" text="Vko" />
-                <TableColumn id="TokaColumn" prefWidth="75.0" text="Vko" />
-                  <TableColumn id="KolmasColumn" prefWidth="75.0" text="Vko" />
-              </columns>
-            </TableView>
          </children>
       </Pane>
    </children>
