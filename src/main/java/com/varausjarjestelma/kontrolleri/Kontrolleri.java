@@ -41,7 +41,7 @@ public class Kontrolleri {
 		return ominaisuusDAO.haeKaikkiOminaisuudet();
 	}
 
-	public Tila tuoTila(int id) {
+	public Tila etsiTila(int id) {
 		return tilaDAO.etsiTila(id);
 	}
 
@@ -80,7 +80,7 @@ public class Kontrolleri {
 	public boolean asetaVaraus(int käyttäjänID, int tilaID, Timestamp alku, Timestamp loppu) {
 		Varaukset varaus = new Varaukset();
 		Käyttäjä kayttaja = etsiKäyttäjä(käyttäjänID);
-		Tila tila = tuoTila(tilaID);
+		Tila tila = etsiTila(tilaID);
 
 		varaus.setKayttaja(kayttaja);
 		varaus.setTila(tila);
