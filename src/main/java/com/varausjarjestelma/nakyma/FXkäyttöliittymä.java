@@ -94,11 +94,11 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 
 		kontrolleri = new Kontrolleri();
 
-		tilannimiDETAILS.setText(kontrolleri.tuoTila(id).getNimi());
-		hlömääräDETAILS.setText(String.valueOf(kontrolleri.tuoTila(id).getHlomaara()));
-		tilankuvausDETAILS.setText(kontrolleri.tuoTila(id).getKuvaus());
-		tilanosoiteDETAILS.setText(kontrolleri.tuoTila(id).getOsoite());
-		tilankaupunkiDETAILS.setText(kontrolleri.tuoTila(id).getKaupunki());
+		tilannimiDETAILS.setText(kontrolleri.etsiTila(id).getNimi());
+		hlömääräDETAILS.setText(String.valueOf(kontrolleri.etsiTila(id).getHlomaara()));
+		tilankuvausDETAILS.setText(kontrolleri.etsiTila(id).getKuvaus());
+		tilanosoiteDETAILS.setText(kontrolleri.etsiTila(id).getOsoite());
+		tilankaupunkiDETAILS.setText(kontrolleri.etsiTila(id).getKaupunki());
 
 	}
 
@@ -107,20 +107,20 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 
 		kontrolleri = Kontrolleri.haeInstanssi();
 
-		String tn1 = kontrolleri.tuoTila(1).getNimi();
-		String tn2 = kontrolleri.tuoTila(2).getNimi();
-		String tn3 = kontrolleri.tuoTila(3).getNimi();
-		String tn4 = kontrolleri.tuoTila(4).getNimi();
+		String tn1 = kontrolleri.etsiTila(1).getNimi();
+		String tn2 = kontrolleri.etsiTila(2).getNimi();
+		String tn3 = kontrolleri.etsiTila(3).getNimi();
+		String tn4 = kontrolleri.etsiTila(4).getNimi();
 
-		String tk1 = kontrolleri.tuoTila(1).getKaupunki();
-		String tk2 = kontrolleri.tuoTila(2).getKaupunki();
-		String tk3 = kontrolleri.tuoTila(3).getKaupunki();
-		String tk4 = kontrolleri.tuoTila(4).getKaupunki();
+		String tk1 = kontrolleri.etsiTila(1).getKaupunki();
+		String tk2 = kontrolleri.etsiTila(2).getKaupunki();
+		String tk3 = kontrolleri.etsiTila(3).getKaupunki();
+		String tk4 = kontrolleri.etsiTila(4).getKaupunki();
 
-		int tmaara1 = kontrolleri.tuoTila(1).getHlomaara();
-		int tmaara2 = kontrolleri.tuoTila(2).getHlomaara();
-		int tmaara3 = kontrolleri.tuoTila(3).getHlomaara();
-		int tmaara4 = kontrolleri.tuoTila(4).getHlomaara();
+		int tmaara1 = kontrolleri.etsiTila(1).getHlomaara();
+		int tmaara2 = kontrolleri.etsiTila(2).getHlomaara();
+		int tmaara3 = kontrolleri.etsiTila(3).getHlomaara();
+		int tmaara4 = kontrolleri.etsiTila(4).getHlomaara();
 
 		kokoustila1nimi.setText(tn1);
 		kokoustila2nimi.setText(tn2);
