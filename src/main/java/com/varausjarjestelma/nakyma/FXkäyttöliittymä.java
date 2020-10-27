@@ -1,12 +1,21 @@
 package com.varausjarjestelma.nakyma;
 
+import java.io.IOException;
+
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class FXkäyttöliittymä implements Käyttöliittymä {
 
@@ -100,6 +109,19 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		tilanosoiteDETAILS.setText(kontrolleri.etsiTila(id).getOsoite());
 		tilankaupunkiDETAILS.setText(kontrolleri.etsiTila(id).getKaupunki());
 
+	}
+	
+	@FXML
+	public void näytäVarausIkkuna() throws IOException {
+		
+		    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VarausIkkuna.fxml"));
+		    AnchorPane anchorpane = new AnchorPane();
+		    fxmlLoader.setRoot(anchorpane);
+		    AnchorPane varausikkuna = (AnchorPane) fxmlLoader.load();
+		    Stage stage = new Stage();
+		    stage.setScene(new Scene(varausikkuna));  
+		    stage.show();
+		
 	}
 
 	@FXML

@@ -109,7 +109,7 @@
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Henkilömäärä : " wrappingWidth="88.39453125" GridPane.rowIndex="2" />
                                           <Text fx:id="kokoustila1hlömäärä" strokeType="OUTSIDE" strokeWidth="0.0" text="esim. &quot;100&quot;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Text fx:id="kokoustila1kaupunki" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;tähän kuvaus&quot;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Varaa" GridPane.rowIndex="3" />
+                                          <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Varaa" onAction="#näytäVarausIkkuna" GridPane.rowIndex="3" />
                                           <Button fx:id="tilantarkasteluButton1" mnemonicParsing="false" onAction="#näytäTilanLisätiedot" prefHeight="34.0" prefWidth="103.0" text="Tarkastele tilaa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
