@@ -17,14 +17,14 @@ public class Main extends Application {
 
 	public static void main(String[] args)  {
 		System.out.println("terve");
+		launch(args);
+		
 		Kontrolleri kontrolleri = new Kontrolleri();
 		
 		Tekstikäyttöliittymä käyttöliittymä = new Tekstikäyttöliittymä(kontrolleri);
 		
 		käyttöliittymä.käynnistä();
 		käyttöliittymä.tilaEsiin();
-		
-		launch(args);
 	}
 	
 	public void initRootLayout() {
