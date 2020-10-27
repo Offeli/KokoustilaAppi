@@ -136,7 +136,7 @@ public class OminaisuusDAO {
 		} catch (Exception e) {
 			if (transaktio != null)
 				transaktio.rollback();
-			System.out.println("Tilan muokkaus epäonnistui");
+			System.out.println("Ominaisuuden muokkaus epäonnistui");
 			e.printStackTrace();
 
 		} finally {

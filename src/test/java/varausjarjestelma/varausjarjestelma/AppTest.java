@@ -13,10 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import com.varausjarjestelma.malli.*;
 
-/**
- * Unit test for simple App.
- * Päivitetty testiluokka
- */
 @TestMethodOrder(Alphanumeric.class)
 public class AppTest 
 {
@@ -172,6 +168,12 @@ public class AppTest
 	void testFPoistaVaraus() {
 		boolean result = varauksetDAO.poistaVaraus(testiVaraukset);
 		assertTrue(result, "Varauksen poistaminen ei onnistunut.");
+	}
+	
+	@Test
+	void testGPoistaKäyttäjä() {
+		boolean result = käyttäjäDAO.poistaKayttaja(testiKäyttäjä);
+		assertTrue(result, "Poistaminen ei onnistunut.");
 	}
 
 	@Test

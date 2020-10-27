@@ -23,7 +23,7 @@ public class KäyttäjäDAO {
 			istuntotehdas = new Configuration().configure().buildSessionFactory();
 			rekisteri = new StandardServiceRegistryBuilder().configure().build();
 		} catch (Exception e) {
-			System.out.println("TilaDAO - istuntotehtaan luonti epäonnistui");
+			System.out.println("KäyttäjäDAO - istuntotehtaan luonti epäonnistui");
 			istuntotehdas.close();
 			StandardServiceRegistryBuilder.destroy(rekisteri);
 			e.printStackTrace();
@@ -138,7 +138,7 @@ public class KäyttäjäDAO {
 		} catch (Exception e) {
 			if (transaktio != null)
 				transaktio.rollback();
-			System.out.println("Tilan muokkaus epäonnistui");
+			System.out.println("Käyttäjän muokkaus epäonnistui");
 			e.printStackTrace();
 
 		} finally {
