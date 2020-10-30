@@ -17,7 +17,7 @@ public class Kontrolleri {
 	private KäyttäjäDAO käyttäjäDAO;
 	private VarauksetDAO varauksetDAO;
 
-	public Kontrolleri() {
+	private Kontrolleri() {
 		tc = new TestConnection();
 		tilaDAO = new TilaDAO();
 		käyttäjäDAO = new KäyttäjäDAO();

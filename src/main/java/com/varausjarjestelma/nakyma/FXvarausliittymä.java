@@ -31,7 +31,7 @@ public class FXvarausliittymä implements Käyttöliittymä {
 	@FXML
 	public void varaaTila() {
 		
-		kontrolleri = new Kontrolleri();
+		kontrolleri = Kontrolleri.haeInstanssi();
 		
 		
 		

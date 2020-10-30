@@ -41,7 +41,7 @@ public class VarausmanageriTest {
 	}
 	
 	@AfterAll
-	public void teardown() {
+	public static void teardown() {
 		dao.poistaVaraus(varaus);
 	}
 	

@@ -111,7 +111,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 			id = 4;
 		}
 
-		kontrolleri = new Kontrolleri();
+		kontrolleri = Kontrolleri.haeInstanssi();
 
 		tilannimiDETAILS.setText(kontrolleri.etsiTila(id).getNimi());
 		hlömääräDETAILS.setText(String.valueOf(kontrolleri.etsiTila(id).getHlomaara()));
