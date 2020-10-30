@@ -21,7 +21,7 @@ public class VarausmanageriTest {
 	private static Varaukset varaus;
 	
 	@BeforeAll
-	public void setup() {
+	public static void setup() {
 		kontrolleri = Kontrolleri.haeInstanssi();
 		manageri = new Varausmanageri();
 		dao = new VarauksetDAO();
