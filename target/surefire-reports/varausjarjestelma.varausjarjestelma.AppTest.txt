@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: varausjarjestelma.varausjarjestelma.AppTest
 -------------------------------------------------------------------------------
-Tests run: 18, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 13.075 sec <<< FAILURE! - in varausjarjestelma.varausjarjestelma.AppTest
-testCMuokkaaKäyttäjää()  Time elapsed: 0.197 sec  <<< FAILURE!
-org.opentest4j.AssertionFailedError: Käyttäjän muokkaus ei onnistunut. ==> expected: <true> but was: <false>
-	at varausjarjestelma.varausjarjestelma.AppTest.testCMuokkaaKäyttäjää(AppTest.java:146)
-
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.625 sec - in varausjarjestelma.varausjarjestelma.AppTest

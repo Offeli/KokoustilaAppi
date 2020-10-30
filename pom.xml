@@ -19,6 +19,19 @@
 
 	<reporting>
 		<plugins>
+		      <plugin>
+		        <groupId>org.jacoco</groupId>
+		        <artifactId>jacoco-maven-plugin</artifactId>
+		        <version>0.8.7-SNAPSHOT</version>
+		        <reportSets>
+		          <reportSet>
+		            <reports>
+		              <!-- select non-aggregate reports -->
+		              <report>report</report>
+		            </reports>
+		          </reportSet>
+		        </reportSets>
+		      </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
