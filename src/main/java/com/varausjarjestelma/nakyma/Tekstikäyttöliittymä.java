@@ -33,7 +33,7 @@ public class Tekstikäyttöliittymä implements Käyttöliittymä {
 
 	@SuppressWarnings("unused")
 	private void testi1haeTilanOminaisuudet() {
-		Tila[] tilat = kontrolleri.haeEsimerkki();
+		Tila[] tilat = kontrolleri.haeTilat();
 		TilanOminaisuus[] tilanOminaisuudet = null;
 
 		for (Tila tila : tilat) {

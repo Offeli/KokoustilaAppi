@@ -33,12 +33,16 @@ public class Kontrolleri {
 		return instanssi;
 	}
 
-	public Tila[] haeEsimerkki() {
+	public Tila[] haeTilat() {
 		return tilaDAO.haeKaikkiTilat();
 	}
 
 	public Ominaisuus[] haeOminaisuudet() {
 		return ominaisuusDAO.haeKaikkiOminaisuudet();
+	}
+	
+	public Käyttäjä[] haeKäyttäjät() {
+		return käyttäjäDAO.haeKaikkiKayttajat();
 	}
 
 	public Tila etsiTila(int id) {
