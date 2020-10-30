@@ -42,7 +42,7 @@ public class KäyttäjäDAO {
 			transaktio = istunto.beginTransaction();
 
 			@SuppressWarnings("unchecked")
-			List<Käyttäjä> käyttäjät = istunto.createQuery("from Kayttaja").getResultList();
+			List<Käyttäjä> käyttäjät = istunto.createQuery("from Käyttäjä").getResultList();
 			palautus = new Käyttäjä[käyttäjät.size()];
 
 			istunto.getTransaction().commit();
@@ -93,12 +93,11 @@ public class KäyttäjäDAO {
 		Session istunto = null;
 		Transaction transaktio = null;
 
-		// try-with-resources ei ole tarjolla. JRE-versio-ongelma.
 		try {
 			istunto = istuntotehdas.openSession();
 			transaktio = istunto.beginTransaction();
 
-			palautus = (Käyttäjä) istunto.createQuery("from Kayttaja where id = " + id).getSingleResult();
+			palautus = (Käyttäjä) istunto.createQuery("from Käyttäjä where id = " + id).getSingleResult();
 
 			istunto.getTransaction().commit();
 
