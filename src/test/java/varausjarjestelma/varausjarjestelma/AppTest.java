@@ -77,83 +77,83 @@ public class AppTest
 	}
 
 	@Test
-	void testALisaaTila() {
+	public void testALisaaTila() {
 		boolean result = tilaDAO.lisaaTila(testiTila);
 		assertTrue(result, "Lisäys ei onnistunut.");
 	}
 	
 	@Test
-	void testALisaaOminaisuus() {
+	public void testALisaaOminaisuus() {
 		boolean result = ominaisuusDAO.lisaaOminaisuus(testiOminaisuus);
 		assertTrue(result, "Lisäys ei onnistunut.");
 	}
 	
 	@Test
-	void testALisaaTilanOminaisuus() {
+	public void testALisaaTilanOminaisuus() {
 		boolean result = tilanOminaisuusDAO.lisaaTilanOminaisuus(testiTilanOminaisuus);
 		assertTrue(result, "Lisäys ei onnistunut.");
 	}
 	
 	@Test
-	void testALuoKäyttäjä() {
+	public void testALuoKäyttäjä() {
 		boolean result = käyttäjäDAO.lisaaKayttaja(testiKäyttäjä);
 		assertTrue(result, "Käyttäjän lisääminen ei onnistunut.");
 	}
 
 	@Test
-	void testBEtsiTila() {
+	public void testBEtsiTila() {
 		Tila tila = tilaDAO.etsiTila(testiTila.getID());
 		assertEquals(testiTila.getID(), tila.getID(), "ID ei täsmännyt.");
 	}
 	
 	@Test
-	void testBEtsiOminaisuus() {
+	public void testBEtsiOminaisuus() {
 		Ominaisuus ominaisuus = ominaisuusDAO.etsiOminaisuus(testiOminaisuus.getID());
 		assertEquals(testiOminaisuus.getID(), ominaisuus.getID(), "ID ei täsmännyt.");
 	}
 	
 	@Test
-	void testBEtsiTilanOminaisuus() {
+	public void testBEtsiTilanOminaisuus() {
 		TilanOminaisuus tilanOminaisuus = tilanOminaisuusDAO.etsiTilanOminaisuus(testiTilanOminaisuus.getID());
 		assertEquals(testiTilanOminaisuus.getID(), tilanOminaisuus.getID(), "ID ei täsmännyt.");
 	}
 
 	@Test
-	void testCMuokkaaTila() {
+	public void testCMuokkaaTila() {
 		testiTila.setHlomaara(10);
 		boolean result = tilaDAO.muokkaaTilaa(testiTila.getID(), testiTila);
 		assertTrue(result, "Muokkaus ei onnistunut.");
 	}
 	
 	@Test
-	void testCMuokkaaOminaisuus() {
+	public void testCMuokkaaOminaisuus() {
 		testiOminaisuus.setKuvaus("Videotykillä voit heijastaa tietoa valkokankaalle.");
 		boolean result = ominaisuusDAO.muokkaaOminaisuutta(testiOminaisuus.getID(), testiOminaisuus);
 		assertTrue(result, "Muokkaus ei onnistunut.");
 	}
 	
 	@Test
-	void testCMuokkaaTilanOminaisuus() {
+	public void testCMuokkaaTilanOminaisuus() {
 		testiTilanOminaisuus.setLisatiedot("Videotykki on näkyvillä työpöydällä, mutta mikäli se ei ole siinä, on se mitä luultavimmin kaapistossa vasemmalla puolella.");
 		boolean result = tilanOminaisuusDAO.muokkaaTilanOminaisuutta(testiTilanOminaisuus.getID(), testiTilanOminaisuus);
 		assertTrue(result, "Muokkaus ei onnistunut.");
 	}
 	
 	@Test
-	void testCMuokkaaKäyttäjää() {
+	public void testCMuokkaaKäyttäjää() {
 		testiKäyttäjä.setEtunimi("Marko");
 		boolean result = käyttäjäDAO.muokkaaKayttaja(testiKäyttäjä.getID(), testiKäyttäjä);
 		assertTrue(result, "Käyttäjän muokkaus ei onnistunut.");
 	}
 	
 	@Test
-	void testDLisääVaraus() {
+	public void testDLisääVaraus() {
 		boolean result = varauksetDAO.lisaaVaraus(testiVaraukset);
 		assertTrue(result, "Varauksen lisäys ei onnistunut.");
 	}
 	
 	@Test
-	void testEMuokkaaVarausta() {
+	public void testEMuokkaaVarausta() {
 		Date date = new Date();
 		Timestamp uusiAlku = new Timestamp(date.getTime() + 1);
 		Timestamp uusiLoppu = new Timestamp(date.getTime() + 3);
@@ -165,31 +165,31 @@ public class AppTest
 	}
 	
 	@Test
-	void testFPoistaVaraus() {
+	public void testFPoistaVaraus() {
 		boolean result = varauksetDAO.poistaVaraus(testiVaraukset);
 		assertTrue(result, "Varauksen poistaminen ei onnistunut.");
 	}
 	
 	@Test
-	void testGPoistaKäyttäjä() {
+	public void testGPoistaKäyttäjä() {
 		boolean result = käyttäjäDAO.poistaKayttaja(testiKäyttäjä);
 		assertTrue(result, "Poistaminen ei onnistunut.");
 	}
 
 	@Test
-	void testGPoistaTila() {
+	public void testGPoistaTila() {
 		boolean result = tilaDAO.poistaTila(testiTila);
 		assertTrue(result, "Poistaminen ei onnistunut.");
 	}
 	
 	@Test
-	void testGPoistaOminaisuus() {
+	public void testGPoistaOminaisuus() {
 		boolean result = ominaisuusDAO.poistaOminaisuus(testiOminaisuus);
 		assertTrue(result, "Poistaminen ei onnistunut.");
 	}
 	
 	@Test
-	void testGPoistaTilanOminaisuus() {
+	public void testGPoistaTilanOminaisuus() {
 		boolean result = tilanOminaisuusDAO.poistaTilanOminaisuus(testiTilanOminaisuus);
 		assertTrue(result, "Poistaminen ei onnistunut.");
 	}

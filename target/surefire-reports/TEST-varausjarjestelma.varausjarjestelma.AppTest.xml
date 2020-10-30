@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="varausjarjestelma.varausjarjestelma.AppTest" time="0.189" errors="1" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="varausjarjestelma.varausjarjestelma.AppTest" time="13.075" tests="18" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre1.8.0_251\bin"/>
     <property name="java.vm.version" value="25.251-b08"/>
     <property name="user.country.format" value="FI"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Veera\git\uusi_kokoustilaappi"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
     <property name="user.script" value=""/>
@@ -18,34 +20,31 @@
     <property name="user.dir" value="C:\Users\Veera\git\uusi_kokoustilaappi"/>
     <property name="java.runtime.version" value="1.8.0_251-b08"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="basedir" value="C:\Users\Veera\git\uusi_kokoustilaappi"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre1.8.0_251\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="C:\Users\Veera\AppData\Local\Temp\surefirebooter3160901301493647678.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\Veera\AppData\Local\Temp\"/>
-    <property name="line.separator" value="
-"/>
+    <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Users\Veera\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3287110056523985802.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jre1.8.0_251\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files/Java/jre1.8.0_251/bin/server;C:/Program Files/Java/jre1.8.0_251/bin;C:/Program Files/Java/jre1.8.0_251/lib/amd64;C:\Python38\Scripts\;C:\Python38\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\leJOS EV3\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Users\Veera\AppData\Local\Microsoft\WindowsApps;C:\Users\Veera\AppData\Local\GitHubDesktop\bin;C:\Users\Veera\AppData\Roaming\npm;C:\Program Files (x86)\Google\eclipse;;."/>
-    <property name="surefire.test.class.path" value="C:\Users\Veera\git\uusi_kokoustilaappi\target\test-classes;C:\Users\Veera\git\uusi_kokoustilaappi\target\classes;C:\Users\Veera\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.2\junit-jupiter-engine-5.6.2.jar;C:\Users\Veera\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-engine\1.6.2\junit-platform-engine-1.6.2.jar;C:\Users\Veera\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-commons\1.6.2\junit-platform-commons-1.6.2.jar;C:\Users\Veera\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.2\junit-jupiter-api-5.6.2.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-runner\1.1.1\junit-platform-runner-1.1.1.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-launcher\1.1.1\junit-platform-launcher-1.1.1.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-suite-api\1.1.1\junit-platform-suite-api-1.1.1.jar;C:\Users\Veera\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\Veera\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Veera\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.2\junit-jupiter-params-5.6.2.jar;C:\Users\Veera\.m2\repository\org\hibernate\hibernate-entitymanager\5.4.10.Final\hibernate-entitymanager-5.4.10.Final.jar;C:\Users\Veera\.m2\repository\org\jboss\logging\jboss-logging\3.3.2.Final\jboss-logging-3.3.2.Final.jar;C:\Users\Veera\.m2\repository\org\hibernate\hibernate-core\5.4.10.Final\hibernate-core-5.4.10.Final.jar;C:\Users\Veera\.m2\repository\org\javassist\javassist\3.24.0-GA\javassist-3.24.0-GA.jar;C:\Users\Veera\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Veera\.m2\repository\org\jboss\jandex\2.1.1.Final\jandex-2.1.1.Final.jar;C:\Users\Veera\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\Veera\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\Veera\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\Veera\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.1\jaxb-runtime-2.3.1.jar;C:\Users\Veera\.m2\repository\org\glassfish\jaxb\txw2\2.3.1\txw2-2.3.1.jar;C:\Users\Veera\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.7\istack-commons-runtime-3.0.7.jar;C:\Users\Veera\.m2\repository\org\jvnet\staxex\stax-ex\1.8\stax-ex-1.8.jar;C:\Users\Veera\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.15\FastInfoset-1.2.15.jar;C:\Users\Veera\.m2\repository\org\dom4j\dom4j\2.1.1\dom4j-2.1.1.jar;C:\Users\Veera\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.1.0.Final\hibernate-commons-annotations-5.1.0.Final.jar;C:\Users\Veera\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\Veera\.m2\repository\net\bytebuddy\byte-buddy\1.10.2\byte-buddy-1.10.2.jar;C:\Users\Veera\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.1.1.Final\jboss-transaction-api_1.2_spec-1.1.1.Final.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-controls\14\javafx-controls-14.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-controls\14\javafx-controls-14-win.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-graphics\14\javafx-graphics-14.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-graphics\14\javafx-graphics-14-win.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-base\14\javafx-base-14.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-base\14\javafx-base-14-win.jar;C:\Users\Veera\.m2\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar;C:\Users\Veera\.m2\repository\org\mariadb\jdbc\mariadb-java-client\2.4.4\mariadb-java-client-2.4.4.jar;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="10.0"/>
     <property name="user.home" value="C:\Users\Veera"/>
-    <property name="user.timezone" value=""/>
+    <property name="user.timezone" value="Europe/Helsinki"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.8"/>
-    <property name="file.encoding" value="Cp1252"/>
+    <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="Veera"/>
-    <property name="java.class.path" value="C:\Users\Veera\git\uusi_kokoustilaappi\target\test-classes;C:\Users\Veera\git\uusi_kokoustilaappi\target\classes;C:\Users\Veera\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.2\junit-jupiter-engine-5.6.2.jar;C:\Users\Veera\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-engine\1.6.2\junit-platform-engine-1.6.2.jar;C:\Users\Veera\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-commons\1.6.2\junit-platform-commons-1.6.2.jar;C:\Users\Veera\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.2\junit-jupiter-api-5.6.2.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-runner\1.1.1\junit-platform-runner-1.1.1.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-launcher\1.1.1\junit-platform-launcher-1.1.1.jar;C:\Users\Veera\.m2\repository\org\junit\platform\junit-platform-suite-api\1.1.1\junit-platform-suite-api-1.1.1.jar;C:\Users\Veera\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\Veera\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Veera\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.2\junit-jupiter-params-5.6.2.jar;C:\Users\Veera\.m2\repository\org\hibernate\hibernate-entitymanager\5.4.10.Final\hibernate-entitymanager-5.4.10.Final.jar;C:\Users\Veera\.m2\repository\org\jboss\logging\jboss-logging\3.3.2.Final\jboss-logging-3.3.2.Final.jar;C:\Users\Veera\.m2\repository\org\hibernate\hibernate-core\5.4.10.Final\hibernate-core-5.4.10.Final.jar;C:\Users\Veera\.m2\repository\org\javassist\javassist\3.24.0-GA\javassist-3.24.0-GA.jar;C:\Users\Veera\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Veera\.m2\repository\org\jboss\jandex\2.1.1.Final\jandex-2.1.1.Final.jar;C:\Users\Veera\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\Veera\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\Veera\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\Veera\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.1\jaxb-runtime-2.3.1.jar;C:\Users\Veera\.m2\repository\org\glassfish\jaxb\txw2\2.3.1\txw2-2.3.1.jar;C:\Users\Veera\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.7\istack-commons-runtime-3.0.7.jar;C:\Users\Veera\.m2\repository\org\jvnet\staxex\stax-ex\1.8\stax-ex-1.8.jar;C:\Users\Veera\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.15\FastInfoset-1.2.15.jar;C:\Users\Veera\.m2\repository\org\dom4j\dom4j\2.1.1\dom4j-2.1.1.jar;C:\Users\Veera\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.1.0.Final\hibernate-commons-annotations-5.1.0.Final.jar;C:\Users\Veera\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\Veera\.m2\repository\net\bytebuddy\byte-buddy\1.10.2\byte-buddy-1.10.2.jar;C:\Users\Veera\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.1.1.Final\jboss-transaction-api_1.2_spec-1.1.1.Final.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-controls\14\javafx-controls-14.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-controls\14\javafx-controls-14-win.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-graphics\14\javafx-graphics-14.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-graphics\14\javafx-graphics-14-win.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-base\14\javafx-base-14.jar;C:\Users\Veera\.m2\repository\org\openjfx\javafx-base\14\javafx-base-14-win.jar;C:\Users\Veera\.m2\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar;C:\Users\Veera\.m2\repository\org\mariadb\jdbc\mariadb-java-client\2.4.4\mariadb-java-client-2.4.4.jar;"/>
+    <property name="java.class.path" value="C:\Program Files (x86)\Google\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.9.0.20180606-2035\jars\plexus-classworlds-2.5.2.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jre1.8.0_251"/>
-    <property name="sun.java.command" value="C:\Users\Veera\AppData\Local\Temp\surefirebooter3160901301493647678.jar C:\Users\Veera\AppData\Local\Temp\surefire3582563248842629634tmp C:\Users\Veera\AppData\Local\Temp\surefire1909503995224307718tmp"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -54,7 +53,7 @@
     <property name="java.ext.dirs" value="C:\Program Files\Java\jre1.8.0_251\lib\ext;C:\windows\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jre1.8.0_251\lib\resources.jar;C:\Program Files\Java\jre1.8.0_251\lib\rt.jar;C:\Program Files\Java\jre1.8.0_251\lib\sunrsasign.jar;C:\Program Files\Java\jre1.8.0_251\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_251\lib\jce.jar;C:\Program Files\Java\jre1.8.0_251\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_251\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_251\classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="localRepository" value="C:\Users\Veera\.m2\repository"/>
+    <property name="maven.home" value="C:\Users\Veera\git\uusi_kokoustilaappi\EMBEDDED"/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -62,28 +61,96 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="varausjarjestelma.varausjarjestelma.AppTest" name="initializationError" time="0.003">
-    <error message="No runnable methods" type="java.lang.Exception">java.lang.Exception: No runnable methods
-	at org.junit.runners.BlockJUnit4ClassRunner.validateInstanceMethods(BlockJUnit4ClassRunner.java:191)
-	at org.junit.runners.BlockJUnit4ClassRunner.collectInitializationErrors(BlockJUnit4ClassRunner.java:128)
-	at org.junit.runners.ParentRunner.validate(ParentRunner.java:416)
-	at org.junit.runners.ParentRunner.&lt;init&gt;(ParentRunner.java:84)
-	at org.junit.runners.BlockJUnit4ClassRunner.&lt;init&gt;(BlockJUnit4ClassRunner.java:65)
-	at org.junit.internal.builders.JUnit4Builder.runnerForClass(JUnit4Builder.java:10)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
-	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:26)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
-	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:33)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:51)
-	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:120)
-	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:103)
-	at org.apache.maven.surefire.Surefire.run(Surefire.java:169)
+  <testcase name="testALisaaOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.637"/>
+  <testcase name="testALisaaTila" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.278"/>
+  <testcase name="testALisaaTilanOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.289"/>
+  <testcase name="testALuoKäyttäjä" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.275"/>
+  <testcase name="testBEtsiOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.427"/>
+  <testcase name="testBEtsiTila" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.08"/>
+  <testcase name="testBEtsiTilanOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.144"/>
+  <testcase name="testCMuokkaaKäyttäjää" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.197">
+    <failure message="Käyttäjän muokkaus ei onnistunut. ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Käyttäjän muokkaus ei onnistunut. ==> expected: <true> but was: <false>
+	at varausjarjestelma.varausjarjestelma.AppTest.testCMuokkaaKäyttäjää(AppTest.java:146)
+]]></failure>
+    <system-out><![CDATA[Käyttäjän muokkaus epäonnistui
+]]></system-out>
+    <system-err><![CDATA[org.hibernate.hql.internal.ast.QuerySyntaxException: Kayttaja is not mapped [from Kayttaja where id = 99]
+java.lang.NullPointerException
+	at com.varausjarjestelma.malli.KäyttäjäDAO.muokkaaKayttaja(KäyttäjäDAO.java:129)
+	at varausjarjestelma.varausjarjestelma.AppTest.testCMuokkaaKäyttäjää(AppTest.java:145)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:350)
-	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1021)
-</error>
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:686)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:212)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:208)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:71)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at java.util.ArrayList.forEach(Unknown Source)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invokeSingleClass(JUnitPlatformProvider.java:148)
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:130)
+	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:109)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
+]]></system-err>
   </testcase>
+  <testcase name="testCMuokkaaOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.17"/>
+  <testcase name="testCMuokkaaTila" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.171"/>
+  <testcase name="testCMuokkaaTilanOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.187"/>
+  <testcase name="testDLisääVaraus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.288"/>
+  <testcase name="testEMuokkaaVarausta" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.197"/>
+  <testcase name="testFPoistaVaraus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.094"/>
+  <testcase name="testGPoistaKäyttäjä" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.086"/>
+  <testcase name="testGPoistaOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.076"/>
+  <testcase name="testGPoistaTila" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.074"/>
+  <testcase name="testGPoistaTilanOminaisuus" classname="varausjarjestelma.varausjarjestelma.AppTest" time="0.075"/>
 </testsuite>
