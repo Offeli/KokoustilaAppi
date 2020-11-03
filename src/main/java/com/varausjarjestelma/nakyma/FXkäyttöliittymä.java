@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
+import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -94,7 +95,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 
 	
 	@FXML
-	private ListView varatutTilat;
+	private Varaukset[] varatutTilat;
 	
 
 
@@ -184,7 +185,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 		kontrolleri = Kontrolleri.haeInstanssi();
 		
-		kontrolleri.haeVaraukset(4);
+		varatutTilat = kontrolleri.haeVaraukset(4);
 		
 		
 	}
