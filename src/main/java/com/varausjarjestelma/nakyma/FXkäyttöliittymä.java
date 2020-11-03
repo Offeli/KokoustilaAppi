@@ -180,7 +180,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 		kontrolleri = Kontrolleri.haeInstanssi();
 		
-		kontrolleri.haeVaraukset(null);
+		kontrolleri.haeVaraukset(4);
 		
 		
 	}

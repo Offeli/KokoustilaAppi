@@ -15,7 +15,7 @@ public class Varausmanageri {
 	}
 
 	public boolean onkoTilaVapaa(Tila tila, Timestamp alku, Timestamp loppu) {
-		Varaukset[] varaukset = kontrolleri.haeVaraukset(tila);
+		Varaukset[] varaukset = kontrolleri.haeVarauksetTila(tila);
 
 		for (Varaukset v : varaukset) {
 			Timestamp vAlku = v.getAlkuAika();

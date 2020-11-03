@@ -66,7 +66,7 @@ public class Tekstikäyttöliittymä implements Käyttöliittymä {
 
 	private void testi2haeTilaanLiittyvätVaraukset() {
 		Tila tila = kontrolleri.etsiTila(1);
-		Varaukset[] varaukset = kontrolleri.haeVaraukset(tila);
+		Varaukset[] varaukset = kontrolleri.haeVarauksetTila(tila);
 
 		for (Varaukset v : varaukset) {
 			Käyttäjä käyttäjä = v.getKayttaja();
