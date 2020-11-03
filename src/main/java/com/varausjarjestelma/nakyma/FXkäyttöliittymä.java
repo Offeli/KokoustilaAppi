@@ -10,8 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -83,6 +85,13 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	private DatePicker varauksenAloitusPäivä;
 	@FXML
 	private DatePicker varauksenLopetusPäivä;
+	@FXML
+	private ChoiceBox alkuTuntiPicker;
+	@FXML
+	private ChoiceBox loppuTuntiPicker;
+	
+	@FXML
+	private ListView varatutTilat;
 	
 
 
@@ -161,6 +170,18 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 
 		kontrolleri.asetaVaraus( 4, tilanId, alkuTs, loppuTs);
+		
+	}
+	
+	
+	@FXML
+	public void näytäVaratutTilat(){
+		
+		
+		kontrolleri = Kontrolleri.haeInstanssi();
+		
+		kontrolleri.haeVaraukset(null);
+		
 		
 	}
 	/*
