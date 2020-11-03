@@ -95,7 +95,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 
 	
 	@FXML
-	private Varaukset[] varatutTilat;
+	private ListView varatutTilat;
 	
 
 
@@ -185,7 +185,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 		kontrolleri = Kontrolleri.haeInstanssi();
 		
-		varatutTilat = kontrolleri.haeVaraukset(4);
+		kontrolleri.haeVaraukset(4);
 		
 		
 	}
