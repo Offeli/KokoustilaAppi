@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,9 +88,10 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	@FXML
 	private DatePicker varauksenLopetusPäivä;
 	@FXML
-	private ChoiceBox alkuTuntiPicker;
+	private ChoiceBox<Integer> alkuTuntiPicker;
 	@FXML
-	private ChoiceBox loppuTuntiPicker;
+	private ChoiceBox<Integer> loppuTuntiPicker;
+
 	
 	@FXML
 	private ListView varatutTilat;
@@ -157,8 +160,9 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 		
 		
-		int alkuTunti = 0;
-		int loppuTunti = 0;
+		int alkuTunti = alkuTuntiPicker.getValue();
+		int loppuTunti = loppuTuntiPicker.getValue();
+
 		LocalDate alkuInit = varauksenAloitusPäivä.getValue();
 		LocalDate loppuInit = varauksenLopetusPäivä.getValue();
 		
@@ -244,6 +248,12 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		kokoustila2hlömäärä.setText(String.valueOf(tmaara2));
 		kokoustila3hlömäärä.setText(String.valueOf(tmaara3));
 		kokoustila4hlömäärä.setText(String.valueOf(tmaara4));
+		
+		ObservableList<Integer> list = FXCollections.observableArrayList();
+		   list.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
+		  alkuTuntiPicker.setItems(list);
+		  loppuTuntiPicker.setItems(list);
+
 
 	}
 
