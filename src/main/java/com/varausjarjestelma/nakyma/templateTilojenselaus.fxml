@@ -198,7 +198,7 @@
                         </AnchorPane>
                       </content>
                     </ScrollPane>
-                    <AnchorPane>
+                    <AnchorPane prefHeight="530.0" prefWidth="270.0">
                       <children>
                         <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="true" />
                               <TextFlow layoutY="40.0" prefHeight="414.0" prefWidth="270.0">
@@ -214,7 +214,11 @@
                                     <Label prefHeight="38.0" prefWidth="272.0" text="KAUPUNKI" />
                                     <Label fx:id="tilankaupunkiDETAILS" prefHeight="35.0" prefWidth="270.0" textOverrun="CLIP" />
                                     <Label prefHeight="21.0" prefWidth="271.0" text="OMINAISUUDET" />
-                                    <Label fx:id="tilanominaisuusDETAILS" />
+                                    <ListView fx:id="tilanOminaisuusLista" editable="true" prefHeight="100.0" prefWidth="270.0" style="-fx-background-color: mintcream; -fx-padding: 20;">
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </ListView>
                                  </children>
                               </TextFlow>
                       </children>

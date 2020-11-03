@@ -3,7 +3,12 @@ package com.varausjarjestelma.nakyma;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.ArrayList;
+
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
+import com.varausjarjestelma.malli.Ominaisuus;
+import com.varausjarjestelma.malli.Tila;
+import com.varausjarjestelma.malli.TilanOminaisuus;
 import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.collections.FXCollections;
@@ -97,9 +102,11 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	@FXML
 	private ListView varatutTilat;
 	
-
-
-
+	@FXML
+	private ListView tilanOminaisuusLista;
+	ObservableList<String> ominaisuuslista =  FXCollections.observableArrayList();
+	
+	
 
 	public FXkäyttöliittymä(Kontrolleri kontrolleri) {
 		this.kontrolleri = kontrolleri;
@@ -141,6 +148,23 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		tilankuvausDETAILS.setText(kontrolleri.etsiTila(id).getKuvaus());
 		tilanosoiteDETAILS.setText(kontrolleri.etsiTila(id).getOsoite());
 		tilankaupunkiDETAILS.setText(kontrolleri.etsiTila(id).getKaupunki());
+		
+		tilanOminaisuusLista.getItems().clear();
+		Tila kyseinenTila = kontrolleri.etsiTila(id);
+		TilanOminaisuus[] ominaisuusArray = kontrolleri.etsiTilanOminaisuudet(kyseinenTila);
+        ominaisuuslista.clear();
+       
+		for (int i = 0; i <= ominaisuusArray.length - 1; i++) {
+			TilanOminaisuus o = ominaisuusArray[i];
+			String nimi = o.getOminaisuus().getNimi();
+			String kuvaus = o.getOminaisuus().getKuvaus();
+			ominaisuuslista.add(nimi + " : " + kuvaus);
+			
+		}
+		
+		tilanOminaisuusLista.getItems().addAll(ominaisuuslista);
+		
+		
 
 	}
 	
@@ -254,7 +278,8 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		   list.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
 		  alkuTuntiPicker.setItems(list);
 		  loppuTuntiPicker.setItems(list);
-
+		  
+		
 
 	}
 
