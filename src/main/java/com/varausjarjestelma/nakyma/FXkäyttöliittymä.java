@@ -77,13 +77,15 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	@FXML
 	private Button tilanVarausButton4;
 	@FXML
-	static
-	int varausId = 0;
+	int tilanId = 0;
+
+	@FXML
+	private DatePicker varauksenAloitusPäivä;
+	@FXML
+	private DatePicker varauksenLopetusPäivä;
 	
 
-	public static int getVarausId() {
-		return varausId;
-	}
+
 
 
 	public FXkäyttöliittymä(Kontrolleri kontrolleri) {
@@ -130,20 +132,52 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	}
 	
 	@FXML
+	public void varaaTila(ActionEvent event) {
+		
+		if (event.getSource() == tilanVarausButton1) {
+			tilanId = 1;
+		} else if (event.getSource() == tilanVarausButton2) {
+			tilanId = 2;
+		} else if (event.getSource() == tilanVarausButton3) {
+			tilanId = 3;
+		} else if (event.getSource() == tilanVarausButton4) {
+			tilanId = 4;
+		}
+		
+		kontrolleri = Kontrolleri.haeInstanssi();
+		
+		
+		
+		int alkuTunti = 0;
+		int loppuTunti = 0;
+		LocalDate alkuInit = varauksenAloitusPäivä.getValue();
+		LocalDate loppuInit = varauksenLopetusPäivä.getValue();
+		
+
+		Timestamp alkuTs = Timestamp.valueOf(alkuInit.atTime(alkuTunti, 0));
+		Timestamp loppuTs = Timestamp.valueOf(loppuInit.atTime(loppuTunti, 0));
+		System.out.println(alkuTs);
+		System.out.println(loppuTs);
+		
+
+		kontrolleri.asetaVaraus( 4, tilanId, alkuTs, loppuTs);
+		
+	}
+	/*
+	@FXML
 	public void näytäVarausIkkuna(ActionEvent event) throws IOException {
 		
 			
-			// hakee kannasta tilaiideellä lisätiedot
 			if (event.getSource() == tilanVarausButton1) {
-				varausId = 1;
+				tilanId = 1;
 			} else if (event.getSource() == tilanVarausButton2) {
-				varausId = 2;
+				tilanId = 2;
 			} else if (event.getSource() == tilanVarausButton3) {
-				varausId = 3;
+				tilanId = 3;
 			} else if (event.getSource() == tilanVarausButton4) {
-				varausId = 4;
+				tilanId = 4;
 			}
-			System.out.println(varausId);
+			System.out.println(tilanId);
 		
 		    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VarausIkkuna.fxml"));
 		    AnchorPane anchorpane = new AnchorPane();
@@ -154,7 +188,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		    stage.show();
 		
 	}
-
+	*/
 	@FXML
 	public void initialize() {
 

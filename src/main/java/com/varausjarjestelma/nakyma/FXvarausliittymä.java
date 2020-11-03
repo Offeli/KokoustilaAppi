@@ -1,4 +1,4 @@
-package com.varausjarjestelma.nakyma;
+/*package com.varausjarjestelma.nakyma;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -59,3 +59,4 @@ public class FXvarausliittymä implements Käyttöliittymä {
 	
 
 }
+*/
