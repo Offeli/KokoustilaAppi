@@ -76,7 +76,15 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	private Button tilanVarausButton3;
 	@FXML
 	private Button tilanVarausButton4;
+	@FXML
+	static
+	int varausId = 0;
 	
+
+	public static int getVarausId() {
+		return varausId;
+	}
+
 
 	public FXkäyttöliittymä(Kontrolleri kontrolleri) {
 		this.kontrolleri = kontrolleri;
@@ -124,7 +132,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	@FXML
 	public void näytäVarausIkkuna(ActionEvent event) throws IOException {
 		
-			int varausId = 0;
+			
 			// hakee kannasta tilaiideellä lisätiedot
 			if (event.getSource() == tilanVarausButton1) {
 				varausId = 1;

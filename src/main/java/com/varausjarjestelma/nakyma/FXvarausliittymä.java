@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -33,7 +34,7 @@ public class FXvarausliittymä implements Käyttöliittymä {
 		
 		kontrolleri = Kontrolleri.haeInstanssi();
 		
-		
+		int tilaId = FXkäyttöliittymä.getVarausId();
 		
 		int alkuTunti = 0;
 		int loppuTunti = 0;
@@ -47,7 +48,7 @@ public class FXvarausliittymä implements Käyttöliittymä {
 		System.out.println(loppuTs);
 		
 
-		//Kontrolleri.asetaVaraus(4, 1, alkuTs, loppuTs);
+		kontrolleri.asetaVaraus( 4, tilaId, alkuTs, loppuTs);
 		
 	}
 
