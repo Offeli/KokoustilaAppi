@@ -240,15 +240,31 @@
                               </TextFlow>
                            </children>
                         </AnchorPane>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
-                           <content>
-                              <Label prefHeight="168.0" prefWidth="242.0" text="Varauksen lisätiedot" textOverrun="CLIP" wrapText="true">
-                                 <font>
-                                    <Font size="39.0" />
-                                 </font>
-                              </Label>
-                           </content>
-                        </ScrollPane>
+                        <AnchorPane>
+                           <children>
+                              <DatePicker layoutX="35.0" layoutY="264.0" />
+                              <DatePicker layoutX="35.0" layoutY="378.0" />
+                              <ChoiceBox layoutX="59.0" layoutY="419.0" prefWidth="150.0" />
+                              <ChoiceBox layoutX="59.0" layoutY="301.0" prefWidth="150.0" />
+                              <Label layoutX="34.0" layoutY="239.0" prefHeight="25.0" prefWidth="176.0" text="Varauksen aloitusaika" />
+                              <Label layoutX="36.0" layoutY="347.0" prefHeight="31.0" prefWidth="172.0" text="Varauksen loppumisaika" />
+                              <Button layoutX="86.0" layoutY="475.0" mnemonicParsing="false" text="Vahvista muutokset" />
+                              <TextFlow prefHeight="242.0" prefWidth="242.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="244.0" text="NIMI" />
+                                    <Label fx:id="tilannimiDETAILS1" prefHeight="25.0" prefWidth="244.0" textOverrun="CLIP" />
+                                    <Label prefHeight="21.0" prefWidth="244.0" text="HLÖMÄÄRÄ" />
+                                    <Label fx:id="hlömääräDETAILS1" prefHeight="24.0" prefWidth="245.0" />
+                                    <Label prefHeight="17.0" prefWidth="245.0" text="KUVAUS" />
+                                    <Label fx:id="tilankuvausDETAILS1" prefHeight="49.0" prefWidth="245.0" textOverrun="CLIP" wrapText="true" />
+                                    <Label prefHeight="21.0" prefWidth="245.0" text="OSOITE" />
+                                    <Label fx:id="tilanosoiteDETAILS1" prefHeight="21.0" prefWidth="244.0" textOverrun="CLIP" />
+                                    <Label prefHeight="17.0" prefWidth="244.0" text="KAUPUNKI" />
+                                    <Label fx:id="tilankaupunkiDETAILS1" prefHeight="28.0" prefWidth="243.0" textOverrun="CLIP" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </AnchorPane>
                      </items>
                   </SplitPane>
                </content>

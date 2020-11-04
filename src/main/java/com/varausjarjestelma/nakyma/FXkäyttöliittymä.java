@@ -15,6 +15,7 @@ import com.varausjarjestelma.malli.Varaukset;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -210,6 +212,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 		varatutTilat.getItems().clear();
 		varauslista.clear();
+		
 		Varaukset[] varaukset = kontrolleri.haeVaraukset(kontrolleri.etsiKäyttäjä(4));
 		
 		for (Varaukset v : varaukset) {
@@ -221,6 +224,31 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		varatutTilat.getItems().addAll(varauslista);
 		
 	}
+	
+	/*
+	@FXML
+	public void handleVarausClicks() {
+		
+		varatutTilat.setOnMouseClicked(new EventHandler<MouseEvent>() {
+	        public void handle(MouseEvent event) {
+	            if(event.getSource().equals(varauslista)) {
+	            	kontrolleri.muokkaaVarausta(varausID, alku, loppu)
+	            }
+	        }
+		});
+	}
+	*/
+	    
+		/*
+		varatutTilat.onMouseClickedProperty().set((EventHandler<MouseEvent>) (MouseEvent t){
+			if (c.getOnAction()!=null) {
+		        c.getOnAction().handle(new ActionEvent(t, c));
+		      }
+			selectedItem = varatutTilat.getSelectionModel().getSelectedItem();
+		};
+				
+		*/
+	
 	/*
 	@FXML
 	public void näytäVarausIkkuna(ActionEvent event) throws IOException {
