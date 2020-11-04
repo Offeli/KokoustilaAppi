@@ -208,7 +208,7 @@ public class VarauksetDAO {
 		return palautus;
 	}
 	
-	public Varaukset[] haeVaraukset(int käyttäjäID) {
+	public Varaukset[] haeVaraukset(Käyttäjä käyttäjä) {
 		Session istunto = null;
 		Transaction transaktio = null;
 		Varaukset[] palautus = null;
@@ -219,7 +219,7 @@ public class VarauksetDAO {
 			transaktio = istunto.beginTransaction();
 			
 			@SuppressWarnings("unchecked")
-			List<Varaukset> varaukset = istunto.createQuery("from Varaukset where kayttaja = :kayttaja").setParameter("kayttaja", käyttäjäID).getResultList();
+			List<Varaukset> varaukset = istunto.createQuery("from Varaukset where kayttaja = :kayttaja").setParameter("kayttaja", käyttäjä).getResultList();
 			palautus = new Varaukset[varaukset.size()];
 			
 			transaktio.commit();

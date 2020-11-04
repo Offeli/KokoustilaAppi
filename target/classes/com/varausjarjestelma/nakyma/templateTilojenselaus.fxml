@@ -227,13 +227,17 @@
                 </SplitPane>
                </content>
             </Tab>
-            <Tab closable="false" text="Omat varaukset">
+            <Tab closable="false" onSelectionChanged="#näytäVaratutTilat" text="Omat varaukset">
                <content>
                   <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0">
                      <items>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="varatutTilat" layoutX="1.0" layoutY="1.0" prefHeight="526.0" prefWidth="649.0" />
+                              <TextFlow layoutX="1.0" layoutY="1.0">
+                                 <children>
+                                    <ListView fx:id="varatutTilat" prefHeight="526.0" prefWidth="649.0" />
+                                 </children>
+                              </TextFlow>
                            </children>
                         </AnchorPane>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">

@@ -129,8 +129,8 @@ public class Kontrolleri {
 		return varauksetDAO.haeVarauksetTila(tila);
 	}
 	
-	public Varaukset[] haeVaraukset(int käyttäjäID) {
-		return varauksetDAO.haeVaraukset(käyttäjäID);
+	public Varaukset[] haeVaraukset(Käyttäjä käyttäjä) {
+		return varauksetDAO.haeVaraukset(käyttäjä);
 	}
 
 }

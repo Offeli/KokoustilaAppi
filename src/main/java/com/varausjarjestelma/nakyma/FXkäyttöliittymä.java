@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
+import com.varausjarjestelma.malli.Käyttäjä;
 import com.varausjarjestelma.malli.Ominaisuus;
 import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.malli.TilanOminaisuus;
@@ -101,6 +102,7 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	
 	@FXML
 	private ListView varatutTilat;
+	ObservableList<String> varauslista =  FXCollections.observableArrayList();
 	
 	@FXML
 	private ListView tilanOminaisuusLista;
@@ -206,11 +208,17 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 	@FXML
 	public void näytäVaratutTilat(){
 		
+		varatutTilat.getItems().clear();
+		varauslista.clear();
+		Varaukset[] varaukset = kontrolleri.haeVaraukset(kontrolleri.etsiKäyttäjä(4));
 		
-		kontrolleri = Kontrolleri.haeInstanssi();
+		for (Varaukset v : varaukset) {
+			varauslista.add(String.format("%s, %s, %s klo %s-%s.",
+					v.getTila().getNimi(), v.getTila().getOsoite(), v.getTila().getKaupunki(),
+					v.getAlkuAika(), v.getLoppuAika()));
+		}
 		
-		kontrolleri.haeVaraukset(4);
-		
+		varatutTilat.getItems().addAll(varauslista);
 		
 	}
 	/*
