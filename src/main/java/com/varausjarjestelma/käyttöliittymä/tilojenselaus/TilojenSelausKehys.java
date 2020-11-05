@@ -1,4 +1,4 @@
-package com.varausjarjestelma.nakyma.nakyma;
+package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class TilojenSelausNäkymä extends BorderPane {
+public class TilojenSelausKehys extends BorderPane {
 
 	private final TilojenSelausKontrolleri kontrolleri;
 	private final List<Pane> tilaPanet;
 
-	public TilojenSelausNäkymä() {
+	public TilojenSelausKehys() {
 		kontrolleri = new TilojenSelausKontrolleri(this);
 		tilaPanet = new ArrayList<Pane>();
 
@@ -30,6 +30,7 @@ public class TilojenSelausNäkymä extends BorderPane {
 			public void handle(Event event) {
 				if (event.getTarget().equals(bg)){
 					setRight(null);
+					setBottom(null);
 					poistaKorostus();
 				}
 			}
@@ -63,6 +64,13 @@ public class TilojenSelausNäkymä extends BorderPane {
 						}
 					}
 					setRight(tiedot);
+
+					
+					StackPane n = new StackPane();
+					n.getChildren().add(new Text("Varaamislomake"));
+					n.setPadding(new Insets(50));
+					
+					setBottom(n);
 				}
 
 			});

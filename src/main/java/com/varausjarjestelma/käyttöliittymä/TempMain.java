@@ -1,6 +1,6 @@
-package com.varausjarjestelma.nakyma;
+package com.varausjarjestelma.käyttöliittymä;
 
-import com.varausjarjestelma.nakyma.nakyma.TilojenSelausNäkymä;
+import com.varausjarjestelma.käyttöliittymä.tilojenselaus.TilojenSelausKehys;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ public class TempMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setScene(new Scene(new TilojenSelausNäkymä(), 800, 500));
+		primaryStage.setScene(new Scene(new TilojenSelausKehys(), 800, 500));
 		primaryStage.show();
 		this.primaryStage = primaryStage;
 	}

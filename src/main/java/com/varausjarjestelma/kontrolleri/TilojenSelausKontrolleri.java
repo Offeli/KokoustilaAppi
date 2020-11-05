@@ -1,15 +1,15 @@
 package com.varausjarjestelma.kontrolleri;
 
+import com.varausjarjestelma.käyttöliittymä.tilojenselaus.TilojenSelausKehys;
 import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.malli.TilaDAO;
-import com.varausjarjestelma.nakyma.nakyma.TilojenSelausNäkymä;
 
 public class TilojenSelausKontrolleri {
 	
-	private final TilojenSelausNäkymä näkymä;
+	private final TilojenSelausKehys näkymä;
 	private final TilaDAO tilaDAO;
 	
-	public TilojenSelausKontrolleri(TilojenSelausNäkymä ts) {
+	public TilojenSelausKontrolleri(TilojenSelausKehys ts) {
 		näkymä = ts;
 		tilaDAO = new TilaDAO();
 	}
