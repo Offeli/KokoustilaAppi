@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.varausjarjestelma.kontrolleri.TilojenSelausKontrolleri;
 import com.varausjarjestelma.malli.Tila;
+import com.varausjarjestelma.malli.TilanOminaisuusDAO;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -52,9 +53,9 @@ public class TilojenSelausKehys extends BorderPane {
 					tilaPane.setBackground(new Background(new BackgroundFill(Color.GOLD, null, null)));
 
 					GridPane tiedot = new GridPane();
-					String[] otsikot = { "Nimi", "Kaupunki", "Osoite", "Henkilömäärä", "Kuvaus" };
+					String[] otsikot = { "Nimi", "Kaupunki", "Osoite", "Henkilömäärä", "Kuvaus", "Ominaisuudet" };
 					String[] arvot = { tila.getNimi(), tila.getKaupunki(), tila.getOsoite(), "" + tila.getHlomaara(),
-							tila.getKuvaus() };
+							tila.getKuvaus(), kontrolleri.näytäTilanOminaisuudetStringinä(tila.getID())};
 					int row = 0;
 					for (int i = 0; i < otsikot.length && i < arvot.length; i++) {
 						String arvo = arvot[i];

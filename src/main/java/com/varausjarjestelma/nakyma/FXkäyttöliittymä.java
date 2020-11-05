@@ -225,6 +225,22 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 		
 	}
 	
+	public String näytäTilanOminaisuudetStringinä(int tilaID) {
+		
+		Tila kyseinenTila = kontrolleri.etsiTila(tilaID);
+		TilanOminaisuus[] ominaisuusArray = kontrolleri.etsiTilanOminaisuudet(kyseinenTila);
+       ArrayList<String> ominaisuudetListattuna = new ArrayList <String>();
+       
+		for (int i = 0; i <= ominaisuusArray.length - 1; i++) {
+			TilanOminaisuus o = ominaisuusArray[i];
+			String nimi = o.getOminaisuus().getNimi();
+			String kuvaus = o.getOminaisuus().getKuvaus();
+			ominaisuudetListattuna.add(nimi + " : " + kuvaus);
+			
+		}
+		return ominaisuudetListattuna.toString();
+	}
+	
 	/*
 	@FXML
 	public void handleVarausClicks() {
