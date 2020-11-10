@@ -70,7 +70,7 @@ public class Kalenteri extends TempMain{
                                 super.updateItem(item, empty);
                                 
                                 if (item.isBefore(
-                                        checkInDatePicker.getValue().plusDays(1))
+                                        LocalDate.now())
                                     ) {
                                         setDisable(true);
                                         //setStyle("-fx-background-color: #fffff;");
@@ -93,7 +93,7 @@ public class Kalenteri extends TempMain{
         
         checkInDatePicker.setDayCellFactory(dayCellFactoryVaraukset);
         checkOutDatePicker.setDayCellFactory(dayCellFactoryVaraukset);
-        checkOutDatePicker.setValue(checkInDatePicker.getValue().plusDays(1));
+        checkOutDatePicker.setValue(checkInDatePicker.getValue());
         
         DatePickerSkin datePickerSkinIn = new DatePickerSkin(checkInDatePicker);
         Node popupContentIn = datePickerSkinIn.getPopupContent();
