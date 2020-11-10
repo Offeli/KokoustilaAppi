@@ -14,6 +14,7 @@ import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
@@ -52,7 +53,7 @@ public class Kalenteri extends TempMain{
     private void initUI() {
         VBox vbox = new VBox(20);
         vbox.setStyle("-fx-padding: 10;");
-        Scene scene = new Scene(vbox, 400, 400);
+        Scene scene = new Scene(vbox, 650, 350);
         stage.setScene(scene);
 
         checkInDatePicker = new DatePicker();
@@ -109,9 +110,9 @@ public class Kalenteri extends TempMain{
         GridPane.setHalignment(checkInlabel, HPos.LEFT);
         gridPane.add(popupContentIn, 0, 1);
         Label checkOutlabel = new Label("Check-Out Date:");
-        gridPane.add(checkOutlabel, 0, 2);
+        gridPane.add(checkOutlabel, 1, 0);
         GridPane.setHalignment(checkOutlabel, HPos.LEFT);
-        gridPane.add(popupContentOut, 0, 3);
+        gridPane.add(popupContentOut, 1, 1);
         
         vbox.getChildren().add(gridPane);
     }
