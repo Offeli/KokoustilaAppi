@@ -5,12 +5,9 @@ import java.util.List;
 
 import com.varausjarjestelma.kontrolleri.TilojenSelausKontrolleri;
 import com.varausjarjestelma.malli.Tila;
-import com.varausjarjestelma.malli.TilanOminaisuusDAO;
-
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -19,18 +16,19 @@ public class TilojenSelausKehys extends BorderPane {
 
 	private final TilojenSelausKontrolleri kontrolleri;
 	private final List<Pane> tilaPanet;
+	private GridPane korostettu;
 
 	public TilojenSelausKehys() {
 		kontrolleri = new TilojenSelausKontrolleri(this);
 		tilaPanet = new ArrayList<Pane>();
-
-		final TilePane bg = new TilePane();
+		korostettu = null;
+		final TilePane tausta = new TilePane();
 		Tila[] tilat = kontrolleri.haeTilat();
 
-		bg.setOnMouseClicked(new EventHandler<Event>() {
+		tausta.setOnMouseClicked(new EventHandler<Event>() {
 
 			public void handle(Event event) {
-				if (event.getTarget().equals(bg)){
+				if (event.getTarget().equals(tausta)) {
 					setRight(null);
 					setBottom(null);
 					poistaKorostus();
@@ -39,24 +37,24 @@ public class TilojenSelausKehys extends BorderPane {
 		});
 
 		for (final Tila tila : tilat) {
-			final GridPane tilaPane = new GridPane();
+			final GridPane tilaPaneeli = new GridPane();
 			Text nimi = new Text(tila.getNimi());
 			Text kaupunki = new Text(tila.getKaupunki());
 			Text hlömäärä = new Text("Henkilömäärä: " + tila.getHlomaara());
-			tilaPanet.add(tilaPane);
-			tilaPane.add(nimi, 0, 0);
-			tilaPane.add(kaupunki, 0, 1);
-			tilaPane.add(hlömäärä, 0, 2);
-			tilaPane.setOnMouseClicked(new EventHandler<Event>() {
+			tilaPanet.add(tilaPaneeli);
+			tilaPaneeli.add(nimi, 0, 0);
+			tilaPaneeli.add(kaupunki, 0, 1);
+			tilaPaneeli.add(hlömäärä, 0, 2);
+			tilaPaneeli.setOnMouseClicked(new EventHandler<Event>() {
 
 				public void handle(Event event) {
-					poistaKorostus();
-					tilaPane.setBackground(new Background(new BackgroundFill(Color.GOLD, null, null)));
+					näytäLatausruutu();
+					korosta(tilaPaneeli);
 
 					GridPane tiedot = new GridPane();
 					String[] otsikot = { "Nimi", "Kaupunki", "Osoite", "Henkilömäärä", "Kuvaus", "Ominaisuudet" };
 					String[] arvot = { tila.getNimi(), tila.getKaupunki(), tila.getOsoite(), "" + tila.getHlomaara(),
-							tila.getKuvaus(), kontrolleri.näytäTilanOminaisuudetStringinä(tila.getID())};
+							tila.getKuvaus(), kontrolleri.näytäTilanOminaisuudetStringinä(tila.getID()) };
 					int row = 0;
 					for (int i = 0; i < otsikot.length && i < arvot.length; i++) {
 						String arvo = arvot[i];
@@ -66,34 +64,52 @@ public class TilojenSelausKehys extends BorderPane {
 						}
 					}
 					setRight(tiedot);
+					
 
+					// StackPane n = new StackPane();
+					Pane varauslomake = new TilojenSelausVarauslomake().getKokoVarausLomake();
 					
-					//StackPane n = new StackPane();
-					GridPane n = new TilojenSelausVarauslomake().getKokoVarausLomake();
-					// n.getChildren().add(new Text("Varaamislomake"));
-					// n.setPadding(new Insets(20));
-					setMargin(n, new Insets(10));
-						
-					setBottom(n);
-					
+
+					varauslomake.setPadding(new Insets(30));
+
+					setBottom(varauslomake);
+
 				}
 
 			});
-			bg.getChildren().add(tilaPane);
-			tilaPane.setPadding(new Insets(5));
-			tilaPane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+			tausta.getChildren().add(tilaPaneeli);
+			tilaPaneeli.setPadding(new Insets(5));
+			tilaPaneeli.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		}
 
-		setCenter(bg);
-		bg.setBackground(new Background(new BackgroundFill(Color.DARKOLIVEGREEN, null, null)));
-		bg.setHgap(15);
-		bg.setVgap(10);
-		bg.setPadding(new Insets(20));
+		setCenter(tausta);
+		tausta.setBackground(new Background(new BackgroundFill(Color.DARKOLIVEGREEN, null, null)));
+		tausta.setHgap(15);
+		tausta.setVgap(10);
+		tausta.setPadding(new Insets(20));
 	}
-	
+
+	private void korosta(GridPane korostettava) {
+		poistaKorostus();
+
+		if (korostettava != null)
+			korostettava.setBackground(new Background(new BackgroundFill(Color.GOLD, null, null)));
+
+		korostettu = korostettava;
+	}
+
 	private void poistaKorostus() {
-		for (Pane pane : tilaPanet)
-			pane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+		if (korostettu != null) {
+			korostettu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+			korostettu = null;
+		}
+	}
+
+	private void näytäLatausruutu() {
+		Pane latausruutu = new StackPane();
+		setRight(latausruutu);
+
+		latausruutu.getChildren().add(new Text("Lataa..."));
 	}
 
 }
