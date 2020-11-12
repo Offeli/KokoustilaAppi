@@ -24,13 +24,13 @@ public class TilojenSelausKehys extends BorderPane {
 		kontrolleri = new TilojenSelausKontrolleri(this);
 		tilaPanet = new ArrayList<Pane>();
 
-		final TilePane bg = new TilePane();
+		final TilePane tausta = new TilePane();
 		Tila[] tilat = kontrolleri.haeTilat();
 
-		bg.setOnMouseClicked(new EventHandler<Event>() {
+		tausta.setOnMouseClicked(new EventHandler<Event>() {
 
 			public void handle(Event event) {
-				if (event.getTarget().equals(bg)){
+				if (event.getTarget().equals(tausta)){
 					setRight(null);
 					setBottom(null);
 					poistaKorostus();
@@ -39,19 +39,19 @@ public class TilojenSelausKehys extends BorderPane {
 		});
 
 		for (final Tila tila : tilat) {
-			final GridPane tilaPane = new GridPane();
+			final GridPane tilaPaneeli = new GridPane();
 			Text nimi = new Text(tila.getNimi());
 			Text kaupunki = new Text(tila.getKaupunki());
 			Text hlömäärä = new Text("Henkilömäärä: " + tila.getHlomaara());
-			tilaPanet.add(tilaPane);
-			tilaPane.add(nimi, 0, 0);
-			tilaPane.add(kaupunki, 0, 1);
-			tilaPane.add(hlömäärä, 0, 2);
-			tilaPane.setOnMouseClicked(new EventHandler<Event>() {
+			tilaPanet.add(tilaPaneeli);
+			tilaPaneeli.add(nimi, 0, 0);
+			tilaPaneeli.add(kaupunki, 0, 1);
+			tilaPaneeli.add(hlömäärä, 0, 2);
+			tilaPaneeli.setOnMouseClicked(new EventHandler<Event>() {
 
 				public void handle(Event event) {
 					poistaKorostus();
-					tilaPane.setBackground(new Background(new BackgroundFill(Color.GOLD, null, null)));
+					tilaPaneeli.setBackground(new Background(new BackgroundFill(Color.GOLD, null, null)));
 
 					GridPane tiedot = new GridPane();
 					String[] otsikot = { "Nimi", "Kaupunki", "Osoite", "Henkilömäärä", "Kuvaus", "Ominaisuudet" };
@@ -69,24 +69,24 @@ public class TilojenSelausKehys extends BorderPane {
 
 					
 					//StackPane n = new StackPane();
-					StackPane n = new TilojenSelausVarauslomake().getVarauslomake();
+					StackPane varauslomake = new TilojenSelausVarauslomake().getVarauslomake();
 					// n.getChildren().add(new Text("Varaamislomake"));
-					n.setPadding(new Insets(50));
+					varauslomake.setPadding(new Insets(50));
 					
-					setBottom(n);
+					setBottom(varauslomake);
 				}
 
 			});
-			bg.getChildren().add(tilaPane);
-			tilaPane.setPadding(new Insets(5));
-			tilaPane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+			tausta.getChildren().add(tilaPaneeli);
+			tilaPaneeli.setPadding(new Insets(5));
+			tilaPaneeli.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 		}
 
-		setCenter(bg);
-		bg.setBackground(new Background(new BackgroundFill(Color.DARKOLIVEGREEN, null, null)));
-		bg.setHgap(15);
-		bg.setVgap(10);
-		bg.setPadding(new Insets(20));
+		setCenter(tausta);
+		tausta.setBackground(new Background(new BackgroundFill(Color.DARKOLIVEGREEN, null, null)));
+		tausta.setHgap(15);
+		tausta.setVgap(10);
+		tausta.setPadding(new Insets(20));
 	}
 	
 	private void poistaKorostus() {
