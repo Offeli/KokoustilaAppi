@@ -5,12 +5,9 @@ import java.util.List;
 
 import com.varausjarjestelma.kontrolleri.TilojenSelausKontrolleri;
 import com.varausjarjestelma.malli.Tila;
-import com.varausjarjestelma.malli.TilanOminaisuusDAO;
-
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -69,7 +66,7 @@ public class TilojenSelausKehys extends BorderPane {
 
 					
 					//StackPane n = new StackPane();
-					StackPane varauslomake = new TilojenSelausVarauslomake().getVarauslomake();
+					Pane varauslomake = new TilojenSelausVarauslomake().getVarauslomake();
 					// n.getChildren().add(new Text("Varaamislomake"));
 					varauslomake.setPadding(new Insets(50));
 					
