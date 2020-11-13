@@ -25,10 +25,20 @@ public class VarausIkkuna extends BorderPane {
 		root = new StackPane();
         
         TilePane pane = new TilePane();
+        pane.setHgap(10);
+        pane.setVgap(10);
 		
-		for(Varaukset v: varaukset) {
-		    Label label = new Label(v.getTila().getNimi());
-		    pane.getChildren().add(label);
+		for(final Varaukset v: varaukset) {
+		    Button btn = new Button(v.getTila().getNimi());
+		    
+		    btn.setOnAction(new EventHandler<ActionEvent>() {
+		    	
+		    	public void handle(ActionEvent event) {
+		    		System.out.println(v.getTila().getKuvaus());
+		    	}
+		    });
+		    
+		    pane.getChildren().add(btn);
 		}
         
         root.getChildren().add(pane);
