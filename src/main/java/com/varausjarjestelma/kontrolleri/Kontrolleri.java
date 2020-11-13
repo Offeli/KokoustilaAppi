@@ -116,14 +116,8 @@ public class Kontrolleri {
 
 		return varauksetDAO.poistaVaraus(varaus);
 	}
-
-	public TilanOminaisuus[] etsiTilanOminaisuudet(Tila tila) {
-		return toDAO.etsiTilaanLiittyvätTilanOminaisuudet(tila);
-	}
-
-	public TilanOminaisuus[] etsiTilanOminaisuudet(Ominaisuus ominaisuus) {
-		return toDAO.etsiOminaisuuteenLiittyvätTilanOminaisuudet(ominaisuus);
-	}
+	
+	// Varauksien haku
 	
 	public Varaukset[] haeVarauksetTila(Tila tila) {
 		return varauksetDAO.haeVarauksetTila(tila);
@@ -131,6 +125,20 @@ public class Kontrolleri {
 	
 	public Varaukset[] haeVaraukset(Käyttäjä käyttäjä) {
 		return varauksetDAO.haeVaraukset(käyttäjä);
+	}
+	
+	public Varaukset[] haeKaikkiVaraukset() {
+		return varauksetDAO.haeKaikkiVaraukset();
+	}
+	
+	// TilanOminaisuuksien haku
+
+	public TilanOminaisuus[] etsiTilanOminaisuudet(Tila tila) {
+		return toDAO.etsiTilaanLiittyvätTilanOminaisuudet(tila);
+	}
+
+	public TilanOminaisuus[] etsiTilanOminaisuudet(Ominaisuus ominaisuus) {
+		return toDAO.etsiOminaisuuteenLiittyvätTilanOminaisuudet(ominaisuus);
 	}
 
 }
