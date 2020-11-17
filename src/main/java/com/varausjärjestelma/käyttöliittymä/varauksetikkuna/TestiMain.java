@@ -10,7 +10,7 @@ public class TestiMain extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		VarausIkkuna varausIkkuna = new VarausIkkuna();
-		primaryStage.setScene(new Scene(varausIkkuna.getRoot(), 300, 250));
+		primaryStage.setScene(new Scene(varausIkkuna.getRoot(), 500, 350));
 		primaryStage.show();
 		this.primaryStage = primaryStage;
 	}

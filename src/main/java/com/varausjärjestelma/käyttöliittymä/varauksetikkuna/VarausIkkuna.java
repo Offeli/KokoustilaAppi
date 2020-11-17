@@ -34,7 +34,8 @@ public class VarausIkkuna extends BorderPane {
 		    btn.setOnAction(new EventHandler<ActionEvent>() {
 		    	
 		    	public void handle(ActionEvent event) {
-		    		System.out.println(v.getTila().getKuvaus());
+		    		VarausPopUp pop = new VarausPopUp(kontrolleri);
+		    		pop.display(v);
 		    	}
 		    });
 		    
