@@ -67,7 +67,7 @@ public class TilojenSelausKehys extends BorderPane {
 					
 
 					// StackPane n = new StackPane();
-					Pane varauslomake = new TilojenSelausVarauslomake().getKokoVarausLomake();					
+					Pane varauslomake = new TilojenSelausVarauslomake().getKokoVarausLomake(tila);					
 
 					varauslomake.setPadding(new Insets(30));
 

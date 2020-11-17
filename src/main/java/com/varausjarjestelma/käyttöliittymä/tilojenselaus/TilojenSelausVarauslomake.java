@@ -1,5 +1,7 @@
 package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
+import com.varausjarjestelma.malli.Tila;
+
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -71,8 +73,8 @@ public class TilojenSelausVarauslomake {
 
 	}
 	
-	public Pane getKalenteri () {
-		Pane kalenteri = new Kalenteri().getRoot(1);
+	public Pane getKalenteri (int id) {
+		Pane kalenteri = new Kalenteri().getRoot(id);
 		kalenteri.setPrefWidth(200);
 		kalenteri.setPrefHeight(150);
 		kalenteri.setBorder(new Border(new BorderStroke(Color.BLACK, 
@@ -81,11 +83,11 @@ public class TilojenSelausVarauslomake {
 		return kalenteri;
 	}
 	
-	public GridPane getKokoVarausLomake() {
+	public GridPane getKokoVarausLomake(Tila tila) {
 		
 		GridPane kokoLomake = new GridPane();
 		GridPane formi = getVarausFormi();
-		Pane kalenteripane = getKalenteri();
+		Pane kalenteripane = getKalenteri(tila.getID());
 		kokoLomake.add(formi, 0, 0);
 		kokoLomake.add(kalenteripane, 1, 0);
 		kokoLomake.setMargin(kalenteripane, new Insets(20));
