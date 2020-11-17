@@ -14,6 +14,8 @@ import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -86,10 +88,65 @@ public class Kalenteri{
                     };
                 }
             };
+            
+         // Rajaa minä päivinä on varattavissa | Ei voi varata jos päivä on jo varattu tai mennyt
+            final Callback<DatePicker, DateCell> dayCellFactoryVarauksetOut = 
+                    new Callback<DatePicker, DateCell>() {
+                        public DateCell call(final DatePicker datePicker) {
+                            return new DateCell() {
+                                @Override
+                                public void updateItem(LocalDate item, boolean empty) {
+                                    super.updateItem(item, empty);
+                                    
+                                    if (item.isBefore(
+                                            checkInDatePicker.getValue())
+                                        ) {
+                                            setDisable(true);
+                                            //setStyle("-fx-background-color: #fffff;");
+                                    }
+                                    
+                                    for(int i = 0; i < varaukset.length; i++) {
+                                    	ajat[i] = (varaukset[i].getAlkuAika()).toLocalDateTime().toLocalDate();
+                                    }
+                                    
+                                    for(LocalDate l : ajat) {
+                                    	if(item.isEqual(l)) {
+                                    		setDisable(true);
+                                            setStyle("-fx-background-color: #ffc0cb;");
+                                    	}
+                                    }
+                            }
+                        };
+                    }
+                };
         
         checkInDatePicker.setDayCellFactory(dayCellFactoryVaraukset);
-        checkOutDatePicker.setDayCellFactory(dayCellFactoryVaraukset);
+        checkOutDatePicker.setDayCellFactory(dayCellFactoryVarauksetOut);
         checkOutDatePicker.setValue(checkInDatePicker.getValue());
+        
+        EventHandler<ActionEvent> inEvent = new EventHandler<ActionEvent>() { 
+            public void handle(ActionEvent e) 
+            { 
+                // get the date picker value 
+                LocalDate date = checkInDatePicker.getValue(); 
+  
+                System.out.println(date);
+            } 
+        };
+        
+        checkInDatePicker.setOnAction(inEvent);
+        
+        EventHandler<ActionEvent> outEvent = new EventHandler<ActionEvent>() { 
+            public void handle(ActionEvent e) 
+            { 
+                // get the date picker value 
+                LocalDate date = checkOutDatePicker.getValue(); 
+  
+                System.out.println(date);
+            } 
+        };
+        
+        checkOutDatePicker.setOnAction(outEvent);
         
         @SuppressWarnings("restriction")
 		DatePickerSkin datePickerSkinIn = new DatePickerSkin(checkInDatePicker);
@@ -116,5 +173,13 @@ public class Kalenteri{
         root.getChildren().add(gridPane);
     	
     	return root;
+    }
+    
+    public LocalDate getInDate() {
+    	return checkInDatePicker.getValue();
+    }
+    
+    public LocalDate getOutDate() {
+    	return checkOutDatePicker.getValue();
     }
 }

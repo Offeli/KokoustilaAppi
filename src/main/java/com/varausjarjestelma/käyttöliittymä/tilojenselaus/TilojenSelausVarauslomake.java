@@ -30,6 +30,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class TilojenSelausVarauslomake {
+	private Kalenteri calendar;
+	
+	public TilojenSelausVarauslomake() {
+		calendar = new Kalenteri();
+	}
 	
 	public GridPane getVarausFormi() {
 		
@@ -94,7 +99,8 @@ public class TilojenSelausVarauslomake {
 	}
 	
 	public Pane getKalenteri (int id) {
-		Pane kalenteri = new Kalenteri().getRoot(id);
+		Pane kalenteri = calendar.getRoot(id);
+		System.out.println(calendar.getInDate() + " & " + calendar.getOutDate());
 		kalenteri.setPrefWidth(200);
 		kalenteri.setPrefHeight(150);
 		kalenteri.setBorder(new Border(new BorderStroke(Color.BLACK, 
