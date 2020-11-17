@@ -88,8 +88,8 @@ public class TilojenSelausVarauslomake {
 		GridPane kokoLomake = new GridPane();
 		GridPane formi = getVarausFormi();
 		Pane kalenteripane = getKalenteri(tila.getID());
-		kokoLomake.add(formi, 0, 0);
-		kokoLomake.add(kalenteripane, 1, 0);
+		kokoLomake.add(kalenteripane, 0, 0);
+		kokoLomake.add(formi, 1, 0);
 		kokoLomake.setMargin(kalenteripane, new Insets(20));
 		
 		return kokoLomake;
