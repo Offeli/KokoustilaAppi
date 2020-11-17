@@ -4,6 +4,7 @@ package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.sähköposti.SimppeliMaili;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -11,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Border;
@@ -64,6 +66,28 @@ public class TilojenSelausVarauslomake {
 	    final TextField emailField = new TextField();
 	    emailField.setPrefHeight(40);
 	    gridpane.add(emailField, 1, 2);
+	    
+	    // Add aloitusaikalabel
+	    Label aloitusaikaLabel = new Label("Aloitusaika");
+	    gridpane.add(aloitusaikaLabel, 0, 3);
+	    
+	    // Add check-in vaihtoehdot
+	    ChoiceBox checkinvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList(
+	    	    "5:00",  "6:00", "7:00", "8:00", "9:00", "10:00",  "11:00", "12:00", "13:00", "14:00", "15:00",
+	    	    "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00")
+	    	);
+	    gridpane.add(checkinvaihtoehdot, 1, 3);
+	    
+	 // Add lopetussaikalabel
+	    Label lopetusaikaLabel = new Label("Lopetussaika");
+	    gridpane.add(lopetusaikaLabel, 0, 4);
+	    
+	    // Add check-out vaihtoehdot¨
+	    ChoiceBox checkoutvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList(
+	    	    "6:00", "7:00", "8:00", "9:00", "10:00",  "11:00", "12:00", "13:00", "14:00", "15:00",
+	    	    "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00")
+	    	);
+	    gridpane.add(checkoutvaihtoehdot, 1, 4);
 	   
 
 	    // Add Submit Button
@@ -71,7 +95,7 @@ public class TilojenSelausVarauslomake {
 	    submitButton.setPrefHeight(40);
 	    submitButton.setDefaultButton(true);
 	    submitButton.setPrefWidth(100);
-	    gridpane.add(submitButton, 0, 4, 2, 1);
+	    gridpane.add(submitButton, 0, 5, 2, 1);
 	    gridpane.setHalignment(submitButton, HPos.CENTER);
 	    gridpane.setMargin(submitButton, new Insets(10,10,10,10));
 	    
