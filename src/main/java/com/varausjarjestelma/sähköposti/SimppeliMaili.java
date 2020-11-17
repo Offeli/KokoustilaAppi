@@ -54,8 +54,8 @@ private static Message prepareMessage(Session session, String myAccountEmail, St
 	Message message = new MimeMessage(session);
 	message.setFrom(new InternetAddress(myAccountEmail));
 	message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-	message.setSubject("Java ohjelmasta viestiä!");
-	message.setText("moro moro t. javaAppi :)");
+	message.setSubject("Reserviceltä viestiä!!");
+	message.setText("Reserviceltä terve, tilavarauksesi on vahvistettu. Kiitos!");
 	return message;
 	} catch(Exception ex) {
 		Logger.getLogger(SimppeliMaili.class.getName()).log(Level.SEVERE, null, ex);

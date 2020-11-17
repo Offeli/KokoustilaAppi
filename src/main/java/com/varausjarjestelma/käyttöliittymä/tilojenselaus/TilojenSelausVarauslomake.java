@@ -1,9 +1,16 @@
 package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
-import com.varausjarjestelma.malli.Tila;
+import javax.mail.MessagingException;
 
+import com.varausjarjestelma.malli.Tila;
+import com.varausjarjestelma.sähköposti.SimppeliMaili;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -50,7 +57,7 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(emailLabel, 0, 2);
 
 	    // Add Email Text Field
-	    TextField emailField = new TextField();
+	    final TextField emailField = new TextField();
 	    emailField.setPrefHeight(40);
 	    gridpane.add(emailField, 1, 2);
 	   
@@ -68,6 +75,19 @@ public class TilojenSelausVarauslomake {
 	 //           BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	    gridpane.setMargin(gridpane, new Insets(20));
 	    gridpane.setMaxWidth(300);
+	    
+	    submitButton.setOnAction(new EventHandler<ActionEvent>() {
+	         public void handle(ActionEvent e) {
+	        	 try {
+	        		 
+	        		 Alert a = new Alert(AlertType.CONFIRMATION);
+	        		 a.setHeaderText("Tila varattu. Kiitos!");
+	                 a.show();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}  
+	        }
+	    });
 	    
 	    return gridpane;
 
