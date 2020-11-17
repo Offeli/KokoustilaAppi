@@ -23,7 +23,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Omistaja/Downloads/jaf-1_1_1/jaf-1.1.1/activation.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Omistaja/Downloads/javamail1_4_7/javamail-1.4.7/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Veera/Downloads/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Veera/Downloads/mail.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

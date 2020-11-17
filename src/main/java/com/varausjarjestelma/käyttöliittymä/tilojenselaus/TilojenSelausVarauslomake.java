@@ -1,6 +1,5 @@
 package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
-import javax.mail.MessagingException;
 
 import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.sähköposti.SimppeliMaili;

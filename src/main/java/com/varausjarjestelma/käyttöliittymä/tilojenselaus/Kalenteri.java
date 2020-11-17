@@ -59,7 +59,7 @@ public class Kalenteri{
         
         
      // Rajaa minä päivinä on varattavissa | Ei voi varata jos päivä on jo varattu tai mennyt
-        final Callback<DatePicker, DateCell> dayCellFactoryVaraukset = 
+        final Callback<DatePicker, DateCell> dayCellFactoryVarauksetIn = 
                 new Callback<DatePicker, DateCell>() {
                     public DateCell call(final DatePicker datePicker) {
                         return new DateCell() {
@@ -120,7 +120,7 @@ public class Kalenteri{
                     }
                 };
         
-        checkInDatePicker.setDayCellFactory(dayCellFactoryVaraukset);
+        checkInDatePicker.setDayCellFactory(dayCellFactoryVarauksetIn);
         checkOutDatePicker.setDayCellFactory(dayCellFactoryVarauksetOut);
         checkOutDatePicker.setValue(checkInDatePicker.getValue());
         
