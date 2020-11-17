@@ -56,7 +56,7 @@ public class Kalenteri{
         checkInDatePicker.setValue(LocalDate.now());
         
         
-     // Rajaa minä päivinä on varattavissa | Ei voi varata jos päivä on jo varattu
+     // Rajaa minä päivinä on varattavissa | Ei voi varata jos päivä on jo varattu tai mennyt
         final Callback<DatePicker, DateCell> dayCellFactoryVaraukset = 
                 new Callback<DatePicker, DateCell>() {
                     public DateCell call(final DatePicker datePicker) {
@@ -116,10 +116,5 @@ public class Kalenteri{
         root.getChildren().add(gridPane);
     	
     	return root;
-    }
- 
-    private void initUI() {
-
-       
     }
 }
