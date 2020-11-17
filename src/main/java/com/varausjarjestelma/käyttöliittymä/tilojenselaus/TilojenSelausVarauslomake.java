@@ -72,14 +72,13 @@ public class TilojenSelausVarauslomake {
 	}
 	
 	public Pane getKalenteri () {
-		Pane pane = new Pane();
-		pane.getChildren().add(new Text("tähän johonkin kalenteri"));
-		pane.setPrefWidth(200);
-		pane.setPrefHeight(150);
-		pane.setBorder(new Border(new BorderStroke(Color.BLACK, 
+		Pane kalenteri = new Kalenteri().getRoot(1);
+		kalenteri.setPrefWidth(200);
+		kalenteri.setPrefHeight(150);
+		kalenteri.setBorder(new Border(new BorderStroke(Color.BLACK, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		
-		return pane;
+		return kalenteri;
 	}
 	
 	public GridPane getKokoVarausLomake() {

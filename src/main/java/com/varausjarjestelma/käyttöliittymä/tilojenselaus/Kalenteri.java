@@ -10,6 +10,7 @@ import java.util.Locale;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 import com.varausjarjestelma.käyttöliittymä.TempMain;
+import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.application.Application;
@@ -21,41 +22,35 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
  
-public class Kalenteri extends TempMain{
+public class Kalenteri{
  
-    private Stage stage;
     private DatePicker checkInDatePicker, checkOutDatePicker;
-    private final String pattern = "yyyy-MM-dd";
     private Kontrolleri kontrolleri;
     private Varaukset[] varaukset;
     private LocalDate[] ajat;
- 
-    public static void main(String[] args) {
-        Locale.setDefault(Locale.UK);
-        launch(args);
+    private StackPane root;
+    
+    public Kalenteri() {
+    	Locale.setDefault(Locale.UK);
+    	kontrolleri = Kontrolleri.haeInstanssi(); 	
     }
- 
-    @Override
-    public void start(Stage stage) {
-        this.stage = stage;
-        kontrolleri = Kontrolleri.haeInstanssi();
-        varaukset = kontrolleri.haeVarauksetTila(kontrolleri.etsiTila(1));
-        ajat = new LocalDate[varaukset.length];
-        stage.setTitle("DatePickerSample ");
-        initUI();
-        stage.show();
-    }
- 
-    private void initUI() {
-        VBox vbox = new VBox(20);
-        vbox.setStyle("-fx-padding: 10;");
-        Scene scene = new Scene(vbox, 650, 350);
-        stage.setScene(scene);
-
+    
+    public StackPane getRoot(int tila) {
+    	varaukset = kontrolleri.haeVarauksetTila(kontrolleri.etsiTila(tila));
+    	ajat = new LocalDate[varaukset.length];
+    	
+    	root = new StackPane();
+        
+        TilePane pane = new TilePane();
+        pane.setHgap(10);
+        pane.setVgap(10);
+        
         checkInDatePicker = new DatePicker();
         checkOutDatePicker = new DatePicker();
         checkInDatePicker.setValue(LocalDate.now());
@@ -96,11 +91,15 @@ public class Kalenteri extends TempMain{
         checkOutDatePicker.setDayCellFactory(dayCellFactoryVaraukset);
         checkOutDatePicker.setValue(checkInDatePicker.getValue());
         
-        DatePickerSkin datePickerSkinIn = new DatePickerSkin(checkInDatePicker);
-        Node popupContentIn = datePickerSkinIn.getPopupContent();
+        @SuppressWarnings("restriction")
+		DatePickerSkin datePickerSkinIn = new DatePickerSkin(checkInDatePicker);
+        @SuppressWarnings("restriction")
+		Node popupContentIn = datePickerSkinIn.getPopupContent();
         
-        DatePickerSkin datePickerSkinOut = new DatePickerSkin(checkOutDatePicker);
-        Node popupContentOut = datePickerSkinOut.getPopupContent();
+        @SuppressWarnings("restriction")
+		DatePickerSkin datePickerSkinOut = new DatePickerSkin(checkOutDatePicker);
+        @SuppressWarnings("restriction")
+		Node popupContentOut = datePickerSkinOut.getPopupContent();
         
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
@@ -114,6 +113,13 @@ public class Kalenteri extends TempMain{
         GridPane.setHalignment(checkOutlabel, HPos.LEFT);
         gridPane.add(popupContentOut, 1, 1);
         
-        vbox.getChildren().add(gridPane);
+        root.getChildren().add(gridPane);
+    	
+    	return root;
+    }
+ 
+    private void initUI() {
+
+       
     }
 }
