@@ -2,12 +2,16 @@ package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import com.varausjarjestelma.i18n.I18n;
 import com.varausjarjestelma.kontrolleri.TilojenSelausKontrolleri;
 import com.varausjarjestelma.malli.Tila;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -24,6 +28,21 @@ public class TilojenSelausKehys extends BorderPane {
 		korostettu = null;
 		final TilePane tausta = new TilePane();
 		Tila[] tilat = kontrolleri.haeTilat();
+		
+		
+		HBox hbox = new HBox();
+		hbox.setPadding(new Insets(5, 5, 5, 5));
+        hbox.setSpacing(5);
+		Button buttonEnglish = I18n.buttonForKey("button.english");
+		buttonEnglish.setTooltip(I18n.tooltipForKey("button.english.tooltip"));
+		buttonEnglish.setOnAction((evt) -> switchLanguage(Locale.ENGLISH));
+		hbox.getChildren().add(buttonEnglish);
+		Button buttonFinnish = I18n.buttonForKey("button.finnish");
+		buttonFinnish.setTooltip(I18n.tooltipForKey("button.finnish.tooltip"));
+		buttonFinnish.setOnAction((evt) -> switchLanguage(I18n.FINNISH));
+		hbox.getChildren().add(buttonFinnish);
+		setTop(hbox);
+
 
 		tausta.setOnMouseClicked(new EventHandler<Event>() {
 
@@ -110,5 +129,10 @@ public class TilojenSelausKehys extends BorderPane {
 
 		latausruutu.getChildren().add(new Text("Lataa..."));
 	}
+	
+    private void switchLanguage(Locale locale) {
+        I18n.setLocale(locale);
+    }
+
 
 }

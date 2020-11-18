@@ -1,6 +1,7 @@
 package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
 
+import com.varausjarjestelma.i18n.I18n;
 import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.sähköposti.SimppeliMaili;
 
@@ -41,14 +42,14 @@ public class TilojenSelausVarauslomake {
 		
 		GridPane gridpane = new GridPane();
 		
-		Label headerLabel = new Label("Varaa tästä!");
+		Label headerLabel = I18n.stringForLabel("varaatasta");
 	    headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
 	    gridpane.add(headerLabel, 0,0,2,1);
 	    gridpane.setHalignment(headerLabel, HPos.CENTER);
 	    gridpane.setMargin(headerLabel, new Insets(10,10,10,10));
         
 	    // Add Name Label
-	    Label nameLabel = new Label("Nimesi : ");
+	    Label nameLabel = I18n.stringForLabel("nimesi");
 	    gridpane.add(nameLabel, 0,1);
 
 	    // Add Name Text Field
@@ -59,7 +60,7 @@ public class TilojenSelausVarauslomake {
 
 
 	    // Add Email Label
-	    Label emailLabel = new Label("Sähköpostisi : ");
+	    Label emailLabel = I18n.stringForLabel("sahkopostisi");
 	    gridpane.add(emailLabel, 0, 2);
 
 	    // Add Email Text Field
@@ -68,7 +69,7 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(emailField, 1, 2);
 	    
 	    // Add aloitusaikalabel
-	    Label aloitusaikaLabel = new Label("Aloitusaika");
+	    Label aloitusaikaLabel = I18n.stringForLabel("aloitusaika");
 	    gridpane.add(aloitusaikaLabel, 0, 3);
 	    
 	    // Add check-in vaihtoehdot
@@ -79,7 +80,7 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(checkinvaihtoehdot, 1, 3);
 	    
 	 // Add lopetussaikalabel
-	    Label lopetusaikaLabel = new Label("Lopetussaika");
+	    Label lopetusaikaLabel = I18n.stringForLabel("lopetusaika");
 	    gridpane.add(lopetusaikaLabel, 0, 4);
 	    
 	    // Add check-out vaihtoehdot¨
@@ -91,7 +92,8 @@ public class TilojenSelausVarauslomake {
 	   
 
 	    // Add Submit Button
-	    Button submitButton = new Button("Vahvista varaus");
+	    Button submitButton = I18n.buttonForKey("button.vahvistavaraus");
+	    submitButton.setTooltip(I18n.tooltipForKey("button.vahvistavaraus.tooltip"));
 	    submitButton.setPrefHeight(40);
 	    submitButton.setDefaultButton(true);
 	    submitButton.setPrefWidth(100);

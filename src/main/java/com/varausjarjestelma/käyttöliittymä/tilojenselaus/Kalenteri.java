@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
+import com.varausjarjestelma.i18n.I18n;
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 import com.varausjarjestelma.käyttöliittymä.TempMain;
 import com.varausjarjestelma.malli.Tila;
@@ -161,11 +162,11 @@ public class Kalenteri{
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-        Label checkInlabel = new Label("Check-In Date:");
+        Label checkInlabel = I18n.stringForLabel("alkamispäivä");
         gridPane.add(checkInlabel, 0, 0);
         GridPane.setHalignment(checkInlabel, HPos.LEFT);
         gridPane.add(popupContentIn, 0, 1);
-        Label checkOutlabel = new Label("Check-Out Date:");
+        Label checkOutlabel = I18n.stringForLabel("loppumispäivä");
         gridPane.add(checkOutlabel, 1, 0);
         GridPane.setHalignment(checkOutlabel, HPos.LEFT);
         gridPane.add(popupContentOut, 1, 1);
