@@ -55,6 +55,7 @@ public class Kalenteri{
         pane.setVgap(10);
         
         checkInDatePicker = new DatePicker();
+        
         checkOutDatePicker = new DatePicker();
         checkInDatePicker.setValue(LocalDate.now());
         
@@ -67,6 +68,7 @@ public class Kalenteri{
                             @Override
                             public void updateItem(LocalDate item, boolean empty) {
                                 super.updateItem(item, empty);
+                                setMinSize(30,30);
                                 
                                 if (item.isBefore(
                                         LocalDate.now())
@@ -98,6 +100,7 @@ public class Kalenteri{
                                 @Override
                                 public void updateItem(LocalDate item, boolean empty) {
                                     super.updateItem(item, empty);
+                                    setMinSize(30,30);
                                     
                                     if (item.isBefore(
                                             checkInDatePicker.getValue())

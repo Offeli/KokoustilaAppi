@@ -141,7 +141,7 @@ public class TilojenSelausVarauslomake {
 		Pane kalenteripane = getKalenteri(tila.getID());
 		kokoLomake.add(kalenteripane, 0, 0);
 		kokoLomake.add(formi, 1, 0);
-		kokoLomake.setMargin(kalenteripane, new Insets(20));
+		kokoLomake.setMargin(kalenteripane, new Insets(40));
 		
 		return kokoLomake;
 	}

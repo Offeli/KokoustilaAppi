@@ -12,7 +12,7 @@ public class TempMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setScene(new Scene(new TilojenSelausKehys(), 800, 500));
+		primaryStage.setScene(new Scene(new TilojenSelausKehys(), 1000, 600));
 		primaryStage.show();
 		this.primaryStage = primaryStage;
 	}
