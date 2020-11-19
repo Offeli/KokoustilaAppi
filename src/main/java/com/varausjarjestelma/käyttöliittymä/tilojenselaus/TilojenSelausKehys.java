@@ -71,18 +71,20 @@ public class TilojenSelausKehys extends BorderPane {
 					korosta(tilaPaneeli);
 
 					GridPane tiedot = new GridPane();
-					String[] otsikot = { "Nimi", "Kaupunki", "Osoite", "Henkilömäärä", "Kuvaus", "Ominaisuudet" };
+					Text[] otsikot = { I18n.stringForText("nimi"), I18n.stringForText("kaupunki"), I18n.stringForText("osoite"),
+							I18n.stringForText("henkilömäärä"), I18n.stringForText("kuvaus"), I18n.stringForText("ominaisuudet") };
 					String[] arvot = { tila.getNimi(), tila.getKaupunki(), tila.getOsoite(), "" + tila.getHlomaara(),
 							tila.getKuvaus(), kontrolleri.näytäTilanOminaisuudetStringinä(tila.getID()) };
 					int row = 0;
 					for (int i = 0; i < otsikot.length && i < arvot.length; i++) {
 						String arvo = arvot[i];
 						if (arvo != null && !arvo.isEmpty()) {
-							tiedot.add(new Text(otsikot[i] + ":"), 0, row);
+							tiedot.add(otsikot[i], 0, row);
 							tiedot.add(new Text(arvo), 1, row++);
 						}
 					}
 					setRight(tiedot);
+
 					
 
 					// StackPane n = new StackPane();
