@@ -24,15 +24,25 @@ import com.varausjarjestelma.malli.Varaukset;
 public class VarausIkkuna extends BorderPane {
 	
 	private Kontrolleri kontrolleri;
-	private Varaukset[] varaukset;
-	private StackPane root;
+	private static Varaukset[] varaukset;
+	private static StackPane root;
 	
 	public VarausIkkuna() {
 		kontrolleri = Kontrolleri.haeInstanssi();
+	}
+	
+	private void load() {
 		varaukset = kontrolleri.haeKaikkiVaraukset();
 		root = new StackPane();
-        
-        TilePane pane = new TilePane();
+	}
+	
+	public static void clear() {
+		if(varaukset != null) varaukset = null;
+		if(root != null) root = null;
+	}
+	
+	private void build() {
+		TilePane pane = new TilePane();
         pane.setHgap(10);
         pane.setVgap(10);
         
@@ -53,7 +63,6 @@ public class VarausIkkuna extends BorderPane {
 		}
         
         root.getChildren().add(pane);
-        
 	}
 	
 	private Varaukset[] sort(Varaukset[] varaukset) {
@@ -82,6 +91,8 @@ public class VarausIkkuna extends BorderPane {
 	}
 	
 	public StackPane getRoot() {
+		load();
+		build();
 		return root;
 	}
 
