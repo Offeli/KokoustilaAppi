@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,7 +26,7 @@ public class VarausIkkuna extends BorderPane {
 	
 	private Kontrolleri kontrolleri;
 	private static Varaukset[] varaukset;
-	private static StackPane root;
+	private StackPane root;
 	
 	public VarausIkkuna() {
 		kontrolleri = Kontrolleri.haeInstanssi();
@@ -36,7 +37,7 @@ public class VarausIkkuna extends BorderPane {
 		root = new StackPane();
 	}
 	
-	public static void clear() {
+	public void clear() {
 		if(varaukset != null) varaukset = null;
 		if(root != null) root = null;
 	}
@@ -80,7 +81,7 @@ public class VarausIkkuna extends BorderPane {
 		
 		for(Date d : list) {
 			for(int i = 0; i < varaukset.length; i++) {
-				if(varaukset[i].getAlkuAika() == d) {
+				if(varaukset[i].getAlkuAika() == d && varaukset[i].getLoppuAika().toLocalDateTime().isAfter(LocalDateTime.now())) {
 					sorted[i] = varaukset[i];
 					//System.out.println(sorted[i].getAlkuAika());
 				}
