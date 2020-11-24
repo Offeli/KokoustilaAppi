@@ -19,11 +19,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 
+/**
+ * Tool for international String selection.
+ */
 public final class I18n {
 
-    /** the current selected Locale. */
+    /** The current selected Locale. */
     private static final ObjectProperty<Locale> locale;
 
+    /**
+     * A constant for the Finnish locale.
+     */
     public static final Locale FINNISH = new Locale("fi");
 
     static {
@@ -31,32 +37,57 @@ public final class I18n {
         locale.addListener((observable, oldValue, newValue) -> Locale.setDefault(newValue));
     }
 
-    
+    /**
+     * Provides a list of supported locales.
+     * 
+     * @return list of locales
+     */
     public static List<Locale> getSupportedLocales() {
         return new ArrayList<>(Arrays.asList(Locale.ENGLISH, FINNISH));
     }
 
-
+    /**
+     * Get the default locale.
+     * If not set, get English locale.
+     * 
+     * @return the default locale
+     */
     public static Locale getDefaultLocale() {
         Locale sysDefault = Locale.getDefault();
         return getSupportedLocales().contains(sysDefault) ? sysDefault : Locale.ENGLISH;
     }
 
+    /**
+     * Provides the currently selected locale.
+     * 
+     * @return selected locale
+     */
     public static Locale getLocale() {
         return locale.get();
     }
 
+    /**
+     * Updates the default locale.
+     * 
+     * @param locale
+     */
     public static void setLocale(Locale locale) {
         localeProperty().set(locale);
         Locale.setDefault(locale);
     }
 
+    /**
+     * Provides the current selected locale as a ObjectProperty
+     * type object.
+     * 
+     * @return locale as ObjectProperty<Locale>
+     */
     public static ObjectProperty<Locale> localeProperty() {
         return locale;
     }
 
     /**
-     * gets the string with the given key from the resource bundle for the current locale and uses it as first argument
+     * Provides the string with the given key from the resource bundle for the current locale and uses it as first argument
      * to MessageFormat.format, passing in the optional args and returning the result.
      *
      * @param key
@@ -71,7 +102,7 @@ public final class I18n {
     }
 
     /**
-     * creates a String binding to a localized String for the given message bundle key
+     * Creates a String binding to a localized String for the given message bundle key.
      *
      * @param key
      *         key
@@ -81,37 +112,56 @@ public final class I18n {
         return Bindings.createStringBinding(() -> get(key, args), locale);
     }
 
+    /**
+     * Creates a button, whose text is picked from a properties file based on 'key'.
+     * 
+     * @param key
+     * @param args
+     * @return a new button
+     */
     public static Button buttonForKey(final String key, final Object... args) {
         Button button = new Button();
         button.textProperty().bind(createStringBinding(key, args));
         return button;
     }
     
-
+    /**
+     * Creates a tooltip based on the given key.
+     * 
+     * @param key
+     * @param args
+     * @return a new tooltip
+     */
     public static Tooltip tooltipForKey(final String key, final Object... args) {
         Tooltip tooltip = new Tooltip();
         tooltip.textProperty().bind(createStringBinding(key, args));
         return tooltip;
     }
     
-    
+    /**
+     * Creates a label, whose text is picked from properties using 'key'.
+     * 
+     * @param key
+     * @param args
+     * @return a new text label
+     */
     public static Label stringForLabel(final String key, final Object... args) {
     	Label label = new Label();
         label.textProperty().bind(createStringBinding(key, args));
         return label;
     }
 
-
+    /**
+     * Creates a text object, whose text is the property matching 'key'.
+     * 
+     * @param key
+     * @param args
+     * @return a new text object
+     */
 	public static Text stringForText(final String key, final Object... args) {
 		Text text = new Text();
 		text.textProperty().bind(createStringBinding(key, args));
 		return text;
-	}
-	
-	public static String stringToString(final String key, final Object... args) {
-		String string = new String();
-		
-		return string;
 	}
     
 }
