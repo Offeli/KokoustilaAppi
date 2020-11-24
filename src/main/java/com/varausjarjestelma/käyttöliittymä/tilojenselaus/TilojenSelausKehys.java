@@ -14,6 +14,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class TilojenSelausKehys extends BorderPane {
@@ -67,23 +69,36 @@ public class TilojenSelausKehys extends BorderPane {
 			tilaPaneeli.setOnMouseClicked(new EventHandler<Event>() {
 
 				public void handle(Event event) {
-					näytäLatausruutu();
+//					näytäLatausruutu();
 					korosta(tilaPaneeli);
 
-					GridPane tiedot = new GridPane();
+					VBox tietoikkuna = new VBox();
 					Text[] otsikot = { I18n.stringForText("nimi"), I18n.stringForText("kaupunki"), I18n.stringForText("osoite"),
 							I18n.stringForText("henkilömäärä"), I18n.stringForText("kuvaus"), I18n.stringForText("ominaisuudet") };
 					String[] arvot = { tila.getNimi(), tila.getKaupunki(), tila.getOsoite(), "" + tila.getHlomaara(),
 							tila.getKuvaus(), kontrolleri.näytäTilanOminaisuudetStringinä(tila.getID()) };
 					int row = 0;
+					
+					tietoikkuna.setPadding(new Insets(0, 15, 0, 15));
+					tietoikkuna.setSpacing(10);
+					
 					for (int i = 0; i < otsikot.length && i < arvot.length; i++) {
+						VBox tiedonKappale = new VBox();
+						Text otsikko = otsikot[i];
+						double fonttikoko = otsikko.getFont().getSize();
+						otsikko.setFont(Font.font(null, FontWeight.BOLD, fonttikoko));
 						String arvo = arvot[i];
 						if (arvo != null && !arvo.isEmpty()) {
-							tiedot.add(otsikot[i], 0, row);
-							tiedot.add(new Text(arvo), 1, row++);
+//							tiedot.add(otsikot[i], 0, row);
+//							tiedot.add(new Text(arvo), 1, row++);
+//							tiedonKappale.add(otsikko, 0, 0);
+//							tiedonKappale.add(new Text(arvo), 0, 1);
+							tiedonKappale.getChildren().add(otsikko);
+							tiedonKappale.getChildren().add(new Text(arvo));
+							tietoikkuna.getChildren().add(tiedonKappale);
 						}
 					}
-					setRight(tiedot);
+					setRight(tietoikkuna);
 
 					
 
