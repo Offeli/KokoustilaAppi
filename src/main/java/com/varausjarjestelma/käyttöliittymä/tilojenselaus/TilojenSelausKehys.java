@@ -10,8 +10,11 @@ import com.varausjarjestelma.malli.Tila;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -72,15 +75,19 @@ public class TilojenSelausKehys extends BorderPane {
 //					näytäLatausruutu();
 					korosta(tilaPaneeli);
 
-					VBox tietoikkuna = new VBox();
+					ScrollPane selausikkuna = new ScrollPane();
+					VBox tietoikkunanSisältö = new VBox();
 					Text[] otsikot = { I18n.stringForText("nimi"), I18n.stringForText("kaupunki"), I18n.stringForText("osoite"),
 							I18n.stringForText("henkilömäärä"), I18n.stringForText("kuvaus"), I18n.stringForText("ominaisuudet") };
 					String[] arvot = { tila.getNimi(), tila.getKaupunki(), tila.getOsoite(), "" + tila.getHlomaara(),
 							tila.getKuvaus(), kontrolleri.näytäTilanOminaisuudetStringinä(tila.getID()) };
+					ScrollBar sivuttainenSelaus = new ScrollBar();
 					int row = 0;
 					
-					tietoikkuna.setPadding(new Insets(0, 15, 0, 15));
-					tietoikkuna.setSpacing(10);
+					tietoikkunanSisältö.setPadding(new Insets(0, 15, 0, 15));
+					tietoikkunanSisältö.setSpacing(10);
+//					tietoikkunanSisältö.setMinWidth(100);
+//					tietoikkunanSisältö.setMaxWidth(100);
 					
 					for (int i = 0; i < otsikot.length && i < arvot.length; i++) {
 						VBox tiedonKappale = new VBox();
@@ -95,10 +102,25 @@ public class TilojenSelausKehys extends BorderPane {
 //							tiedonKappale.add(new Text(arvo), 0, 1);
 							tiedonKappale.getChildren().add(otsikko);
 							tiedonKappale.getChildren().add(new Text(arvo));
-							tietoikkuna.getChildren().add(tiedonKappale);
+							tietoikkunanSisältö.getChildren().add(tiedonKappale);
 						}
 					}
-					setRight(tietoikkuna);
+					
+//					sivuttainenSelaus.setMin(0);
+//					sivuttainenSelaus.setMax(200);
+//					sivuttainenSelaus.setValue(110);
+//					sivuttainenSelaus.setOrientation(Orientation.HORIZONTAL);
+//					sivuttainenSelaus.setUnitIncrement(12);
+//					sivuttainenSelaus.setBlockIncrement(10);
+//					
+//					tietoikkunanSisältö.getChildren().add(sivuttainenSelaus);
+					
+					selausikkuna.setContent(tietoikkunanSisältö);
+					selausikkuna.setMinWidth(225);
+					selausikkuna.setMaxWidth(225);
+
+//					setRight(tietoikkunanSisältö);
+					setRight(selausikkuna);
 
 					
 
@@ -140,12 +162,13 @@ public class TilojenSelausKehys extends BorderPane {
 		}
 	}
 
-	private void näytäLatausruutu() {
-		Pane latausruutu = new StackPane();
-		setRight(latausruutu);
-
-		latausruutu.getChildren().add(new Text("Lataa..."));
-	}
+//	HUOM! KÄYTTÄMÄTÖN, POISTOA HARKITAAN
+//	private void näytäLatausruutu() {
+//		Pane latausruutu = new StackPane();
+//		setRight(latausruutu);
+//
+//		latausruutu.getChildren().add(new Text("Lataa..."));
+//	}
 	
     private void switchLanguage(Locale locale) {
         I18n.setLocale(locale);
