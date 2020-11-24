@@ -62,13 +62,22 @@ public class TilojenSelaus extends BorderPane {
 
 		for (final Tila tila : tilat) {
 			final GridPane tilaPaneeli = new GridPane();
-			Text nimi = new Text(tila.getNimi());
-			Text kaupunki = new Text(tila.getKaupunki());
-			Text hlömäärä = new Text("Henkilömäärä: " + tila.getHlomaara());
+
+			Text tilannimi = I18n.stringForText("tilannimi");
+			Text nimi = new Text(" " +tila.getNimi());
+			Text tilankaupunki = I18n.stringForText("tilankaupunki");
+			Text kaupunki = new Text(" " +tila.getKaupunki());
+			Text henkilömäärä = I18n.stringForText("henkilötmäärä");
+			Text hlömäärä = new Text(" " + tila.getHlomaara());
 			tilaPanet.add(tilaPaneeli);
-			tilaPaneeli.add(nimi, 0, 0);
-			tilaPaneeli.add(kaupunki, 0, 1);
-			tilaPaneeli.add(hlömäärä, 0, 2);
+			
+			tilaPaneeli.add(tilannimi, 0, 0);
+			tilaPaneeli.add(tilankaupunki, 0, 1);
+			tilaPaneeli.add(henkilömäärä, 0, 2);
+			tilaPaneeli.add(nimi, 1, 0);
+			tilaPaneeli.add(kaupunki, 1, 1);
+			tilaPaneeli.add(hlömäärä, 1, 2);
+
 			tilaPaneeli.setOnMouseClicked(new EventHandler<Event>() {
 
 				public void handle(Event event) {
