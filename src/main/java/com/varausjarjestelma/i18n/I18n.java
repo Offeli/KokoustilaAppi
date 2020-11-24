@@ -21,6 +21,9 @@ import javafx.scene.text.Text;
 
 /**
  * Tool for international String selection.
+ * 
+ * @author O. Närhi
+ * 
  */
 public final class I18n {
 

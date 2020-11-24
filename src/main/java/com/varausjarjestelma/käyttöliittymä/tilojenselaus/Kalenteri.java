@@ -22,6 +22,9 @@ import javafx.util.Callback;
 
 /**
  * Producer of visual calendar elements that are used for picking dates.
+ * 
+ * @author V. Ahlstén
+ * 
  */
 public class Kalenteri {
 
