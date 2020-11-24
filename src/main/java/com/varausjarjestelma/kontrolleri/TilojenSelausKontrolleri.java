@@ -2,17 +2,17 @@ package com.varausjarjestelma.kontrolleri;
 
 import java.util.ArrayList;
 
-import com.varausjarjestelma.käyttöliittymä.tilojenselaus.TilojenSelausKehys;
+import com.varausjarjestelma.käyttöliittymä.tilojenselaus.TilojenSelaus;
 import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.malli.TilaDAO;
 import com.varausjarjestelma.malli.TilanOminaisuus;
 
 public class TilojenSelausKontrolleri {
 	
-	private final TilojenSelausKehys näkymä;
+	private final TilojenSelaus näkymä;
 	private final TilaDAO tilaDAO;
 	
-	public TilojenSelausKontrolleri(TilojenSelausKehys ts) {
+	public TilojenSelausKontrolleri(TilojenSelaus ts) {
 		näkymä = ts;
 		tilaDAO = new TilaDAO();
 	}

@@ -21,13 +21,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class TilojenSelausKehys extends BorderPane {
+public class TilojenSelaus extends BorderPane {
 
 	private final TilojenSelausKontrolleri kontrolleri;
 	private final List<Pane> tilaPanet;
 	private GridPane korostettu;
 
-	public TilojenSelausKehys() {
+	public TilojenSelaus() {
 		kontrolleri = new TilojenSelausKontrolleri(this);
 		tilaPanet = new ArrayList<Pane>();
 		korostettu = null;
