@@ -1,4 +1,4 @@
-package com.varausjärjestelma.käyttöliittymä.varauksetikkuna;
+package com.varausjarjestelma.käyttöliittymä.varauksetikkuna;
 
 import java.text.SimpleDateFormat;
 
@@ -15,7 +15,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 
-
 public class VarausPopUp {
 	private Kontrolleri kontrolleri;
 	
@@ -30,6 +29,7 @@ public class VarausPopUp {
 			popupwindow.initModality(Modality.APPLICATION_MODAL);
 			popupwindow.setTitle(v.getTila().getNimi());
 			      
+			// Printtaa varauksen tiedot näkyviin
 			Label labelNimi = new Label("Tilan nimi: " + v.getTila().getNimi());
 			Label labelOsoite = new Label("Tilan osoite: " + v.getTila().getOsoite());
 			Label labelKuvaus = new Label("Tilan kuvaus: " + v.getTila().getKuvaus());
@@ -37,24 +37,27 @@ public class VarausPopUp {
 			Label labelAlku = new Label("Varauksen alku: " + new SimpleDateFormat("dd-MM-yyyy HH:mm").format(v.getAlkuAika()));
 			Label labelLoppu = new Label("Varauksen loppu: " + new SimpleDateFormat("dd-MM-yyyy HH:mm").format(v.getLoppuAika()));
 			
+			// Luo sulje-nappi
 			Button close = new Button("Close"); 
 			close.setMaxWidth(100);
-			close.setOnAction(new EventHandler<ActionEvent>() {
+			close.setOnAction(new EventHandler<ActionEvent>() { // Sulje ikkuna
 				public void handle(ActionEvent e) {
 					popupwindow.close();
 				}
 			});
 			
+			// Lue poista-nappi
 			Button delete = new Button("Delete");
 			delete.setStyle("-fx-background-color: red; -fx-text-fill: white;");
 			delete.setMaxWidth(150);
 			delete.setOnAction(new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
+				public void handle(ActionEvent e) { // Poista varaus ja sulje ikkuna
 					kontrolleri.poistaVaraus(v.getID());
 					popupwindow.close();
 				}
 			});
 			
+			// Asettele näkymään
 			VBox layout= new VBox(10);
 			layout.getChildren().addAll(labelNimi, labelOsoite, labelKuvaus, labelAlku, labelLoppu, close);
 			layout.setAlignment(Pos.CENTER);

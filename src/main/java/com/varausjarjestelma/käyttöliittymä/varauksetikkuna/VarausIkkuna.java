@@ -1,4 +1,4 @@
-package com.varausjärjestelma.käyttöliittymä.varauksetikkuna;
+package com.varausjarjestelma.käyttöliittymä.varauksetikkuna;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,7 +32,7 @@ public class VarausIkkuna extends BorderPane {
 		kontrolleri = Kontrolleri.haeInstanssi();
 	}
 	
-	private void load() {
+	private void load() { // Hae tiedot kannasta
 		varaukset = kontrolleri.haeKaikkiVaraukset();
 		root = new StackPane();
 	}
@@ -42,7 +42,7 @@ public class VarausIkkuna extends BorderPane {
 		if(root != null) root = null;
 	}
 	
-	private void build() {
+	private void build() { // Aja tiedot käyttöliittymään
 		TilePane pane = new TilePane();
         pane.setHgap(10);
         pane.setVgap(10);
@@ -66,7 +66,7 @@ public class VarausIkkuna extends BorderPane {
         root.getChildren().add(pane);
 	}
 	
-	private Varaukset[] sort(Varaukset[] varaukset) {
+	private Varaukset[] sort(Varaukset[] varaukset) { // Lajittele varaukset päivämäärän mukaan
 		ArrayList<Date> list = new ArrayList<Date>();
 		
 		for(Varaukset v : varaukset) {
@@ -83,7 +83,6 @@ public class VarausIkkuna extends BorderPane {
 			for(int i = 0; i < varaukset.length; i++) {
 				if(varaukset[i].getAlkuAika() == d && varaukset[i].getLoppuAika().toLocalDateTime().isAfter(LocalDateTime.now())) {
 					sorted[i] = varaukset[i];
-					//System.out.println(sorted[i].getAlkuAika());
 				}
 			}
 		}
@@ -91,7 +90,7 @@ public class VarausIkkuna extends BorderPane {
 		return sorted;
 	}
 	
-	public StackPane getRoot() {
+	public StackPane getRoot() { // Palauta näkymä
 		load();
 		build();
 		return root;

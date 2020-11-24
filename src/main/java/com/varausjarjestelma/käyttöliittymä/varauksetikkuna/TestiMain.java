@@ -1,4 +1,4 @@
-package com.varausjärjestelma.käyttöliittymä.varauksetikkuna;
+package com.varausjarjestelma.käyttöliittymä.varauksetikkuna;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 
 public class TestiMain extends Application {
 
+	// Testaamiseen luotu main
 	private Stage primaryStage;
 
 	public void start(Stage primaryStage) throws Exception {
