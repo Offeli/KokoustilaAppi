@@ -1,11 +1,16 @@
 package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
 
+import java.time.LocalDate;
+
 import com.varausjarjestelma.i18n.I18n;
+import com.varausjarjestelma.kontrolleri.Kontrolleri;
+import com.varausjarjestelma.logiikka.Varausmanageri;
 import com.varausjarjestelma.malli.Tila;
 import com.varausjarjestelma.sähköposti.SimppeliMaili;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -14,6 +19,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Border;
@@ -32,7 +38,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class TilojenSelausVarauslomake {
+	
+	int valitunTilanID;
 	private Kalenteri calendar;
+	ChoiceBox checkinvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList());
+	ChoiceBox checkoutvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList());
 	
 	public TilojenSelausVarauslomake() {
 		calendar = new Kalenteri();
@@ -73,10 +83,10 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(aloitusaikaLabel, 0, 3);
 	    
 	    // Add check-in vaihtoehdot
-	    ChoiceBox checkinvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList(
-	    	    "5:00",  "6:00", "7:00", "8:00", "9:00", "10:00",  "11:00", "12:00", "13:00", "14:00", "15:00",
-	    	    "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00")
-	    	);
+	    ObservableList<Integer> tuntilistaIN = FXCollections.observableArrayList();
+		   tuntilistaIN.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
+		  checkinvaihtoehdot.setItems(tuntilistaIN);
+	    	  
 	    gridpane.add(checkinvaihtoehdot, 1, 3);
 	    
 	 // Add lopetussaikalabel
@@ -84,10 +94,11 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(lopetusaikaLabel, 0, 4);
 	    
 	    // Add check-out vaihtoehdot¨
-	    ChoiceBox checkoutvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList(
-	    	    "6:00", "7:00", "8:00", "9:00", "10:00",  "11:00", "12:00", "13:00", "14:00", "15:00",
-	    	    "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00")
-	    	);
+	    
+	    ObservableList<Integer> tuntilistaOUT = FXCollections.observableArrayList();
+		   tuntilistaOUT.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
+		  checkoutvaihtoehdot.setItems(tuntilistaOUT);
+		  
 	    gridpane.add(checkoutvaihtoehdot, 1, 4);
 	   
 
@@ -109,10 +120,12 @@ public class TilojenSelausVarauslomake {
 	    submitButton.setOnAction(new EventHandler<ActionEvent>() {
 	         public void handle(ActionEvent e) {
 	        	 try {
-	        		 
+	        		 lähetäVaraus();
 	        		 Alert a = new Alert(AlertType.CONFIRMATION);
-	        		 a.setHeaderText("Tila varattu. Kiitos!");
+	        		 Tila t = Kontrolleri.haeInstanssi().etsiTila(valitunTilanID);
+	        		 a.setHeaderText(t.getNimi()+" varattu, kiitos!");
 	                 a.show();
+	                 new SimppeliMaili().sendMail(emailField.getText());
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}  
@@ -142,8 +155,21 @@ public class TilojenSelausVarauslomake {
 		kokoLomake.add(kalenteripane, 0, 0);
 		kokoLomake.add(formi, 1, 0);
 		kokoLomake.setMargin(kalenteripane, new Insets(40));
+		valitunTilanID = tila.getID();
 		
 		return kokoLomake;
+	}
+	
+	public void lähetäVaraus() {
+		
+		Varausmanageri varausmanageri = new Varausmanageri();
+		
+		ChoiceBox alkuTuntiPicker = checkinvaihtoehdot;
+		ChoiceBox loppuTuntiPicker = checkoutvaihtoehdot;
+		LocalDate varauksenAloitusPäivä = calendar.getInDate();
+		LocalDate varauksenLopetusPäivä = calendar.getOutDate();
+		int tilanId = valitunTilanID;
+		varausmanageri.varaaTila(alkuTuntiPicker, loppuTuntiPicker, varauksenAloitusPäivä, varauksenLopetusPäivä, tilanId);
 	}
 	
 	
