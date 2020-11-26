@@ -2,19 +2,13 @@ package com.varausjarjestelma.käyttöliittymä.varauksetikkuna;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -77,17 +71,19 @@ public class VarausIkkuna extends BorderPane {
 		
 		System.out.println(list);
 		
-		Varaukset[] sorted = new Varaukset[varaukset.length];
+		List<Varaukset> sorted = new ArrayList<>();
+		Varaukset varaus;
 		
 		for(Date d : list) {
 			for(int i = 0; i < varaukset.length; i++) {
-				if(varaukset[i].getAlkuAika() == d && varaukset[i].getLoppuAika().toLocalDateTime().isAfter(LocalDateTime.now())) {
-					sorted[i] = varaukset[i];
+				varaus = varaukset[i];
+				if(varaus.getAlkuAika() == d && varaus.getLoppuAika().toLocalDateTime().isAfter(LocalDateTime.now())) {
+					sorted.add(varaus);
 				}
 			}
 		}
 		
-		return sorted;
+		return sorted.toArray(new Varaukset[sorted.size()]);
 	}
 	
 	public StackPane getRoot() { // Palauta näkymä
