@@ -83,9 +83,13 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(aloitusaikaLabel, 0, 3);
 	    
 	    // Add check-in vaihtoehdot
-	    ObservableList<Integer> tuntilistaIN = FXCollections.observableArrayList();
+	    System.out.println("Lista latautuu.");
+	    /*ObservableList<Integer> tuntilistaIN = FXCollections.observableArrayList();
 		   tuntilistaIN.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
-		  checkinvaihtoehdot.setItems(tuntilistaIN);
+		  checkinvaihtoehdot.setItems(tuntilistaIN);*/
+	    
+		  checkinvaihtoehdot.setItems(calendar.getAlkuAukiolo());
+		  
 	    	  
 	    gridpane.add(checkinvaihtoehdot, 1, 3);
 	    
@@ -136,9 +140,8 @@ public class TilojenSelausVarauslomake {
 
 	}
 	
-	public Pane getKalenteri (int id) {
-		Pane kalenteri = calendar.getRoot(id);
-		System.out.println(calendar.getInDate() + " & " + calendar.getOutDate());
+	public Pane getKalenteri () {
+		Pane kalenteri = calendar.getRoot();
 		kalenteri.setPrefWidth(200);
 		kalenteri.setPrefHeight(150);
 		kalenteri.setBorder(new Border(new BorderStroke(Color.BLACK, 
@@ -148,10 +151,11 @@ public class TilojenSelausVarauslomake {
 	}
 	
 	public GridPane getKokoVarausLomake(Tila tila) {
+		calendar.setKalenteri(tila.getID());
 		
 		GridPane kokoLomake = new GridPane();
+		Pane kalenteripane = getKalenteri();
 		GridPane formi = getVarausFormi();
-		Pane kalenteripane = getKalenteri(tila.getID());
 		kokoLomake.add(kalenteripane, 0, 0);
 		kokoLomake.add(formi, 1, 0);
 		kokoLomake.setMargin(kalenteripane, new Insets(40));

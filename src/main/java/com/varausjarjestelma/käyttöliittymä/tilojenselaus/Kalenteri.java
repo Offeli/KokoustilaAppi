@@ -1,6 +1,13 @@
 package com.varausjarjestelma.käyttöliittymä.tilojenselaus;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Locale;
 
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
@@ -8,6 +15,8 @@ import com.varausjarjestelma.i18n.I18n;
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 import com.varausjarjestelma.malli.Varaukset;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -33,6 +42,8 @@ public class Kalenteri {
 	private Varaukset[] varaukset;
 	private LocalDate[] ajat;
 	private StackPane root;
+	private ArrayList<Date> aukiolot;
+	private List<String> alkuAukiolot;
 
 	/**
 	 * Constructor.
@@ -40,6 +51,27 @@ public class Kalenteri {
 	public Kalenteri() {
 		Locale.setDefault(Locale.UK);
 		kontrolleri = Kontrolleri.haeInstanssi();
+		setAukiolo();
+	}
+	
+	public void setKalenteri(int tila) {
+		varaukset = kontrolleri.haeVarauksetTila(kontrolleri.etsiTila(tila));
+		ajat = new LocalDate[varaukset.length];
+		root = new StackPane();
+	}
+	
+	public void setAukiolo() {
+		aukiolot = new ArrayList<Date>();
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+
+		for(int i = 5; i < 24; i++) {
+			try {
+				Date date = dateFormat.parse(i + ":00");
+				aukiolot.add(date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
@@ -50,11 +82,7 @@ public class Kalenteri {
 	 * @param tila
 	 * @return two date pickers within a new stack pane
 	 */
-	public StackPane getRoot(int tila) {
-		varaukset = kontrolleri.haeVarauksetTila(kontrolleri.etsiTila(tila));
-		ajat = new LocalDate[varaukset.length];
-
-		root = new StackPane();
+	public StackPane getRoot() {
 
 		TilePane pane = new TilePane();
 		pane.setHgap(10);
@@ -86,7 +114,7 @@ public class Kalenteri {
 
 						for (LocalDate l : ajat) {
 							if (item.isEqual(l)) {
-								setDisable(true);
+								//setDisable(true);
 								setStyle("-fx-background-color: #ffc0cb;");
 							}
 						}
@@ -116,7 +144,7 @@ public class Kalenteri {
 
 						for (LocalDate l : ajat) {
 							if (item.isEqual(l)) {
-								setDisable(true);
+								//setDisable(true);
 								setStyle("-fx-background-color: #ffc0cb;");
 							}
 						}
@@ -133,8 +161,9 @@ public class Kalenteri {
 			public void handle(ActionEvent e) {
 				// get the date picker value
 				LocalDate date = checkInDatePicker.getValue();
+				loadAlkuAukiolo();
 
-				System.out.println(date);
+				//System.out.println(date);
 			}
 		};
 
@@ -144,8 +173,7 @@ public class Kalenteri {
 			public void handle(ActionEvent e) {
 				// get the date picker value
 				LocalDate date = checkOutDatePicker.getValue();
-
-				System.out.println(date);
+				//System.out.println(date);
 			}
 		};
 
@@ -195,4 +223,44 @@ public class Kalenteri {
 	public LocalDate getOutDate() {
 		return checkOutDatePicker.getValue();
 	}
+	
+	private void loadAlkuAukiolo() {
+		System.out.println("Aukiolo latautuu.");
+		alkuAukiolot = new ArrayList<String>();
+		
+		for(int i = 0; i < varaukset.length; i++) {
+			LocalDate v = varaukset[i].getAlkuAika().toLocalDateTime().toLocalDate();
+			
+			if(v.equals(checkInDatePicker.getValue())) {
+				int formatted = varaukset[i].getAlkuAika().getHours();
+				
+				for(Date d : aukiolot) {
+					
+					if(d.getHours() == formatted) {
+						alkuAukiolot.add("VARATTU");
+					}else {
+						alkuAukiolot.add(Integer.toString(d.getHours()));
+					}
+				}
+				
+			}
+		}
+		//System.out.println(alkuAukiolot);
+	}
+	
+	public ObservableList<String> getAlkuAukiolo(){
+		ObservableList<String> palautus = FXCollections.observableArrayList();
+		loadAlkuAukiolo();
+		
+		System.out.println(alkuAukiolot.size());
+		
+		for(String i : alkuAukiolot) {
+			System.out.println(i);
+			palautus.add(i);
+		}
+		
+		return palautus;
+	}
+	
+	public void getLoppuAukiolo() {}
 }
