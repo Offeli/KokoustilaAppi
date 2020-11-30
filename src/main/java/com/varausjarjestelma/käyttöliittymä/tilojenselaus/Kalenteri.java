@@ -243,19 +243,34 @@ public class Kalenteri {
 					}
 				}
 				
+			}else {
+				for(Date d : aukiolot) {
+					alkuAukiolot.add(Integer.toString(d.getHours()));
+				}
 			}
 		}
-		//System.out.println(alkuAukiolot);
+	}
+	
+	private void removeDuplicates() {
+		ArrayList<String> newList = new ArrayList<String>();
+		
+		for(String s : alkuAukiolot) {
+			if(!newList.contains(s)) {
+				newList.add(s);
+			}
+		}
+		
+		alkuAukiolot = new ArrayList<String>(newList);
 	}
 	
 	public ObservableList<String> getAlkuAukiolo(){
 		ObservableList<String> palautus = FXCollections.observableArrayList();
 		loadAlkuAukiolo();
+		removeDuplicates();
 		
 		System.out.println(alkuAukiolot.size());
 		
 		for(String i : alkuAukiolot) {
-			System.out.println(i);
 			palautus.add(i);
 		}
 		
