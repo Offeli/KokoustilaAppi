@@ -257,6 +257,9 @@ public class Kalenteri {
 		for(String s : alkuAukiolot) {
 			if(!newList.contains(s)) {
 				newList.add(s);
+			}else if(s.equals("VARATTU")) {
+				newList.remove(newList.size() - 1);
+				newList.add(s);
 			}
 		}
 		
