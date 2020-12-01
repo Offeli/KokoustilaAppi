@@ -222,6 +222,8 @@ public class Kalenteri {
 		return checkOutDatePicker.getValue();
 	}
 	
+	// ------------------------------------------ Aukiolojen määrittelyt:
+	
 	private void loadAlkuAukiolo() {
 		System.out.println("Alku aukiolo latautuu.");
 		alkuAukiolot = new ArrayList<String>();
@@ -232,16 +234,22 @@ public class Kalenteri {
 			
 			if(v.equals(checkInDatePicker.getValue())) {
 				int formatted = varaukset[i].getAlkuAika().getHours();
+				int kesto = varauksenKesto(varaukset[i]);
+				boolean varaus = false; int j = 0;
 				
 				for(Date d : aukiolot) {
 					
-					if(d.getHours() == formatted) {
+					if(d.getHours() == formatted || varaus) {
 						eiPrintattavat.add(Integer.toString(d.getHours()));
+						
+						if(varaus == false) varaus = true;
+						else if(j >= kesto) varaus = false;
+						
+						j++;
 					}else if(!(eiPrintattavat.contains(d.getHours()))){
 						alkuAukiolot.add(Integer.toString(d.getHours()));
 					}
-				}
-				
+				}				
 			}
 		}
 		
@@ -271,6 +279,7 @@ public class Kalenteri {
 		
 		for(String i : alkuAukiolot) {
 			int intti = Integer.parseInt(i);
+			System.out.println(intti);
 			palautus.add(intti);
 		}
 		
@@ -290,7 +299,7 @@ public class Kalenteri {
 		return palautus;
 	}
 	
-	public void loadLoppuAukiolo() {
+	private void loadLoppuAukiolo() {
 		System.out.println("Loppu aukiolo latautuu.");
 		loppuAukiolot = new ArrayList<String>();
 		ArrayList<String> eiPrintattavat = new ArrayList<String>();
@@ -300,11 +309,15 @@ public class Kalenteri {
 			
 			if(v.equals(checkOutDatePicker.getValue())) {
 				int formatted = varaukset[i].getLoppuAika().getHours();
+				int kesto = varauksenKesto(varaukset[i]);
 				
 				for(Date d : aukiolot) {
 					
 					if(d.getHours() == formatted) {
 						eiPrintattavat.add(Integer.toString(d.getHours()));
+						for(int j = 0; j < kesto; j++) {
+							eiPrintattavat.add(loppuAukiolot.remove(loppuAukiolot.size() - 1));
+						}
 					}else if(!(eiPrintattavat.contains(d.getHours()))){
 						loppuAukiolot.add(Integer.toString(d.getHours()));
 					}
@@ -318,5 +331,9 @@ public class Kalenteri {
 				loppuAukiolot.add(Integer.toString(d.getHours()));
 			}
 		}
+	}
+	
+	private int varauksenKesto(Varaukset v) {
+		return v.getLoppuAika().getHours() - v.getAlkuAika().getHours();
 	}
 }
