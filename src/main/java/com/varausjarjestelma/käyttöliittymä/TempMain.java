@@ -3,6 +3,7 @@ package com.varausjarjestelma.käyttöliittymä;
 import java.util.Locale;
 
 import com.varausjarjestelma.i18n.I18n;
+import com.varausjarjestelma.käyttöliittymä.tilanlisäys.TilanLisäyslomake;
 import com.varausjarjestelma.käyttöliittymä.tilojenselaus.TilojenSelaus;
 import com.varausjarjestelma.käyttöliittymä.varauksetikkuna.VarausIkkuna;
 
@@ -31,6 +32,7 @@ public class TempMain extends Application {
 
 		TilojenSelaus tilojenselaus = new TilojenSelaus();
 		StackPane varausikkuna = new VarausIkkuna().getRoot();
+		TilanLisäyslomake tilanlisäys = new TilanLisäyslomake();
 
 		Tab tab1 = new Tab();
 		tab1.setContent(tilojenselaus);
@@ -41,7 +43,7 @@ public class TempMain extends Application {
 		tab2.setText("Varaukset");
 		tab2.closableProperty().setValue(false);
 		Tab tab3 = new Tab();
-		tab3.setContent(new Label("Diibadaabadaa.."));
+		tab3.setContent(tilanlisäys);
 		tab3.setText("Lisää uusi tila");
 		
 		tabPane.getTabs().addAll(tab1, tab2, tab3);
