@@ -266,15 +266,16 @@ public class Kalenteri {
 		alkuAukiolot = new ArrayList<String>(newList);
 	}
 	
-	public ObservableList<String> getAlkuAukiolo(){
-		ObservableList<String> palautus = FXCollections.observableArrayList();
+	public ObservableList<Integer> getAlkuAukiolo(){
+		ObservableList<Integer> palautus = FXCollections.observableArrayList();
 		loadAlkuAukiolo();
 		removeDuplicates();
 		
 		System.out.println(alkuAukiolot.size());
 		
 		for(String i : alkuAukiolot) {
-			palautus.add(i);
+			int intti = Integer.parseInt(i);
+			palautus.add(intti);
 		}
 		
 		return palautus;
