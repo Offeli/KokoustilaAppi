@@ -43,7 +43,7 @@ public class Kalenteri {
 	private LocalDate[] ajat;
 	private StackPane root;
 	private ArrayList<Date> aukiolot;
-	private List<String> alkuAukiolot;
+	private List<String> alkuAukiolot, loppuAukiolot;
 
 	/**
 	 * Constructor.
@@ -162,8 +162,6 @@ public class Kalenteri {
 				// get the date picker value
 				LocalDate date = checkInDatePicker.getValue();
 				loadAlkuAukiolo();
-
-				//System.out.println(date);
 			}
 		};
 
@@ -173,7 +171,7 @@ public class Kalenteri {
 			public void handle(ActionEvent e) {
 				// get the date picker value
 				LocalDate date = checkOutDatePicker.getValue();
-				//System.out.println(date);
+				loadLoppuAukiolo();
 			}
 		};
 
@@ -225,8 +223,9 @@ public class Kalenteri {
 	}
 	
 	private void loadAlkuAukiolo() {
-		System.out.println("Aukiolo latautuu.");
+		System.out.println("Alku aukiolo latautuu.");
 		alkuAukiolot = new ArrayList<String>();
+		ArrayList<String> eiPrintattavat = new ArrayList<String>();
 		
 		for(int i = 0; i < varaukset.length; i++) {
 			LocalDate v = varaukset[i].getAlkuAika().toLocalDateTime().toLocalDate();
@@ -237,41 +236,38 @@ public class Kalenteri {
 				for(Date d : aukiolot) {
 					
 					if(d.getHours() == formatted) {
-						alkuAukiolot.add("VARATTU");
-					}else {
+						eiPrintattavat.add(Integer.toString(d.getHours()));
+					}else if(!(eiPrintattavat.contains(d.getHours()))){
 						alkuAukiolot.add(Integer.toString(d.getHours()));
 					}
 				}
 				
-			}else {
-				for(Date d : aukiolot) {
-					alkuAukiolot.add(Integer.toString(d.getHours()));
-				}
+			}
+		}
+		
+		if(alkuAukiolot.size() < 1) {
+			for(Date d : aukiolot) {
+				alkuAukiolot.add(Integer.toString(d.getHours()));
 			}
 		}
 	}
 	
-	private void removeDuplicates() {
+	private void removeDuplicates(List<String> list) {
 		ArrayList<String> newList = new ArrayList<String>();
 		
-		for(String s : alkuAukiolot) {
+		for(String s : list) {
 			if(!newList.contains(s)) {
-				newList.add(s);
-			}else if(s.equals("VARATTU")) {
-				newList.remove(newList.size() - 1);
 				newList.add(s);
 			}
 		}
 		
-		alkuAukiolot = new ArrayList<String>(newList);
+		list = new ArrayList<String>(newList);
 	}
 	
 	public ObservableList<Integer> getAlkuAukiolo(){
 		ObservableList<Integer> palautus = FXCollections.observableArrayList();
 		loadAlkuAukiolo();
-		removeDuplicates();
-		
-		System.out.println(alkuAukiolot.size());
+		removeDuplicates(alkuAukiolot);
 		
 		for(String i : alkuAukiolot) {
 			int intti = Integer.parseInt(i);
@@ -281,5 +277,46 @@ public class Kalenteri {
 		return palautus;
 	}
 	
-	public void getLoppuAukiolo() {}
+	public ObservableList<Integer> getLoppuAukiolo(){
+		ObservableList<Integer> palautus = FXCollections.observableArrayList();
+		loadLoppuAukiolo();
+		removeDuplicates(loppuAukiolot);
+		
+		for(String i : loppuAukiolot) {
+			int intti = Integer.parseInt(i);
+			palautus.add(intti);
+		}
+		
+		return palautus;
+	}
+	
+	public void loadLoppuAukiolo() {
+		System.out.println("Loppu aukiolo latautuu.");
+		loppuAukiolot = new ArrayList<String>();
+		ArrayList<String> eiPrintattavat = new ArrayList<String>();
+		
+		for(int i = 0; i < varaukset.length; i++) {
+			LocalDate v = varaukset[i].getLoppuAika().toLocalDateTime().toLocalDate();
+			
+			if(v.equals(checkOutDatePicker.getValue())) {
+				int formatted = varaukset[i].getLoppuAika().getHours();
+				
+				for(Date d : aukiolot) {
+					
+					if(d.getHours() == formatted) {
+						eiPrintattavat.add(Integer.toString(d.getHours()));
+					}else if(!(eiPrintattavat.contains(d.getHours()))){
+						loppuAukiolot.add(Integer.toString(d.getHours()));
+					}
+				}
+				
+			}
+		}
+		
+		if(loppuAukiolot.size() < 1) {
+			for(Date d : aukiolot) {
+				loppuAukiolot.add(Integer.toString(d.getHours()));
+			}
+		}
+	}
 }

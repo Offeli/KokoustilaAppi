@@ -99,9 +99,11 @@ public class TilojenSelausVarauslomake {
 	    
 	    // Add check-out vaihtoehdot¨
 	    
-	    ObservableList<Integer> tuntilistaOUT = FXCollections.observableArrayList();
+	    /*ObservableList<Integer> tuntilistaOUT = FXCollections.observableArrayList();
 		   tuntilistaOUT.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
-		  checkoutvaihtoehdot.setItems(tuntilistaOUT);
+		  checkoutvaihtoehdot.setItems(tuntilistaOUT);*/
+	    
+	    checkoutvaihtoehdot.setItems(calendar.getLoppuAukiolo());
 		  
 	    gridpane.add(checkoutvaihtoehdot, 1, 4);
 	   
