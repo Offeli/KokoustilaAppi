@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 import com.varausjarjestelma.malli.Tila;
+import com.varausjarjestelma.malli.TilaDAO;
 import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.scene.control.ChoiceBox;
@@ -12,6 +13,9 @@ import javafx.scene.control.ChoiceBox;
 public class Varausmanageri {
 
 	private final Kontrolleri kontrolleri;
+	static Timestamp aloitusaika;
+	static String varatuntilannimi;
+	
 
 	public Varausmanageri() {
 		kontrolleri = Kontrolleri.haeInstanssi();
@@ -49,9 +53,18 @@ public class Varausmanageri {
 		Timestamp loppuTs = Timestamp.valueOf(loppuInit.atTime((int) loppuTunti, 0));
 		System.out.println(alkuTs);
 		System.out.println(loppuTs);
+		aloitusaika = alkuTs;
+		varatuntilannimi = kontrolleri.etsiTila(tilanId).getNimi();
+		System.out.println(aloitusaika +" " + varatuntilannimi);
 		
 
 		kontrolleri.asetaVaraus( 4, tilanId, alkuTs, loppuTs);
+		
+	}
+	
+	public String varaustiedotMailiin() {
+		String returni =  "" + varatuntilannimi + ", on varattu teille alkaen " + aloitusaika + ".";
+		return returni;
 		
 	}
 

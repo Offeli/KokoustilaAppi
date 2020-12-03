@@ -1,6 +1,7 @@
 package com.varausjarjestelma.sähköposti;
 // File Name SimppeliMaili.java
 
+import java.security.Timestamp;
 import java.util.*;
 import java.util.logging.Level;
 
@@ -22,7 +23,14 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.varausjarjestelma.logiikka.Varausmanageri;
+
 public class SimppeliMaili {
+	
+	String varatunTilanNimi;
+	Timestamp aloitusaika;
+	Timestamp lopetusaika;
+	
 
    public static void sendMail(String recipient) throws MessagingException {    
       System.out.println("valmistaudutaan emailin lähettämiseen..");
@@ -55,7 +63,8 @@ private static Message prepareMessage(Session session, String myAccountEmail, St
 	message.setFrom(new InternetAddress(myAccountEmail));
 	message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 	message.setSubject("Reserviceltä viestiä!!");
-	message.setText("Reserviceltä terve, tilavarauksesi on vahvistettu. Kiitos!");
+	String osaviestiä = new Varausmanageri().varaustiedotMailiin();
+	message.setText("Reserviceltä terve, " + osaviestiä + " Kiitos!");
 	return message;
 	} catch(Exception ex) {
 		Logger.getLogger(SimppeliMaili.class.getName()).log(Level.SEVERE, null, ex);
