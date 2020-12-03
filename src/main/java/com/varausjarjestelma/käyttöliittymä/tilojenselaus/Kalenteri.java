@@ -103,7 +103,7 @@ public class Kalenteri {
 					@Override
 					public void updateItem(LocalDate item, boolean empty) {
 						super.updateItem(item, empty);
-						setMinSize(30, 30);
+						setMinSize(37, 37);
 
 						if (item.isBefore(LocalDate.now())) {
 							setDisable(true);
@@ -115,7 +115,13 @@ public class Kalenteri {
 
 						for (LocalDate l : ajat) {
 							if (item.isEqual(l)) {
-								setStyle("-fx-background-color: #ffc0cb;");
+								loadAlkuAukiolo();
+								removeDuplicates(alkuAukiolot);
+								if(alkuAukiolot.size() > 5) {
+									setStyle("-fx-background-color: #FEEB75;");
+								}else {
+									setStyle("-fx-background-color: #ffc0cb;");
+								}
 							}
 						}
 					}
@@ -131,7 +137,7 @@ public class Kalenteri {
 					@Override
 					public void updateItem(LocalDate item, boolean empty) {
 						super.updateItem(item, empty);
-						setMinSize(30, 30);
+						setMinSize(37, 37);
 
 						if (item.isBefore(checkInDatePicker.getValue())) {
 							setDisable(true);
@@ -144,8 +150,13 @@ public class Kalenteri {
 
 						for (LocalDate l : ajat) {
 							if (item.isEqual(l)) {
-								//setDisable(true);
-								setStyle("-fx-background-color: #ffc0cb;");
+								loadLoppuAukiolo();
+								removeDuplicates(loppuAukiolot);
+								if(loppuAukiolot.size() > 5) {
+									setStyle("-fx-background-color: #FEEB75;");
+								}else {
+									setStyle("-fx-background-color: #ffc0cb;");
+								}
 							}
 						}
 					}
@@ -161,6 +172,7 @@ public class Kalenteri {
 			public void handle(ActionEvent e) {
 				// get the date picker value
 				LocalDate date = checkInDatePicker.getValue();
+				if(date.isAfter(getOutDate())) checkOutDatePicker.setValue(checkInDatePicker.getValue());
 				tilojenvaraus.päivitä();
 			}
 		};
@@ -259,6 +271,43 @@ public class Kalenteri {
 		}
 	}
 	
+	private void loadLoppuAukiolo() {
+		loppuAukiolot = new ArrayList<String>();
+		ArrayList<String> eiPrintattavat = new ArrayList<String>();
+		
+		for(int i = 0; i < varaukset.length; i++) {
+			LocalDate v = varaukset[i].getLoppuAika().toLocalDateTime().toLocalDate();
+			
+			if(v.equals(checkOutDatePicker.getValue())) {
+				int formatted = varaukset[i].getLoppuAika().getHours();
+				int kesto = varauksenKesto(varaukset[i]);
+				
+				for(Date d : aukiolot) {
+					
+					if(d.getHours() == formatted) {
+						eiPrintattavat.add(Integer.toString(d.getHours()));
+						for(int j = 0; j < kesto; j++) {
+							eiPrintattavat.add(loppuAukiolot.remove(loppuAukiolot.size() - 1));
+						}
+					}else if(!(eiPrintattavat.contains(d.getHours()))){
+						loppuAukiolot.add(Integer.toString(d.getHours()));
+					}
+				}
+				
+			}
+		}
+		
+		if(loppuAukiolot.size() < 1) {
+			for(Date d : aukiolot) {
+				loppuAukiolot.add(Integer.toString(d.getHours()));
+			}
+		}
+	}
+	
+	private int varauksenKesto(Varaukset v) {
+		return v.getLoppuAika().getHours() - v.getAlkuAika().getHours();
+	}
+	
 	private void removeDuplicates(List<String> list) {
 		ArrayList<String> newList = new ArrayList<String>();
 		
@@ -295,42 +344,5 @@ public class Kalenteri {
 		}
 		
 		return palautus;
-	}
-	
-	private void loadLoppuAukiolo() {
-		loppuAukiolot = new ArrayList<String>();
-		ArrayList<String> eiPrintattavat = new ArrayList<String>();
-		
-		for(int i = 0; i < varaukset.length; i++) {
-			LocalDate v = varaukset[i].getLoppuAika().toLocalDateTime().toLocalDate();
-			
-			if(v.equals(checkOutDatePicker.getValue())) {
-				int formatted = varaukset[i].getLoppuAika().getHours();
-				int kesto = varauksenKesto(varaukset[i]);
-				
-				for(Date d : aukiolot) {
-					
-					if(d.getHours() == formatted) {
-						eiPrintattavat.add(Integer.toString(d.getHours()));
-						for(int j = 0; j < kesto; j++) {
-							eiPrintattavat.add(loppuAukiolot.remove(loppuAukiolot.size() - 1));
-						}
-					}else if(!(eiPrintattavat.contains(d.getHours()))){
-						loppuAukiolot.add(Integer.toString(d.getHours()));
-					}
-				}
-				
-			}
-		}
-		
-		if(loppuAukiolot.size() < 1) {
-			for(Date d : aukiolot) {
-				loppuAukiolot.add(Integer.toString(d.getHours()));
-			}
-		}
-	}
-	
-	private int varauksenKesto(Varaukset v) {
-		return v.getLoppuAika().getHours() - v.getAlkuAika().getHours();
 	}
 }
