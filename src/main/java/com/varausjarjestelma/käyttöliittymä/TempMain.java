@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
@@ -33,7 +34,7 @@ public class TempMain extends Application {
 		TabPane tabPane = new TabPane();
 
 		TilojenSelaus tilojenselaus = new TilojenSelaus();
-		StackPane varausikkuna = new VarausIkkuna().getRoot();
+		SplitPane varausikkuna = new VarausIkkuna().getRoot();
 		TilanLisäyslomake tilanlisäys = new TilanLisäyslomake();
 
 		Tab tab1 = new Tab();
