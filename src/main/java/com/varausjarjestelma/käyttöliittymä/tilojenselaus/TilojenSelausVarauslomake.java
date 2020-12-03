@@ -45,7 +45,12 @@ public class TilojenSelausVarauslomake {
 	ChoiceBox checkoutvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList());
 	
 	public TilojenSelausVarauslomake() {
-		calendar = new Kalenteri();
+		calendar = new Kalenteri(this);
+	}
+	
+	public void päivitä() {
+		checkinvaihtoehdot.setItems(calendar.getAlkuAukiolo());
+		checkoutvaihtoehdot.setItems(calendar.getLoppuAukiolo());
 	}
 	
 	public GridPane getVarausFormi() {
@@ -83,11 +88,6 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(aloitusaikaLabel, 0, 3);
 	    
 	    // Add check-in vaihtoehdot
-	    System.out.println("Lista latautuu.");
-	    /*ObservableList<Integer> tuntilistaIN = FXCollections.observableArrayList();
-		   tuntilistaIN.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
-		  checkinvaihtoehdot.setItems(tuntilistaIN);*/
-	    
 		  checkinvaihtoehdot.setItems(calendar.getAlkuAukiolo());
 		  
 	    	  
@@ -97,12 +97,7 @@ public class TilojenSelausVarauslomake {
 	    Label lopetusaikaLabel = I18n.stringForLabel("lopetusaika");
 	    gridpane.add(lopetusaikaLabel, 0, 4);
 	    
-	    // Add check-out vaihtoehdot¨
-	    
-	    /*ObservableList<Integer> tuntilistaOUT = FXCollections.observableArrayList();
-		   tuntilistaOUT.addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
-		  checkoutvaihtoehdot.setItems(tuntilistaOUT);*/
-	    
+	    // Add check-out vaihtoehdot
 	    checkoutvaihtoehdot.setItems(calendar.getLoppuAukiolo());
 		  
 	    gridpane.add(checkoutvaihtoehdot, 1, 4);

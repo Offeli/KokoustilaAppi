@@ -44,11 +44,13 @@ public class Kalenteri {
 	private StackPane root;
 	private ArrayList<Date> aukiolot;
 	private List<String> alkuAukiolot, loppuAukiolot;
+	private TilojenSelausVarauslomake tilojenvaraus;
 
 	/**
 	 * Constructor.
 	 */
-	public Kalenteri() {
+	public Kalenteri(TilojenSelausVarauslomake tilojenvaraus) {
+		this.tilojenvaraus = tilojenvaraus;
 		Locale.setDefault(Locale.UK);
 		kontrolleri = Kontrolleri.haeInstanssi();
 		setAukiolo();
@@ -105,7 +107,6 @@ public class Kalenteri {
 
 						if (item.isBefore(LocalDate.now())) {
 							setDisable(true);
-							// setStyle("-fx-background-color: #fffff;");
 						}
 
 						for (int i = 0; i < varaukset.length; i++) {
@@ -114,7 +115,6 @@ public class Kalenteri {
 
 						for (LocalDate l : ajat) {
 							if (item.isEqual(l)) {
-								//setDisable(true);
 								setStyle("-fx-background-color: #ffc0cb;");
 							}
 						}
@@ -161,7 +161,7 @@ public class Kalenteri {
 			public void handle(ActionEvent e) {
 				// get the date picker value
 				LocalDate date = checkInDatePicker.getValue();
-				loadAlkuAukiolo();
+				tilojenvaraus.päivitä();
 			}
 		};
 
@@ -171,7 +171,7 @@ public class Kalenteri {
 			public void handle(ActionEvent e) {
 				// get the date picker value
 				LocalDate date = checkOutDatePicker.getValue();
-				loadLoppuAukiolo();
+				tilojenvaraus.päivitä();
 			}
 		};
 
@@ -225,7 +225,6 @@ public class Kalenteri {
 	// ------------------------------------------ Aukiolojen määrittelyt:
 	
 	private void loadAlkuAukiolo() {
-		System.out.println("Alku aukiolo latautuu.");
 		alkuAukiolot = new ArrayList<String>();
 		ArrayList<String> eiPrintattavat = new ArrayList<String>();
 		
@@ -279,7 +278,6 @@ public class Kalenteri {
 		
 		for(String i : alkuAukiolot) {
 			int intti = Integer.parseInt(i);
-			System.out.println(intti);
 			palautus.add(intti);
 		}
 		
@@ -300,7 +298,6 @@ public class Kalenteri {
 	}
 	
 	private void loadLoppuAukiolo() {
-		System.out.println("Loppu aukiolo latautuu.");
 		loppuAukiolot = new ArrayList<String>();
 		ArrayList<String> eiPrintattavat = new ArrayList<String>();
 		
