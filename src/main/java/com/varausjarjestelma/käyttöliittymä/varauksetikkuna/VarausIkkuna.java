@@ -2,10 +2,14 @@ package com.varausjarjestelma.käyttöliittymä.varauksetikkuna;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,11 +57,12 @@ public class VarausIkkuna extends BorderPane {
 		    		pop.display(v);
 		    	}
 		    });
-		    
+		    TilePane.setMargin(btn, new Insets(20,5,5,5));
 		    pane.getChildren().add(btn);
 		}
         
         root.getChildren().addAll(pane);
+        root.setBackground(new Background(new BackgroundFill(Color.DARKOLIVEGREEN, null, null)));
 	}
 	
 	private Varaukset[] sort(Varaukset[] varaukset) { // Lajittele varaukset päivämäärän mukaan
