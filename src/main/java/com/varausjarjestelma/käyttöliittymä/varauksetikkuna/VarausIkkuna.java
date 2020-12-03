@@ -24,6 +24,7 @@ public class VarausIkkuna extends BorderPane {
 	
 	public VarausIkkuna() {
 		kontrolleri = Kontrolleri.haeInstanssi();
+		
 	}
 	
 	private void load() { // Hae tiedot kannasta
@@ -40,7 +41,6 @@ public class VarausIkkuna extends BorderPane {
 		TilePane pane = new TilePane();
         pane.setHgap(10);
         pane.setVgap(10);
-        
         varaukset = sort(varaukset);
 		
 		for(final Varaukset v: varaukset) {
@@ -57,7 +57,7 @@ public class VarausIkkuna extends BorderPane {
 		    pane.getChildren().add(btn);
 		}
         
-        root.getChildren().add(pane);
+        root.getChildren().addAll(pane);
 	}
 	
 	private Varaukset[] sort(Varaukset[] varaukset) { // Lajittele varaukset päivämäärän mukaan

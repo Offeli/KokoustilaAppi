@@ -8,6 +8,8 @@ import com.varausjarjestelma.käyttöliittymä.tilojenselaus.TilojenSelaus;
 import com.varausjarjestelma.käyttöliittymä.varauksetikkuna.VarausIkkuna;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -47,6 +49,18 @@ public class TempMain extends Application {
 		tab3.setText("Lisää uusi tila");
 		
 		tabPane.getTabs().addAll(tab1, tab2, tab3);
+
+
+
+        tabPane.getSelectionModel().selectedItemProperty().addListener(
+         new ChangeListener<Tab>() {
+        @Override
+        public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
+            System.out.println("Tabi vaihdettu");
+            tab2.setContent(new VarausIkkuna().getRoot());
+        }
+       }
+      );
 
 		mainPane.setTop(new TilojenSelaus().kieliboxi());
 		mainPane.setCenter(tabPane);
