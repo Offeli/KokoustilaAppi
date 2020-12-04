@@ -53,7 +53,7 @@ public class TilanLisäyslomake extends HBox {
 		for (int i = 1; i < 100; i++)
 			hlömääräVaihtoehdot.add(i);
 
-		ComboBox<Integer> hlömäärä = new ComboBox<>(hlömääräVaihtoehdot);
+		ComboBox<Integer> hlömäärä = new ComboBox<Integer>(hlömääräVaihtoehdot);
 		Button vahvista = I18n.buttonForKey("button.vahvistatilanlisäys", null, null);
 
 		vahvista.setOnAction(new EventHandler<ActionEvent>() {
