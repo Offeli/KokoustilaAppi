@@ -7,6 +7,8 @@ import com.varausjarjestelma.malli.Tila;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -39,16 +41,30 @@ public class TilanLisäyslomake extends HBox {
 		Button vahvista = I18n.buttonForKey("button.vahvistatilanlisäys", null, null);
 		
 		vahvista.setOnAction(e -> {
+			Alert ilmoitus = null;
 			Tila tila = new Tila();
+			String nimiText = nimi.getText();
+			boolean onnistui;
 			
 			tila.setHlomaara(hlömäärä.getValue());
 			tila.setKaupunki(kaupunki.getText());
 			tila.setKuvaus(kuvaus.getText());
 			tila.setNakyvyys(true);
-			tila.setNimi(nimi.getText());
+			tila.setNimi(nimiText);
 			tila.setOsoite(osoite.getText());
 			
-			kontrolleri.lisääTila(tila);
+			onnistui = kontrolleri.lisääTila(tila);
+			
+			if (onnistui) {
+				ilmoitus = new Alert(AlertType.CONFIRMATION);
+				ilmoitus.setHeaderText(nimiText + " on lisätty tietokantaan.");
+			} else {
+				ilmoitus = new Alert(AlertType.ERROR);
+				ilmoitus.setHeaderText("Tilaa "+nimiText+" ei pystytty lisäämään.");
+			}
+			
+			if (ilmoitus != null)
+				ilmoitus.show();
 		});
 		
 		setPadding(new Insets(50));
