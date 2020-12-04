@@ -13,10 +13,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -45,21 +42,6 @@ public class TilojenSelaus extends BorderPane {
 		korostettu = null;
 		final TilePane tausta = new TilePane();
 		Tila[] tilat = kontrolleri.haeTilat();
-
-	/*	HBox hbox = new HBox();
-		hbox.setPadding(new Insets(5, 5, 5, 5));
-		hbox.setSpacing(5);
-		Button buttonEnglish = I18n.buttonForKey("button.english");
-		buttonEnglish.setTooltip(I18n.tooltipForKey("button.english.tooltip"));
-		buttonEnglish.setOnAction((evt) -> switchLanguage(Locale.ENGLISH));
-		hbox.getChildren().add(buttonEnglish);
-		Button buttonFinnish = I18n.buttonForKey("button.finnish");
-		buttonFinnish.setTooltip(I18n.tooltipForKey("button.finnish.tooltip"));
-		buttonFinnish.setOnAction((evt) -> switchLanguage(I18n.FINNISH));
-		hbox.getChildren().add(buttonFinnish);
-		setTop(hbox);
-		
-		*/
 
 		tausta.setOnMouseClicked(new EventHandler<Event>() {
 
@@ -145,9 +127,7 @@ public class TilojenSelaus extends BorderPane {
 		tausta.setHgap(15);
 		tausta.setVgap(10);
 		tausta.setPadding(new Insets(20));
-		
-		
-        
+
 	}
 
 	/**
@@ -179,18 +159,32 @@ public class TilojenSelaus extends BorderPane {
 	private void switchLanguage(Locale locale) {
 		I18n.setLocale(locale);
 	}
-	
+
 	public HBox kieliboxi() {
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(5, 5, 5, 5));
 		hbox.setSpacing(5);
 		Button buttonEnglish = I18n.buttonForKey("button.english");
 		buttonEnglish.setTooltip(I18n.tooltipForKey("button.english.tooltip"));
-		buttonEnglish.setOnAction((evt) -> switchLanguage(Locale.ENGLISH));
+		buttonEnglish.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				switchLanguage(Locale.ENGLISH);
+			}
+
+		});
 		hbox.getChildren().add(buttonEnglish);
 		Button buttonFinnish = I18n.buttonForKey("button.finnish");
 		buttonFinnish.setTooltip(I18n.tooltipForKey("button.finnish.tooltip"));
-		buttonFinnish.setOnAction((evt) -> switchLanguage(I18n.FINNISH));
+		buttonFinnish.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				switchLanguage(I18n.FINNISH);
+			}
+
+		});
 		hbox.getChildren().add(buttonFinnish);
 		return hbox;
 	}
