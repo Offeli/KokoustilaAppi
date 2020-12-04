@@ -1,8 +1,12 @@
 package com.varausjarjestelma.käyttöliittymä.tilanlisäys;
 
+import com.varausjarjestelma.i18n.I18n;
+import com.varausjarjestelma.kontrolleri.Kontrolleri;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -11,13 +15,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class TilanLisäyslomake extends HBox {
+	
+	private final Kontrolleri kontrolleri;
 
 	public TilanLisäyslomake() {
+		kontrolleri = Kontrolleri.haeInstanssi();
+		
 		VBox kolumni1 = new VBox(), kolumni2 = new VBox(), nimiBox = new VBox(), osoiteBox = new VBox(),
 				kaupunkiBox = new VBox(), hlömääräBox = new VBox(), kuvausBox = new VBox();
 
-		Label nimiLabel = new Label("Test:"), osoiteLabel = new Label("Test:"), kaupunkiLabel = new Label(),
-				hlömääräLabel = new Label("Henkilömäärä:"), kuvausLabel = new Label();
+		Label nimiLabel = I18n.stringForLabel("nimi", null, null), osoiteLabel = I18n.stringForLabel("osoite", null, null), kaupunkiLabel = I18n.stringForLabel("kaupunki", null, null),
+				hlömääräLabel = I18n.stringForLabel("henkilömäärä", null, null), kuvausLabel = I18n.stringForLabel("kuvaus", null, null);
 
 		TextField nimi = new TextField(), osoite = new TextField(), kaupunki = new TextField();
 		TextArea kuvaus = new TextArea();
@@ -27,6 +35,7 @@ public class TilanLisäyslomake extends HBox {
 			hlömääräVaihtoehdot.add(i);
 
 		ComboBox<Integer> hlömäärä = new ComboBox<>(hlömääräVaihtoehdot);
+		Button vahvista = I18n.buttonForKey("button.vahvistatilanlisäys", null, null);
 		
 		setPadding(new Insets(50));
 		setSpacing(20);
@@ -47,7 +56,7 @@ public class TilanLisäyslomake extends HBox {
 		kuvausBox.getChildren().addAll(kuvausLabel, kuvaus);
 
 		kolumni1.getChildren().addAll(nimiBox, osoiteBox, kaupunkiBox);
-		kolumni2.getChildren().addAll(hlömääräBox, kuvausBox);
+		kolumni2.getChildren().addAll(hlömääräBox, kuvausBox, vahvista);
 		
 		getChildren().addAll(kolumni1, kolumni2);
 	}
