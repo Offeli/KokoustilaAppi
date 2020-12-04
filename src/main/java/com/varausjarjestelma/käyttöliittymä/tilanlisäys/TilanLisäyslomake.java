@@ -2,6 +2,7 @@ package com.varausjarjestelma.käyttöliittymä.tilanlisäys;
 
 import com.varausjarjestelma.i18n.I18n;
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
+import com.varausjarjestelma.malli.Tila;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,6 +37,19 @@ public class TilanLisäyslomake extends HBox {
 
 		ComboBox<Integer> hlömäärä = new ComboBox<>(hlömääräVaihtoehdot);
 		Button vahvista = I18n.buttonForKey("button.vahvistatilanlisäys", null, null);
+		
+		vahvista.setOnAction(e -> {
+			Tila tila = new Tila();
+			
+			tila.setHlomaara(hlömäärä.getValue());
+			tila.setKaupunki(kaupunki.getText());
+			tila.setKuvaus(kuvaus.getText());
+			tila.setNakyvyys(true);
+			tila.setNimi(nimi.getText());
+			tila.setOsoite(osoite.getText());
+			
+			kontrolleri.lisääTila(tila);
+		});
 		
 		setPadding(new Insets(50));
 		setSpacing(20);

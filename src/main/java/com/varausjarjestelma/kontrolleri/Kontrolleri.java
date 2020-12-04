@@ -48,6 +48,10 @@ public class Kontrolleri {
 	public Tila etsiTila(int id) {
 		return tilaDAO.etsiTila(id);
 	}
+	
+	public boolean lisääTila(Tila tila) {
+		return tilaDAO.lisaaTila(tila);
+	}
 
 	public int haeTilatMaara() {
 		Tila[] tilat = tilaDAO.haeKaikkiTilat();
