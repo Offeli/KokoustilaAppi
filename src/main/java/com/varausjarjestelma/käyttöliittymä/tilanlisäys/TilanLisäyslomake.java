@@ -14,8 +14,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class TilanLisäyslomake extends HBox {
 	
@@ -24,11 +27,19 @@ public class TilanLisäyslomake extends HBox {
 	public TilanLisäyslomake() {
 		kontrolleri = Kontrolleri.haeInstanssi();
 		
+		setBackground(new Background(new BackgroundFill(Color.DARKOLIVEGREEN, null, null)));
+		
 		VBox kolumni1 = new VBox(), kolumni2 = new VBox(), nimiBox = new VBox(), osoiteBox = new VBox(),
 				kaupunkiBox = new VBox(), hlömääräBox = new VBox(), kuvausBox = new VBox();
 
 		Label nimiLabel = I18n.stringForLabel("nimi", null, null), osoiteLabel = I18n.stringForLabel("osoite", null, null), kaupunkiLabel = I18n.stringForLabel("kaupunki", null, null),
 				hlömääräLabel = I18n.stringForLabel("henkilömäärä", null, null), kuvausLabel = I18n.stringForLabel("kuvaus", null, null);
+
+		nimiLabel.setTextFill(Color.WHITE);
+		osoiteLabel.setTextFill(Color.WHITE);
+		kaupunkiLabel.setTextFill(Color.WHITE);
+		hlömääräLabel.setTextFill(Color.WHITE);
+		kuvausLabel.setTextFill(Color.WHITE);
 
 		TextField nimi = new TextField(), osoite = new TextField(), kaupunki = new TextField();
 		TextArea kuvaus = new TextArea();
