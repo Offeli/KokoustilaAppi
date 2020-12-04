@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 import com.varausjarjestelma.kontrolleri.Kontrolleri;
 import com.varausjarjestelma.malli.Tila;
-import com.varausjarjestelma.malli.TilaDAO;
 import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.scene.control.ChoiceBox;
@@ -15,7 +14,6 @@ public class Varausmanageri {
 	private final Kontrolleri kontrolleri;
 	static Timestamp aloitusaika;
 	static String varatuntilannimi;
-	
 
 	public Varausmanageri() {
 		kontrolleri = Kontrolleri.haeInstanssi();
@@ -36,18 +34,15 @@ public class Varausmanageri {
 
 		return true;
 	}
-	
-	public void varaaTila(ChoiceBox alkuTuntiPicker, ChoiceBox loppuTuntiPicker, LocalDate varauksenAloitusPäivä, 
-   		 LocalDate varauksenLopetusPäivä, int tilanId) {
-	
-		kontrolleri.haeInstanssi();
-		
+
+	public void varaaTila(ChoiceBox<Integer> alkuTuntiPicker, ChoiceBox<Integer> loppuTuntiPicker,
+			LocalDate varauksenAloitusPäivä, LocalDate varauksenLopetusPäivä, int tilanId) {
+
 		Object alkuTunti = alkuTuntiPicker.getValue();
 		Object loppuTunti = loppuTuntiPicker.getValue();
 
 		LocalDate alkuInit = varauksenAloitusPäivä;
 		LocalDate loppuInit = varauksenLopetusPäivä;
-		
 
 		Timestamp alkuTs = Timestamp.valueOf(alkuInit.atTime((int) alkuTunti, 0));
 		Timestamp loppuTs = Timestamp.valueOf(loppuInit.atTime((int) loppuTunti, 0));
@@ -55,17 +50,16 @@ public class Varausmanageri {
 		System.out.println(loppuTs);
 		aloitusaika = alkuTs;
 		varatuntilannimi = kontrolleri.etsiTila(tilanId).getNimi();
-		System.out.println(aloitusaika +" " + varatuntilannimi);
-		
+		System.out.println(aloitusaika + " " + varatuntilannimi);
 
-		kontrolleri.asetaVaraus( 4, tilanId, alkuTs, loppuTs);
-		
+		kontrolleri.asetaVaraus(4, tilanId, alkuTs, loppuTs);
+
 	}
-	
+
 	public String varaustiedotMailiin() {
-		String returni =  "" + varatuntilannimi + ", on varattu teille alkaen " + aloitusaika + ".";
+		String returni = "" + varatuntilannimi + ", on varattu teille alkaen " + aloitusaika + ".";
 		return returni;
-		
+
 	}
 
 }
