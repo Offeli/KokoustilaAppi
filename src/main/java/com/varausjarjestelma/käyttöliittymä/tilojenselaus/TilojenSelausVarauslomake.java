@@ -39,10 +39,10 @@ import javafx.scene.text.Text;
 
 public class TilojenSelausVarauslomake {
 	
-	int valitunTilanID;
+	private int valitunTilanID;
 	private Kalenteri calendar;
-	ChoiceBox<Integer> checkinvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
-	ChoiceBox<Integer> checkoutvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
+	private ChoiceBox<Integer> checkinvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
+	private ChoiceBox<Integer> checkoutvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
 	
 	public TilojenSelausVarauslomake() {
 		calendar = new Kalenteri(this);
