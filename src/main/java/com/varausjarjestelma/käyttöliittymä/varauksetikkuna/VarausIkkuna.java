@@ -3,14 +3,12 @@ package com.varausjarjestelma.käyttöliittymä.varauksetikkuna;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 
@@ -108,7 +106,7 @@ public class VarausIkkuna extends BorderPane {
 		
 		System.out.println(list);
 		
-		List<Varaukset> sorted = new ArrayList<>();
+		List<Varaukset> sorted = new ArrayList<Varaukset>();
 		Varaukset varaus;
 		
 		for(Date d : list) {
@@ -134,7 +132,7 @@ public class VarausIkkuna extends BorderPane {
 		
 		System.out.println(list);
 		
-		List<Varaukset> sorted = new ArrayList<>();
+		List<Varaukset> sorted = new ArrayList<Varaukset>();
 		Varaukset varaus;
 		
 		for(Date d : list) {
