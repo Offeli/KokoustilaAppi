@@ -41,8 +41,8 @@ public class TilojenSelausVarauslomake {
 	
 	int valitunTilanID;
 	private Kalenteri calendar;
-	ChoiceBox checkinvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList());
-	ChoiceBox checkoutvaihtoehdot = new ChoiceBox(FXCollections.observableArrayList());
+	ChoiceBox<Integer> checkinvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
+	ChoiceBox<Integer> checkoutvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
 	
 	public TilojenSelausVarauslomake() {
 		calendar = new Kalenteri(this);
@@ -126,7 +126,7 @@ public class TilojenSelausVarauslomake {
 	        		 Tila t = Kontrolleri.haeInstanssi().etsiTila(valitunTilanID);
 	        		 a.setHeaderText(t.getNimi()+" varattu, kiitos!");
 	                 a.show();
-	                 new SimppeliMaili().sendMail(emailField.getText());
+	                 SimppeliMaili.sendMail(emailField.getText());
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}  
@@ -165,8 +165,8 @@ public class TilojenSelausVarauslomake {
 		
 		Varausmanageri varausmanageri = new Varausmanageri();
 		
-		ChoiceBox alkuTuntiPicker = checkinvaihtoehdot;
-		ChoiceBox loppuTuntiPicker = checkoutvaihtoehdot;
+		ChoiceBox<Integer> alkuTuntiPicker = checkinvaihtoehdot;
+		ChoiceBox<Integer> loppuTuntiPicker = checkoutvaihtoehdot;
 		LocalDate varauksenAloitusPäivä = calendar.getInDate();
 		LocalDate varauksenLopetusPäivä = calendar.getOutDate();
 		int tilanId = valitunTilanID;
