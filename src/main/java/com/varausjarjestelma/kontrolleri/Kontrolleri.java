@@ -9,7 +9,7 @@ import com.varausjarjestelma.malli.*;
 public class Kontrolleri {
 
 	private static Kontrolleri instanssi = null;
-	
+
 	private TestConnection tc;
 	private TilaDAO tilaDAO;
 	private TilanOminaisuusDAO toDAO;
@@ -40,7 +40,7 @@ public class Kontrolleri {
 	public Ominaisuus[] haeOminaisuudet() {
 		return ominaisuusDAO.haeKaikkiOminaisuudet();
 	}
-	
+
 	public Käyttäjä[] haeKäyttäjät() {
 		return käyttäjäDAO.haeKaikkiKayttajat();
 	}
@@ -48,7 +48,7 @@ public class Kontrolleri {
 	public Tila etsiTila(int id) {
 		return tilaDAO.etsiTila(id);
 	}
-	
+
 	public boolean lisääTila(Tila tila) {
 		return tilaDAO.lisaaTila(tila);
 	}
@@ -77,6 +77,27 @@ public class Kontrolleri {
 		}
 		System.out.println("(rivejä yhteensä: " + riveja + ")");
 		return rivitTaulukkona;
+	}
+
+	public String näytäTilanOminaisuudetStringinä(int tilaID) {
+
+		Kontrolleri kontrolleri = Kontrolleri.haeInstanssi();
+		Tila kyseinenTila = kontrolleri.etsiTila(tilaID);
+		TilanOminaisuus[] ominaisuusArray = kontrolleri.etsiTilanOminaisuudet(kyseinenTila);
+		ArrayList<String> ominaisuudetListattuna = new ArrayList<String>();
+
+		for (int i = 0; i <= ominaisuusArray.length - 1; i++) {
+			TilanOminaisuus o = ominaisuusArray[i];
+			String nimi = o.getOminaisuus().getNimi();
+			String kuvaus = o.getOminaisuus().getKuvaus();
+			ominaisuudetListattuna.add(nimi + " (" + kuvaus + ")");
+		}
+
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < ominaisuudetListattuna.size(); i++) {
+			sb.append("\n \t" + ominaisuudetListattuna.get(i));
+		}
+		return sb.toString();
 	}
 
 	// Varaamiseen tarvittavat metodit
@@ -120,21 +141,21 @@ public class Kontrolleri {
 
 		return varauksetDAO.poistaVaraus(varaus);
 	}
-	
+
 	// Varauksien haku
-	
+
 	public Varaukset[] haeVarauksetTila(Tila tila) {
 		return varauksetDAO.haeVarauksetTila(tila);
 	}
-	
+
 	public Varaukset[] haeVaraukset(Käyttäjä käyttäjä) {
 		return varauksetDAO.haeVaraukset(käyttäjä);
 	}
-	
+
 	public Varaukset[] haeKaikkiVaraukset() {
 		return varauksetDAO.haeKaikkiVaraukset();
 	}
-	
+
 	// TilanOminaisuuksien haku
 
 	public TilanOminaisuus[] etsiTilanOminaisuudet(Tila tila) {

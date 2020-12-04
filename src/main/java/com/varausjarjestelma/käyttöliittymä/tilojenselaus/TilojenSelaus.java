@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Locale;
 
 import com.varausjarjestelma.i18n.I18n;
-import com.varausjarjestelma.kontrolleri.TilojenSelausKontrolleri;
+import com.varausjarjestelma.kontrolleri.Kontrolleri;
 import com.varausjarjestelma.malli.Tila;
 
 import javafx.event.ActionEvent;
@@ -29,7 +29,7 @@ import javafx.scene.text.Text;
  */
 public class TilojenSelaus extends BorderPane {
 
-	private final TilojenSelausKontrolleri kontrolleri;
+	private final Kontrolleri kontrolleri;
 	private final List<Pane> tilaPanet;
 	private GridPane korostettu;
 
@@ -37,7 +37,7 @@ public class TilojenSelaus extends BorderPane {
 	 * Constructor. Fills this border pane with desired content.
 	 */
 	public TilojenSelaus() {
-		kontrolleri = new TilojenSelausKontrolleri(this);
+		kontrolleri = Kontrolleri.haeInstanssi();
 		tilaPanet = new ArrayList<Pane>();
 		korostettu = null;
 		final TilePane tausta = new TilePane();
