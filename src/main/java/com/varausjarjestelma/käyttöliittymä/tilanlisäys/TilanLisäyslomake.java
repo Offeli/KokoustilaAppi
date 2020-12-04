@@ -58,6 +58,13 @@ public class TilanLisäyslomake extends HBox {
 			if (onnistui) {
 				ilmoitus = new Alert(AlertType.CONFIRMATION);
 				ilmoitus.setHeaderText(nimiText + " on lisätty tietokantaan.");
+				
+				// palautetaan oletusarvot kenttiin
+				hlömäärä.setValue(1);
+				kaupunki.setText("");
+				kuvaus.setText("");
+				nimi.setText("");
+				osoite.setText("");
 			} else {
 				ilmoitus = new Alert(AlertType.ERROR);
 				ilmoitus.setHeaderText("Tilaa "+nimiText+" ei pystytty lisäämään.");
