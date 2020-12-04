@@ -181,8 +181,6 @@ public class Kalenteri {
 
 		EventHandler<ActionEvent> outEvent = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				// get the date picker value
-				LocalDate date = checkOutDatePicker.getValue();
 				tilojenvaraus.päivitä();
 			}
 		};
