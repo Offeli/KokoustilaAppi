@@ -103,11 +103,11 @@ public class FXkäyttöliittymä implements Käyttöliittymä {
 
 	
 	@FXML
-	private ListView varatutTilat;
+	private ListView<String> varatutTilat;
 	ObservableList<String> varauslista =  FXCollections.observableArrayList();
 	
 	@FXML
-	private ListView tilanOminaisuusLista;
+	private ListView<String> tilanOminaisuusLista;
 	ObservableList<String> ominaisuuslista =  FXCollections.observableArrayList();
 	
 	
