@@ -329,6 +329,11 @@ public class Kalenteri {
 		list = new ArrayList<String>(newList);
 	}
 	
+	/**
+	 * Makes a list of available reservation start times.
+	 * 
+	 * @return numbers representing times as an ObservableList
+	 */
 	public ObservableList<Integer> getAlkuAukiolo(){
 		ObservableList<Integer> palautus = FXCollections.observableArrayList();
 		loadAlkuAukiolo();
@@ -342,6 +347,11 @@ public class Kalenteri {
 		return palautus;
 	}
 	
+	/**
+	 * Makes a list of times the reservation can end.
+	 * 
+	 * @return numbers representing times as an ObservableList
+	 */
 	public ObservableList<Integer> getLoppuAukiolo(){
 		ObservableList<Integer> palautus = FXCollections.observableArrayList();
 		loadLoppuAukiolo();
