@@ -49,8 +49,8 @@ public class TilojenSelausVarauslomake {
 	}
 	
 	public void päivitä() {
-		checkinvaihtoehdot.setItems(calendar.getAlkuAukiolo());
-		checkoutvaihtoehdot.setItems(calendar.getLoppuAukiolo());
+		checkinvaihtoehdot.setItems((ObservableList<Integer>) calendar.getAlkuAukiolo());
+		checkoutvaihtoehdot.setItems((ObservableList<Integer>) calendar.getLoppuAukiolo());
 	}
 	
 	public GridPane getVarausFormi() {
@@ -88,7 +88,7 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(aloitusaikaLabel, 0, 3);
 	    
 	    // Add check-in vaihtoehdot
-		  checkinvaihtoehdot.setItems(calendar.getAlkuAukiolo());
+		  checkinvaihtoehdot.setItems((ObservableList<Integer>) calendar.getAlkuAukiolo());
 		  
 	    	  
 	    gridpane.add(checkinvaihtoehdot, 1, 3);
@@ -98,7 +98,7 @@ public class TilojenSelausVarauslomake {
 	    gridpane.add(lopetusaikaLabel, 0, 4);
 	    
 	    // Add check-out vaihtoehdot
-	    checkoutvaihtoehdot.setItems(calendar.getLoppuAukiolo());
+	    checkoutvaihtoehdot.setItems((ObservableList<Integer>) calendar.getLoppuAukiolo());
 		  
 	    gridpane.add(checkoutvaihtoehdot, 1, 4);
 	   
