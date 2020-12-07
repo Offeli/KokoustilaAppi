@@ -21,8 +21,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 /**
- * An extension to border pane, which serves as a window for browsing and
- * reserving spaces.
+ * A view for browsing and reserving spaces.
  * 
  * @author E. Niemi, S. Sarviala
  *

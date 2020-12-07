@@ -22,6 +22,12 @@ import com.varausjarjestelma.i18n.I18n;
 import com.varausjarjestelma.kontrolleri.*;
 import com.varausjarjestelma.malli.Varaukset;
 
+/**
+ * A view for browsing and selecting reservations (Varaukset).
+ * 
+ * @author V. Ahlstén, E. Niemi, O. Närhi 
+ *
+ */
 public class VarausIkkuna extends BorderPane {
 	
 	private Kontrolleri kontrolleri;
@@ -29,17 +35,22 @@ public class VarausIkkuna extends BorderPane {
 	private static Varaukset[] menneetvaraukset;
 	private SplitPane root;
 	
+	/**
+	 * Constructor.
+	 */
 	public VarausIkkuna() {
 		kontrolleri = Kontrolleri.haeInstanssi();
 		
 	}
 	
 	private void load() { // Hae tiedot kannasta
-		varaukset = kontrolleri.haeKaikkiVaraukset();
-		menneetvaraukset = kontrolleri.haeKaikkiVaraukset();
+		varaukset = menneetvaraukset = kontrolleri.haeKaikkiVaraukset();
 		root = new SplitPane();
 	}
 	
+	/**
+	 * Nullifies the member list varaukset and the member variable root.
+	 */
 	public void clear() {
 		if(varaukset != null) varaukset = null;
 		if(root != null) root = null;
@@ -147,6 +158,12 @@ public class VarausIkkuna extends BorderPane {
 		return sorted.toArray(new Varaukset[sorted.size()]);
 	}
 	
+	/**
+	 * Loads the reservations (Varaukset) from database and
+	 * builds a view for browsing them.
+	 * 
+	 * @return split pane for browsing reservations
+	 */
 	public SplitPane getRoot() { // Palauta näkymä
 		load();
 		build();
