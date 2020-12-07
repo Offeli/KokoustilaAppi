@@ -17,13 +17,13 @@ import javafx.scene.text.Text;
 import javafx.stage.*;
 
 public class VarausPopUp {
-	private Kontrolleri kontrolleri;
+	private final Kontrolleri kontrolleri;
 	
 	public VarausPopUp(Kontrolleri k) {
 		kontrolleri = k;
 	}
    
-	public void display(Varaukset v)
+	public void display(final Varaukset v)
 		{
 			final Stage popupwindow=new Stage();
 			      
