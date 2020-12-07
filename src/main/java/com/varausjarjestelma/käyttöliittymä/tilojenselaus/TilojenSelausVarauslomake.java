@@ -37,6 +37,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+/**
+ * A class used to build the reservation form.
+ * 
+ * @author V. Ahlstén, E. Niemi, O. Närhi, S. Sarviala
+ *
+ */
 public class TilojenSelausVarauslomake {
 	
 	private int valitunTilanID;
@@ -44,17 +50,29 @@ public class TilojenSelausVarauslomake {
 	private ChoiceBox<Integer> checkinvaihtoehdot;
 	private ChoiceBox<Integer> checkoutvaihtoehdot;
 	
+	/**
+	 * Constructor.
+	 */
 	public TilojenSelausVarauslomake() {
 		calendar = new Kalenteri(this);
 		checkinvaihtoehdot = new ChoiceBox<Integer>();
 		checkoutvaihtoehdot = new ChoiceBox<Integer>();
 	}
 	
+	/**
+	 * Updates the choices for a reservation's start
+	 * and end time.
+	 */
 	public void päivitä() {
 		checkinvaihtoehdot.setItems((ObservableList<Integer>) calendar.getAlkuAukiolo());
 		checkoutvaihtoehdot.setItems((ObservableList<Integer>) calendar.getLoppuAukiolo());
 	}
 	
+	/**
+	 * Creates the form used to make new reservations (Varaukset).
+	 * 
+	 * @return grid pane containing the reservation form
+	 */
 	public GridPane getVarausFormi() {
 		
 		GridPane gridpane = new GridPane();
@@ -139,6 +157,11 @@ public class TilojenSelausVarauslomake {
 
 	}
 	
+	/**
+	 * Creates the calendar panes used in the reservation form.
+	 * 
+	 * @return stack pane containing a calendar
+	 */
 	public Pane getKalenteri () {
 		Pane kalenteri = calendar.getRoot();
 		kalenteri.setPrefWidth(200);
@@ -149,6 +172,13 @@ public class TilojenSelausVarauslomake {
 		return kalenteri;
 	}
 	
+	/**
+	 * Gets the reservation form and the calendar and places them
+	 * in a grid pane it creates.
+	 * 
+	 * @param tila
+	 * @return grid pane containing a calendar and a form
+	 */
 	public GridPane getKokoVarausLomake(Tila tila) {
 		calendar.setKalenteri(tila.getID());
 		
@@ -163,6 +193,10 @@ public class TilojenSelausVarauslomake {
 		return kokoLomake;
 	}
 	
+	/**
+	 * Sends the current form values to a Varausmanageri
+	 * for processing.
+	 */
 	public void lähetäVaraus() {
 		
 		Varausmanageri varausmanageri = new Varausmanageri();

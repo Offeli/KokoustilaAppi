@@ -160,6 +160,14 @@ public class TilojenSelaus extends BorderPane {
 		I18n.setLocale(locale);
 	}
 
+	/**
+	 * Creates a horizontal box containing buttons for
+	 * each supported language. Buttons are equipped with
+	 * on-action event handlers that switch the UI language
+	 * to the language that corresponds with the clicked button.
+	 * 
+	 * @return horizontal box with language options
+	 */
 	public HBox kieliboxi() {
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(5, 5, 5, 5));
