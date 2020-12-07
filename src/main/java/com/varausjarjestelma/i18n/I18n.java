@@ -118,7 +118,7 @@ public final class I18n {
 	 * @param key key
 	 * @return String binding
 	 */
-	public static StringBinding createStringBinding(final String key, Object... args) {
+	public static StringBinding createStringBinding(final String key, final Object... args) {
 		return Bindings.createStringBinding(new Callable<String>() {
 
 			@Override
