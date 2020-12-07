@@ -38,14 +38,14 @@ public class Varausmanageri {
 	public void varaaTila(ChoiceBox<Integer> alkuTuntiPicker, ChoiceBox<Integer> loppuTuntiPicker,
 			LocalDate varauksenAloitusPäivä, LocalDate varauksenLopetusPäivä, int tilanId) {
 
-		Object alkuTunti = alkuTuntiPicker.getValue();
-		Object loppuTunti = loppuTuntiPicker.getValue();
+		int alkuTunti = alkuTuntiPicker.getValue();
+		int loppuTunti = loppuTuntiPicker.getValue();
 
 		LocalDate alkuInit = varauksenAloitusPäivä;
 		LocalDate loppuInit = varauksenLopetusPäivä;
 
-		Timestamp alkuTs = Timestamp.valueOf(alkuInit.atTime((int) alkuTunti, 0));
-		Timestamp loppuTs = Timestamp.valueOf(loppuInit.atTime((int) loppuTunti, 0));
+		Timestamp alkuTs = Timestamp.valueOf(alkuInit.atTime(alkuTunti, 0));
+		Timestamp loppuTs = Timestamp.valueOf(loppuInit.atTime(loppuTunti, 0));
 		System.out.println(alkuTs);
 		System.out.println(loppuTs);
 		aloitusaika = alkuTs;

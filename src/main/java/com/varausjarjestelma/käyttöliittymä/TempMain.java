@@ -45,7 +45,7 @@ public class TempMain extends Application {
 		tab1.setContent(tilojenselaus);
 		tab1.setText("Tilat");
 		tab1.closableProperty().setValue(false);
-		Tab tab2 = new Tab();
+		final Tab tab2 = new Tab();
 		tab2.setContent(varausikkuna);
 		tab2.setText("Varaukset");
 		tab2.closableProperty().setValue(false);

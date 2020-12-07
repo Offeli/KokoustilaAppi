@@ -41,11 +41,13 @@ public class TilojenSelausVarauslomake {
 	
 	private int valitunTilanID;
 	private Kalenteri calendar;
-	private ChoiceBox<Integer> checkinvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
-	private ChoiceBox<Integer> checkoutvaihtoehdot = new ChoiceBox<Integer>(FXCollections.observableArrayList());
+	private ChoiceBox<Integer> checkinvaihtoehdot;
+	private ChoiceBox<Integer> checkoutvaihtoehdot;
 	
 	public TilojenSelausVarauslomake() {
 		calendar = new Kalenteri(this);
+		checkinvaihtoehdot = new ChoiceBox<Integer>();
+		checkoutvaihtoehdot = new ChoiceBox<Integer>();
 	}
 	
 	public void päivitä() {
