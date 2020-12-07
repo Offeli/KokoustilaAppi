@@ -1,4 +1,3 @@
-
 Kehitysympäristönä käytämme Eclipseä.
 
 
@@ -9,7 +8,7 @@ Eclipsen käyttö vaatii joko JRE:n tai JDK:n. JDK:n voi ladata osoitteesta http
 
 
 Eclipsen ensimmäisellä käyttökerralla valitaan workspace-kansio. Tähän kansioon tallentuvat projektien kansiot. Näihin tallentuvat mm. lähdekoodit (java.) sekä tavukoodit (.class).
-Tämä workspace kloonataan tästä repositorysta ja viedään Eclipsen repository näkymään. Näin voit importoida projektin näkymään ohjelmointi näkymään. Huomaathan, että sinulla pitää olla git asennettu koneellesi, jotta tämä on mahdollista toteuttaa: https://git-scm.com/downloads. 
+Tämä workspace kloonataan tästä repositorysta ja viedään Eclipsen repository näkymään. Näin voit importoida projektin ohjelmointi näkymään. Huomaathan, että sinulla pitää olla git asennettu koneellesi, jotta tämä on mahdollista toteuttaa: https://git-scm.com/downloads. 
 
 Jotta projekti voi toimia, on sinulla oltava yhteys educloud-koneeseen jolla tietokanta sijaitsee. Yhteyden luomiseksi tarvitset Putty ohjelman (voit ladata osoitteesta: https://www.putty.org/), johon asetat kohdetietokoneen osoitteen ja kirjaudut sisään tunnuksillasi. Huomaathan, että connection type kuuluu olla SSH ja portin 22.
 
