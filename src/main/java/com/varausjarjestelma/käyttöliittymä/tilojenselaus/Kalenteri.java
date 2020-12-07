@@ -56,12 +56,23 @@ public class Kalenteri {
 		setAukiolo();
 	}
 	
+	/**
+	 * Initializes the member variables varaukset, ajat and root
+	 * based on the number of varaukset related to
+	 * the given tila.
+	 * 
+	 * @param tila
+	 */
 	public void setKalenteri(int tila) {
 		varaukset = kontrolleri.haeVarauksetTila(kontrolleri.etsiTila(tila));
 		ajat = new LocalDate[varaukset.length];
 		root = new StackPane();
 	}
 	
+	/**
+	 * Initializes and inserts Date objects into
+	 * the member list aukiolot.
+	 */
 	public void setAukiolo() {
 		aukiolot = new ArrayList<Date>();
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm");

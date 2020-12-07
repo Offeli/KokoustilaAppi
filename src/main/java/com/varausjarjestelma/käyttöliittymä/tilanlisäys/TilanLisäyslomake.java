@@ -22,10 +22,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+/**
+ * A view containing a form for inserting
+ * a new space to the database.
+ * 
+ * @author Sebastian
+ *
+ */
 public class TilanLisäyslomake extends HBox {
 
 	private final Kontrolleri kontrolleri;
 
+	/**
+	 * A constructor which builds the view.
+	 */
 	public TilanLisäyslomake() {
 		kontrolleri = Kontrolleri.haeInstanssi();
 
