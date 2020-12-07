@@ -56,14 +56,14 @@ public class TilanLisäyslomake extends HBox {
 		hlömääräLabel.setTextFill(Color.WHITE);
 		kuvausLabel.setTextFill(Color.WHITE);
 
-		TextField nimi = new TextField(), osoite = new TextField(), kaupunki = new TextField();
-		TextArea kuvaus = new TextArea();
-		ObservableList<Integer> hlömääräVaihtoehdot = FXCollections.observableArrayList();
+		final TextField nimi = new TextField(), osoite = new TextField(), kaupunki = new TextField();
+		final TextArea kuvaus = new TextArea();
+		final ObservableList<Integer> hlömääräVaihtoehdot = FXCollections.observableArrayList();
 
 		for (int i = 1; i < 100; i++)
 			hlömääräVaihtoehdot.add(i);
 
-		ComboBox<Integer> hlömäärä = new ComboBox<Integer>(hlömääräVaihtoehdot);
+		final ComboBox<Integer> hlömäärä = new ComboBox<Integer>(hlömääräVaihtoehdot);
 		Button vahvista = I18n.buttonForKey("button.vahvistatilanlisäys", null, null);
 
 		vahvista.setOnAction(new EventHandler<ActionEvent>() {
