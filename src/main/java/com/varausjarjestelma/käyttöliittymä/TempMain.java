@@ -14,8 +14,22 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * The main class where the UI is initialized and launched.
+ * 
+ * @author V. Ahlstén, E. Niemi, O. Närhi, S. Sarviala
+ *
+ */
 public class TempMain extends Application {
 
+	/**
+	 * Overrides a method from Application.
+	 * <a href="https://docs.oracle.com/javase/8/javafx/api/toc.htm">Information
+	 * about JavaFX class Application.</a> The default scene is set up and made
+	 * visible.
+	 * 
+	 * @param stage to set the scene on
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -56,6 +70,12 @@ public class TempMain extends Application {
 		primaryStage.show();
 	}
 
+	/**
+	 * The method called when the application launches. Notifies the stage to launch
+	 * as well.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
