@@ -34,6 +34,12 @@ public class Ominaisuus {
 		return id;
 	}
 
+	/**
+	 * Sets a new value to the member
+	 * variable id.
+	 * 
+	 * @param id
+	 */
 	public void setID(int id) {
 		this.id = id;
 	}
