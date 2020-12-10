@@ -2,10 +2,20 @@ package com.varausjarjestelma.malli;
 
 import java.sql.*;
 
+/**
+ * A class for tests.
+ * 
+ * @author V. Ahlstén, E. Niemi
+ *
+ */
 public class TestConnection {
 	
 	private Connection db;
 
+	/**
+	 * A constructor in which the database connection
+	 * is established.
+	 */
 	public TestConnection() {
 		db = null;
 
@@ -26,6 +36,11 @@ public class TestConnection {
 
 	}
 	
+	/**
+	 * Returns example data.
+	 * 
+	 * @return example data
+	 */
 	public ResultSet haeEsimerkkiData() {
 		
 		try {
