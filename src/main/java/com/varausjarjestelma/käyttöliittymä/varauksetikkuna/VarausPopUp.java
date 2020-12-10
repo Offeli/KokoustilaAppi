@@ -16,13 +16,37 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 
+/**
+ * A class for creating a pop-up window for
+ * a selected reservation (Varaukset). The selection
+ * takes place in the view created by VarausIkkuna.
+ * The pop-up window contains information about
+ * the selected reservation and a button for deleting
+ * said reservation.
+ * 
+ * @author Sebastian
+ *
+ */
 public class VarausPopUp {
 	private final Kontrolleri kontrolleri;
 	
+	/**
+	 * A constructor.
+	 * 
+	 * @param controller (Kontrolleri) for database operations
+	 */
 	public VarausPopUp(Kontrolleri k) {
 		kontrolleri = k;
 	}
    
+	/**
+	 * Creates and displays a pop-up window containing
+	 * the information relating to the selected
+	 * reservation (Varaukset). Also has a button from
+	 * which to delete i.e. cancel the reservation.
+	 * 
+	 * @param v
+	 */
 	public void display(final Varaukset v)
 		{
 			final Stage popupwindow=new Stage();

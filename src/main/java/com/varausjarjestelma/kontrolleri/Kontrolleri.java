@@ -6,6 +6,15 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import com.varausjarjestelma.malli.*;
 
+/**
+ * The controller class. Serves as an intermediary
+ * between the UI and the database. This class
+ * is a singleton, so there is only one instance
+ * of it over the program's runtime.
+ * 
+ * @author V. Ahlstén, E. Niemi, S. Sarviala
+ *
+ */
 public class Kontrolleri {
 
 	private static Kontrolleri instanssi = null;
@@ -26,6 +35,11 @@ public class Kontrolleri {
 		ominaisuusDAO = new OminaisuusDAO();
 	}
 
+	/**
+	 * Provides an instance of Kontrolleri.
+	 * 
+	 * @return instance of this class
+	 */
 	public static Kontrolleri haeInstanssi() {
 		if (instanssi == null)
 			instanssi = new Kontrolleri();
@@ -33,32 +47,80 @@ public class Kontrolleri {
 		return instanssi;
 	}
 
+	/**
+	 * Provides an array filled with all
+	 * the rooms in the database.
+	 * 
+	 * @return array of rooms
+	 */
 	public Tila[] haeTilat() {
 		return tilaDAO.haeKaikkiTilat();
 	}
 
+	/**
+	 * Provides an array filled with all
+	 * the room attributes in the database.
+	 * 
+	 * @return array of attributes
+	 */
 	public Ominaisuus[] haeOminaisuudet() {
 		return ominaisuusDAO.haeKaikkiOminaisuudet();
 	}
 
+	/**
+	 * Provides an array filled with all
+	 * the users in the database. Note:
+	 * there is only one user in the
+	 * database, used as an default.
+	 * 
+	 * @return array of users
+	 */
 	public Käyttäjä[] haeKäyttäjät() {
 		return käyttäjäDAO.haeKaikkiKayttajat();
 	}
 
+	/**
+	 * Returns a room (Tila) matching
+	 * the id passed as an argument.
+	 * 
+	 * @param id
+	 * @return room matching id
+	 */
 	public Tila etsiTila(int id) {
 		return tilaDAO.etsiTila(id);
 	}
 
+	/**
+	 * Inserts the room (Tila) passed
+	 * as an argument into the database.
+	 * Returns an boolean to signal
+	 * success or failure.
+	 * 
+	 * @param tila
+	 * @return success or failure
+	 */
 	public boolean lisääTila(Tila tila) {
 		return tilaDAO.lisaaTila(tila);
 	}
 
+	/**
+	 * Tells how many rooms there are
+	 * in the database.
+	 * 
+	 * @return number of rooms
+	 */
 	public int haeTilatMaara() {
 		Tila[] tilat = tilaDAO.haeKaikkiTilat();
 
 		return tilat.length;
 	}
 
+	/**
+	 * Returns an array with example data.
+	 * 
+	 * @return example data
+	 * @throws SQLException
+	 */
 	public Object[] tilojenTiedotTaulukkona() throws SQLException {
 
 		ResultSet rs = tc.haeEsimerkkiData();
@@ -79,6 +141,14 @@ public class Kontrolleri {
 		return rivitTaulukkona;
 	}
 
+	/**
+	 * Creates a formatted string out of the attributes
+	 * of the room (Tila) matching the tilaID passed
+	 * as an argument.
+	 * 
+	 * @param tilaID
+	 * @return room attributes as formatted string
+	 */
 	public String näytäTilanOminaisuudetStringinä(int tilaID) {
 
 		Kontrolleri kontrolleri = Kontrolleri.haeInstanssi();
@@ -102,10 +172,27 @@ public class Kontrolleri {
 
 	// Varaamiseen tarvittavat metodit
 
+	/**
+	 * Returns the user matching the id
+	 * passed as an argument.
+	 * 
+	 * @param id
+	 * @return user matching id
+	 */
 	public Käyttäjä etsiKäyttäjä(int id) {
 		return käyttäjäDAO.etsiKayttaja(id);
 	}
 
+	/**
+	 * Forms a reservation (Varaukset) out of the arguments
+	 * and inserts it into the database.
+	 * 
+	 * @param käyttäjänID
+	 * @param tilaID
+	 * @param alku
+	 * @param loppu
+	 * @return success or failure
+	 */
 	public boolean asetaVaraus(int käyttäjänID, int tilaID, Timestamp alku, Timestamp loppu) {
 		Varaukset varaus = new Varaukset();
 		Käyttäjä kayttaja = etsiKäyttäjä(käyttäjänID);
@@ -121,10 +208,28 @@ public class Kontrolleri {
 
 	// Varauksen muokkaus
 
+	
+	/**
+	 * Returns the reservation (Varaukset)
+	 * matching the id passed as an
+	 * argument.
+	 * 
+	 * @param id
+	 * @return reservation matching id
+	 */
 	public Varaukset etsiVaraus(int id) {
 		return varauksetDAO.etsiVaraus(id);
 	}
 
+	/**
+	 * Unused operation for altering a reservation's
+	 * start and end time.
+	 * 
+	 * @param varausID
+	 * @param alku
+	 * @param loppu
+	 * @return success or failure
+	 */
 	public boolean muokkaaVarausta(int varausID, Timestamp alku, Timestamp loppu) {
 		Varaukset varaus = etsiVaraus(varausID);
 
@@ -136,6 +241,13 @@ public class Kontrolleri {
 
 	// Varauksen poistaminen
 
+	/**
+	 * Deletes the reservation (Varaukset)
+	 * matching the id passed as an argument.
+	 * 
+	 * @param varausID
+	 * @return success or failure
+	 */
 	public boolean poistaVaraus(int varausID) {
 		Varaukset varaus = etsiVaraus(varausID);
 
@@ -144,14 +256,36 @@ public class Kontrolleri {
 
 	// Varauksien haku
 
+	/**
+	 * Returns an array of reservations (Varaukset)
+	 * relating to the room (Tila) passed as an
+	 * argument.
+	 * 
+	 * @param tila
+	 * @return array of reservations
+	 */
 	public Varaukset[] haeVarauksetTila(Tila tila) {
 		return varauksetDAO.haeVarauksetTila(tila);
 	}
 
+	/**
+	 * Returns an array of reservations (Varaukset)
+	 * relating to the user (Käyttäjä) passed as an
+	 * argument.
+	 * 
+	 * @param käyttäjä
+	 * @return array of reservations
+	 */
 	public Varaukset[] haeVaraukset(Käyttäjä käyttäjä) {
 		return varauksetDAO.haeVaraukset(käyttäjä);
 	}
 
+	/**
+	 * Returns an array containing all the
+	 * reservations (Varaukset) in the database.
+	 * 
+	 * @return array of reservations
+	 */
 	public Varaukset[] haeKaikkiVaraukset() {
 		return varauksetDAO.haeKaikkiVaraukset();
 	}
