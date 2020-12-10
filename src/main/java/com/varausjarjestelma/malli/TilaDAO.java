@@ -9,11 +9,22 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Data Access Object for operations
+ * relating to the Tila database
+ * table.
+ * 
+ * @author V. Ahlstén, S. Sarviala
+ */
 public class TilaDAO {
 
 	private SessionFactory istuntotehdas;
 	private StandardServiceRegistry rekisteri;
 
+	/**
+	 * A constructor in which the member variables
+	 * istuntotehdas and rekisteri are initialized.
+	 */
 	public TilaDAO() {
 		istuntotehdas = null;
 		rekisteri = null;
@@ -30,6 +41,12 @@ public class TilaDAO {
 		}
 	}
 
+	/**
+	 * Returns every tila in the database
+	 * as an array.
+	 * 
+	 * @return array of tila
+	 */
 	public Tila[] haeKaikkiTilat() {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -60,6 +77,13 @@ public class TilaDAO {
 		return palautus;
 	}
 
+	/**
+	 * Inserts the tila passed as an argument
+	 * into the database.
+	 * 
+	 * @param tila
+	 * @return success or failure
+	 */
 	public boolean lisaaTila(Tila tila) {
 		Transaction transaktio = null;
 		Session istunto = null;
@@ -87,6 +111,13 @@ public class TilaDAO {
 		return palautus;
 	}
 
+	/**
+	 * Returns a tila matching
+	 * the id passed as an argument.
+	 * 
+	 * @param id
+	 * @return tila matching id
+	 */
 	public Tila etsiTila(int id) {
 		Tila palautus = null;
 		Session istunto = null;
@@ -114,6 +145,16 @@ public class TilaDAO {
 		return palautus;
 	}
 
+	/**
+	 * Gets the values in the tila
+	 * passed as an argument and sets
+	 * them to the tila matching the
+	 * id passed as an argument.
+	 * 
+	 * @param id
+	 * @param tila
+	 * @return success or failure
+	 */
 	public boolean muokkaaTilaa(int id, Tila tila) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -151,7 +192,13 @@ public class TilaDAO {
 		return palautus;
 	}
 
-	// TODO
+	/**
+	 * Deletes the tila passed as an argument
+	 * from the database.
+	 * 
+	 * @param tila
+	 * @return success or failure
+	 */
 	public boolean poistaTila(Tila tila) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -180,6 +227,10 @@ public class TilaDAO {
 		return palautus;
 	}
 
+	/**
+	 * Closes istuntotehdas and destroys rekisteri
+	 * when the application closes.
+	 */
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();

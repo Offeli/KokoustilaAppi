@@ -9,11 +9,22 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Data Access Object for operations
+ * relating to the Varaukset database
+ * table.
+ * 
+ * @author V. Ahlstén, S. Sarviala
+ */
 public class VarauksetDAO {
 	
 	private SessionFactory istuntotehdas;
 	private StandardServiceRegistry rekisteri;
 
+	/**
+	 * A constructor in which the member variables
+	 * istuntotehdas and rekisteri are initialized.
+	 */
 	public VarauksetDAO() {
 		
 		istuntotehdas = null;
@@ -31,6 +42,12 @@ public class VarauksetDAO {
 		}
 	}
 	
+	/**
+	 * Returns every varaukset in the database
+	 * as an array.
+	 * 
+	 * @return array of varaukset
+	 */
 	public Varaukset[] haeKaikkiVaraukset() {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -61,6 +78,13 @@ public class VarauksetDAO {
 		return palautus;
 	}
 
+	/**
+	 * Inserts the varaukset passed as an argument
+	 * into the database.
+	 * 
+	 * @param varaus
+	 * @return success or failure
+	 */
 	public boolean lisaaVaraus(Varaukset varaus) {
 		Transaction transaktio = null;
 		Session istunto = null;
@@ -88,6 +112,13 @@ public class VarauksetDAO {
 		return palautus;
 	}
 
+	/**
+	 * Returns a varaukset matching
+	 * the id passed as an argument.
+	 * 
+	 * @param id
+	 * @return varaukset matching id
+	 */
 	public Varaukset etsiVaraus(int id) {
 		Varaukset palautus = null;
 		Session istunto = null;
@@ -115,6 +146,16 @@ public class VarauksetDAO {
 		return palautus;
 	}
 
+	/**
+	 * Gets the values in the varaukset
+	 * passed as an argument and sets
+	 * them to the varaukset matching the
+	 * id passed as an argument.
+	 * 
+	 * @param id
+	 * @param varaus
+	 * @return success or failure
+	 */
 	public boolean muokkaaVarausta(int id, Varaukset varaus) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -148,7 +189,13 @@ public class VarauksetDAO {
 		return palautus;
 	}
 
-	// TODO
+	/**
+	 * Deletes the varaukset passed as an argument
+	 * from the database.
+	 * 
+	 * @param varaus
+	 * @return success or failure
+	 */
 	public boolean poistaVaraus(Varaukset varaus) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -177,6 +224,14 @@ public class VarauksetDAO {
 		return palautus;
 	}
 	
+	/**
+	 * Returns an array of varaukset
+	 * relating to the tila passed as an
+	 * argument.
+	 * 
+	 * @param tila
+	 * @return array or varaukset
+	 */
 	public Varaukset[] haeVarauksetTila(Tila tila) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -208,6 +263,14 @@ public class VarauksetDAO {
 		return palautus;
 	}
 	
+	/**
+	 * Returns an array of varaukset
+	 * relating to the käyttäjä passed as an
+	 * argument.
+	 * 
+	 * @param tila
+	 * @return array or varaukset
+	 */
 	public Varaukset[] haeVaraukset(Käyttäjä käyttäjä) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -239,6 +302,10 @@ public class VarauksetDAO {
 		return palautus;
 	}
 
+	/**
+	 * Closes istuntotehdas and destroys rekisteri
+	 * when the application closes.
+	 */
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();

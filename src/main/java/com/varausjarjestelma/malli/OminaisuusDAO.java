@@ -9,11 +9,23 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Data Access Object for operations
+ * relating to the Ominaisuus database
+ * table.
+ * 
+ * @author V. Ahlstén, S. Sarviala
+ *
+ */
 public class OminaisuusDAO {
 
 	private SessionFactory istuntotehdas;
 	private StandardServiceRegistry rekisteri;
 
+	/**
+	 * A constructor in which the member variables
+	 * istuntotehdas and rekisteri are initialized.
+	 */
 	public OminaisuusDAO() {
 		istuntotehdas = null;
 		rekisteri = null;
@@ -30,6 +42,12 @@ public class OminaisuusDAO {
 		}
 	}
 
+	/**
+	 * Returns every ominaisuus in the database
+	 * as an array.
+	 * 
+	 * @return array of ominaisuus
+	 */
 	public Ominaisuus[] haeKaikkiOminaisuudet() {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -60,6 +78,13 @@ public class OminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Inserts the ominaisuus passed as an argument
+	 * into the database.
+	 * 
+	 * @param ominaisuus
+	 * @return success or failure
+	 */
 	public boolean lisaaOminaisuus(Ominaisuus ominaisuus) {
 		Transaction transaktio = null;
 		Session istunto = null;
@@ -87,6 +112,13 @@ public class OminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Returns an ominaisuus matching
+	 * the id passed as an argument.
+	 * 
+	 * @param id
+	 * @return ominaisuus matching id
+	 */
 	public Ominaisuus etsiOminaisuus(int id) {
 		Ominaisuus palautus = null;
 		Session istunto = null;
@@ -114,6 +146,16 @@ public class OminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Gets the values in the ominaisuus
+	 * passed as an argument and sets
+	 * them to the ominaisuus matching the
+	 * id passed as an argument.
+	 * 
+	 * @param id
+	 * @param ominaisuus
+	 * @return success or failure
+	 */
 	public boolean muokkaaOminaisuutta(int id, Ominaisuus ominaisuus) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -147,7 +189,13 @@ public class OminaisuusDAO {
 		return palautus;
 	}
 
-	// TODO
+	/**
+	 * Deletes the ominaisuus passed as an argument
+	 * from the database.
+	 * 
+	 * @param ominaisuus
+	 * @return success or failure
+	 */
 	public boolean poistaOminaisuus(Ominaisuus ominaisuus) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -176,6 +224,10 @@ public class OminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Closes istuntotehdas and destroys rekisteri
+	 * when the application closes.
+	 */
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();

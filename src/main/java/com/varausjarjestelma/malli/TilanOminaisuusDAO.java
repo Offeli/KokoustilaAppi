@@ -9,11 +9,22 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Data Access Object for operations
+ * relating to the TilanOminaisuus 
+ * database table.
+ * 
+ * @author V. Ahlstén, S. Sarviala
+ */
 public class TilanOminaisuusDAO {
 
 	private SessionFactory istuntotehdas;
 	private StandardServiceRegistry rekisteri;
 
+	/**
+	 * A constructor in which the member variables
+	 * istuntotehdas and rekisteri are initialized.
+	 */
 	public TilanOminaisuusDAO() {
 		istuntotehdas = null;
 		rekisteri = null;
@@ -30,6 +41,12 @@ public class TilanOminaisuusDAO {
 		}
 	}
 
+	/**
+	 * Returns every tilanOminaisuus in the database
+	 * as an array.
+	 * 
+	 * @return array of tilanOminaisuus
+	 */
 	public TilanOminaisuus[] haeKaikkiTilanOminaisuudet() {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -60,6 +77,13 @@ public class TilanOminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Inserts the tilanOminaisuus passed as an argument
+	 * into the database.
+	 * 
+	 * @param tilanOminaisuus
+	 * @return success or failure
+	 */
 	public boolean lisaaTilanOminaisuus(TilanOminaisuus tilanOminaisuus) {
 		Transaction transaktio = null;
 		Session istunto = null;
@@ -87,6 +111,13 @@ public class TilanOminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Returns a tilanOminaisuus matching
+	 * the id passed as an argument.
+	 * 
+	 * @param id
+	 * @return tilanOminaisuus matching id
+	 */
 	public TilanOminaisuus etsiTilanOminaisuus(int id) {
 		TilanOminaisuus palautus = null;
 		Session istunto = null;
@@ -114,6 +145,16 @@ public class TilanOminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Gets the values in the tilanOminaisuus
+	 * passed as an argument and sets
+	 * them to the tilanOminaisuus matching the
+	 * id passed as an argument.
+	 * 
+	 * @param id
+	 * @param tilanOminaisuus
+	 * @return success or failure
+	 */
 	public boolean muokkaaTilanOminaisuutta(int id, TilanOminaisuus tilanOminaisuus) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -148,7 +189,13 @@ public class TilanOminaisuusDAO {
 		return palautus;
 	}
 
-	// TODO
+	/**
+	 * Deletes the tilanOminaisuus passed as an argument
+	 * from the database.
+	 * 
+	 * @param tilanOminaisuus
+	 * @return success or failure
+	 */
 	public boolean poistaTilanOminaisuus(TilanOminaisuus tilanOminaisuus) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -177,6 +224,14 @@ public class TilanOminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Returns an array of tilanOminaisuus
+	 * relating to the tila passed as an
+	 * argument.
+	 * 
+	 * @param tila
+	 * @return array or tilanOminaisuus
+	 */
 	public TilanOminaisuus[] etsiTilaanLiittyvätTilanOminaisuudet(Tila tila) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -208,6 +263,14 @@ public class TilanOminaisuusDAO {
 		return palautus;
 	}
 
+	/**
+	 * Returns an array of tilanOminaisuus
+	 * relating to the ominaisuus passed as an
+	 * argument.
+	 * 
+	 * @param ominaisuus
+	 * @return array or tilanOminaisuus
+	 */
 	public TilanOminaisuus[] etsiOminaisuuteenLiittyvätTilanOminaisuudet(Ominaisuus ominaisuus) {
 		Session istunto = null;
 		Transaction transaktio = null;
@@ -240,7 +303,10 @@ public class TilanOminaisuusDAO {
 		return palautus;
 	}
 
-	
+	/**
+	 * Closes istuntotehdas and destroys rekisteri
+	 * when the application closes.
+	 */
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();
