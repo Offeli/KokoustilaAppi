@@ -60,6 +60,7 @@ public class TempMain extends Application {
 			public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
 				System.out.println("Tabi vaihdettu");
 				tab2.setContent(new VarausIkkuna().getRoot());
+				tab1.setContent(new TilojenSelaus());
 			}
 		});
 
