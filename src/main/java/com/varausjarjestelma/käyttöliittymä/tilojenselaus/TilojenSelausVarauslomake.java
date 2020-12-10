@@ -83,47 +83,47 @@ public class TilojenSelausVarauslomake {
 	    gridpane.setHalignment(headerLabel, HPos.CENTER);
 	    gridpane.setMargin(headerLabel, new Insets(10,10,10,10));
         
-	    // Add Name Label
+	    // Add Name Label.
 	    Label nameLabel = I18n.stringForLabel("nimesi");
 	    gridpane.add(nameLabel, 0,1);
 
-	    // Add Name Text Field
+	    // Add Name Text Field.
 	    TextField nameField = new TextField();
 	    nameField.setPrefHeight(40);
 	    nameField.setPrefWidth(5);
 	    gridpane.add(nameField, 1,1);
 
 
-	    // Add Email Label
+	    // Add Email Label.
 	    Label emailLabel = I18n.stringForLabel("sahkopostisi");
 	    gridpane.add(emailLabel, 0, 2);
 
-	    // Add Email Text Field
+	    // Add Email Text Field.
 	    final TextField emailField = new TextField();
 	    emailField.setPrefHeight(40);
 	    gridpane.add(emailField, 1, 2);
 	    
-	    // Add aloitusaikalabel
+	    // Add aloitusaikalabel.
 	    Label aloitusaikaLabel = I18n.stringForLabel("aloitusaika");
 	    gridpane.add(aloitusaikaLabel, 0, 3);
 	    
-	    // Add check-in vaihtoehdot
+	    // Add check-in vaihtoehdot.
 		  checkinvaihtoehdot.setItems((ObservableList<Integer>) calendar.getAlkuAukiolo());
 		  
 	    	  
 	    gridpane.add(checkinvaihtoehdot, 1, 3);
 	    
-	 // Add lopetussaikalabel
+	 // Add lopetussaikalabel.
 	    Label lopetusaikaLabel = I18n.stringForLabel("lopetusaika");
 	    gridpane.add(lopetusaikaLabel, 0, 4);
 	    
-	    // Add check-out vaihtoehdot
+	    // Add check-out vaihtoehdot.
 	    checkoutvaihtoehdot.setItems((ObservableList<Integer>) calendar.getLoppuAukiolo());
 		  
 	    gridpane.add(checkoutvaihtoehdot, 1, 4);
 	   
 
-	    // Add Submit Button
+	    // Add Submit Button.
 	    Button submitButton = I18n.buttonForKey("button.vahvistavaraus");
 	    submitButton.setTooltip(I18n.tooltipForKey("button.vahvistavaraus.tooltip"));
 	    submitButton.setPrefHeight(40);
