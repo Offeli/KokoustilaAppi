@@ -41,7 +41,7 @@ public class TempMain extends Application {
 		SplitPane varausikkuna = new VarausIkkuna().getRoot();
 		TilanLisäyslomake tilanlisäys = new TilanLisäyslomake();
 
-		Tab tab1 = new Tab();
+		final Tab tab1 = new Tab();
 		tab1.setContent(tilojenselaus);
 		tab1.setText("Tilat");
 		tab1.closableProperty().setValue(false);
