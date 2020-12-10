@@ -1,0 +1,9 @@
+com.varausjarjestelma.i18n
+com.varausjarjestelma.kontrolleri
+com.varausjarjestelma.käyttöliittymä
+com.varausjarjestelma.käyttöliittymä.tilanlisäys
+com.varausjarjestelma.käyttöliittymä.tilojenselaus
+com.varausjarjestelma.käyttöliittymä.varauksetikkuna
+com.varausjarjestelma.logiikka
+com.varausjarjestelma.malli
+com.varausjarjestelma.sähköposti
