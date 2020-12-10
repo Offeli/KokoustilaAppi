@@ -292,10 +292,26 @@ public class Kontrolleri {
 
 	// TilanOminaisuuksien haku
 
+	/**
+	 * Returns an array of connectors (TilanOminaisuus)
+	 * between a room (Tila) and an attribute (Ominaisuus)
+	 * relating to the room passed as an argument.
+	 * 
+	 * @param tila
+	 * @return array of room-attribute connectors
+	 */
 	public TilanOminaisuus[] etsiTilanOminaisuudet(Tila tila) {
 		return toDAO.etsiTilaanLiittyvätTilanOminaisuudet(tila);
 	}
 
+	/**
+	 * Returns an array of connectors (TilanOminaisuus)
+	 * between a room (Tila) and an attribute (Ominaisuus)
+	 * relating to the attribute passed as an argument.
+	 * 
+	 * @param ominaisuus
+	 * @return array of room-attribute connectors
+	 */
 	public TilanOminaisuus[] etsiTilanOminaisuudet(Ominaisuus ominaisuus) {
 		return toDAO.etsiOminaisuuteenLiittyvätTilanOminaisuudet(ominaisuus);
 	}

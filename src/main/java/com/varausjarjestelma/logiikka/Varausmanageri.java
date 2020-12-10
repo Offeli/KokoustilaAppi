@@ -9,12 +9,22 @@ import com.varausjarjestelma.malli.Varaukset;
 
 import javafx.scene.control.ChoiceBox;
 
+/**
+ * A singleton class providing operations for
+ * reservation validation.
+ * 
+ * @author V. Ahlstén, E. Niemi, O. Närhi, S. Sarviala
+ *
+ */
 public class Varausmanageri {
 
 	private final Kontrolleri kontrolleri;
 	static Timestamp aloitusaika;
 	static String varatuntilannimi;
 
+	/**
+	 * Constructor.
+	 */
 	public Varausmanageri() {
 		kontrolleri = Kontrolleri.haeInstanssi();
 	}
@@ -35,6 +45,18 @@ public class Varausmanageri {
 		return true;
 	}
 
+	/**
+	 * Edits the values passed as arguments and
+	 * passes them on the controller (Kontrolleri)
+	 * for further processing. End result is a new
+	 * reservation inserted into the database.
+	 * 
+	 * @param alkuTuntiPicker
+	 * @param loppuTuntiPicker
+	 * @param varauksenAloitusPäivä
+	 * @param varauksenLopetusPäivä
+	 * @param tilanId
+	 */
 	public void varaaTila(ChoiceBox<Integer> alkuTuntiPicker, ChoiceBox<Integer> loppuTuntiPicker,
 			LocalDate varauksenAloitusPäivä, LocalDate varauksenLopetusPäivä, int tilanId) {
 
@@ -56,6 +78,12 @@ public class Varausmanageri {
 
 	}
 
+	/**
+	 * Formats an email containing the values in the
+	 * member variable varatuntilannimi and aloitusaika.
+	 * 
+	 * @return email in string form
+	 */
 	public String varaustiedotMailiin() {
 		String returni = "" + varatuntilannimi + ", on varattu teille alkaen " + aloitusaika + ".";
 		return returni;
